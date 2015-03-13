@@ -24,13 +24,14 @@
         <link rel="stylesheet" media="screen" href="../js/chosen.min.css">
         <link rel="stylesheet" media="screen" href="../js/selectize/dist/css/selectize.bootstrap3.css">
         <link rel="stylesheet" media="screen" href="../js/bootstrap-wysihtml5-rails-b3/vendor/assets/stylesheets/bootstrap-wysihtml5/core-b3.css">
-
+        <link rel="stylesheet" media="screen" href="../css/manage.css">
+        <link rel="stylesheet" media="screen" href="../css/store.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
            <script type="text/javascript" src="../js/html5shiv.js"></script>
            <script type="text/javascript" src="../js/respond.min.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/twitter-bootstrap-hover-dropdown.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap-admin-theme-change-size.js"></script>
@@ -42,71 +43,20 @@
         <script type="text/javascript" src="../js/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/core-b3.js"></script>
         <script type="text/javascript" src="../js/twitter-bootstrap-wizard/jquery.bootstrap.wizard-for.bootstrap3.js"></script>
         <script type="text/javascript" src="../js/boostrap3-typeahead/bootstrap3-typeahead.min.js"></script>
-
-        <script type="text/javascript">
-            $(function() {
-                $('.datepicker').datepicker();
-                $('.uniform_on').uniform();
-                $('.chzn-select').chosen();
-                $('.selectize-select').selectize();
-                $('.textarea-wysihtml5').wysihtml5({
-                    stylesheets: [
-                        'vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/stylesheets/bootstrap-wysihtml5/wysiwyg-color.css'
-                    ]
-                });
-
-                $('#rootwizard').bootstrapWizard({
-                    'nextSelector': '.next',
-                    'previousSelector': '.previous',
-                    onNext: function(tab, navigation, index) {
-                        var $total = navigation.find('li').length;
-                        var $current = index + 1;
-                        var $percent = ($current / $total) * 100;
-                        $('#rootwizard').find('.progress-bar').css('width', $percent + '%');
-                        // If it's the last tab then hide the last button and show the finish instead
-                        if ($current >= $total) {
-                            $('#rootwizard').find('.pager .next').hide();
-                            $('#rootwizard').find('.pager .finish').show();
-                            $('#rootwizard').find('.pager .finish').removeClass('disabled');
-                        } else {
-                            $('#rootwizard').find('.pager .next').show();
-                            $('#rootwizard').find('.pager .finish').hide();
-                        }
-                    },
-                    onPrevious: function(tab, navigation, index) {
-                        var $total = navigation.find('li').length;
-                        var $current = index + 1;
-                        var $percent = ($current / $total) * 100;
-                        $('#rootwizard').find('.progress-bar').css('width', $percent + '%');
-                        // If it's the last tab then hide the last button and show the finish instead
-                        if ($current >= $total) {
-                            $('#rootwizard').find('.pager .next').hide();
-                            $('#rootwizard').find('.pager .finish').show();
-                            $('#rootwizard').find('.pager .finish').removeClass('disabled');
-                        } else {
-                            $('#rootwizard').find('.pager .next').show();
-                            $('#rootwizard').find('.pager .finish').hide();
-                        }
-                    },
-                    onTabShow: function(tab, navigation, index) {
-                        var $total = navigation.find('li').length;
-                        var $current = index + 1;
-                        var $percent = ($current / $total) * 100;
-                        $('#rootwizard').find('.bar').css({width: $percent + '%'});
-                    }
-                });
-                $('#rootwizard .finish').click(function() {
-                    alert('Finished!, Starting over!');
-                    $('#rootwizard').find('a[href*=\'tab1\']').trigger('click');
-                });
-            });
-        </script>
+         <script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="../js/jquery.form.js"></script>
+        <script type="text/javascript" src="../js/uploadPreview.js"></script>
+        <script type="text/javascript" src="../js/jquery.mu.image.resize.js"></script>
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../manage/js/store.js"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar wysihtml5-supported">
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <asp:ScriptManager ID="ScriptManager" runat="server">
+            <Services>
+                <asp:ServiceReference Path="~/Supervisor.asmx" />
+            </Services>
+        </asp:ScriptManager>
     </form>
     <!-- main / large navbar -->
     <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
@@ -132,30 +82,14 @@
         <div class="row">
             <!-- left, vertical navbar -->
             <div class="col-md-2 bootstrap-admin-col-left">
-                <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
-                        <a href="member.aspx"><i class="glyphicon glyphicon-chevron-right"></i>會員管理</a>
-                    </li>
-                    <li>
-                        <a href="store.aspx"><i class="glyphicon glyphicon-chevron-right"></i>商城管理</a>
-                    </li>
-                    <li>
-                        <a href="bid.aspx"><i class="glyphicon glyphicon-chevron-right"></i>競標管理</a>
-                    </li>
-                    <li>
-                        <a href="secondhand.aspx"><i class="glyphicon glyphicon-chevron-right"></i>二手管理</a>
-                    </li>
-                    <li>
-                        <a href="coach.aspx"><i class="glyphicon glyphicon-chevron-right"></i>教練管理</a>
-                    </li>
-                </ul>
+                <ul id="left_menu" class="nav navbar-collapse collapse bootstrap-admin-navbar-side" runat="server"></ul>
             </div>
             <!-- content -->
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-header">
-                            <h1>總管理後台</h1>
+                            <h1>商城管理</h1>
                         </div>
                     </div>
                 </div>
@@ -163,7 +97,155 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default bootstrap-admin-no-table-panel">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">這邊要放商店管理</div>
+                                <div class="text-muted bootstrap-admin-box-title"></div>
+                                <ul id="myTab" class="nav nav-tabs">
+                                    <li class="active"><a href="#categorymanage" data-toggle="tab">產品分類管理</a></li>
+                                    <li><a href="#productmanage" data-toggle="tab">新增產品</a></li>
+                                   
+                                </ul>
+                                <div id="myTabContent" class="tab-content">
+                                    <div class="tab-pane fade in active" id="categorymanage">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="panel panel-default bootstrap-admin-no-table-panel">
+                                                    <div class="panel-heading">
+                                                        <div class="text-muted bootstrap-admin-box-title">新增分類</div>
+                                                    </div>
+                                                    <div class="bootstrap-admin-panel-content">
+                                                        <table class="table table-striped table-bordered" id="Table2">
+                                                            <tr>
+                                                                <td>分類名稱:</td><td><input type="text" class="cSearch" id="search_account"/></td>
+                                                                <td>
+                                                                    <button class="" onclick="goCreateCategory()">新增</button>
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <div id="tableProductCategory" runat="server"></div>
+                                                        <button class="" onclick="saveAllCategory()">儲存排序</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <table class="table table-striped table-bordered" id="example" border="0">
+                                        </table>
+                                        
+                                    </div>
+                                    <div class="tab-pane fade " id="productmanage">
+                                        <form id="GmyForm" name="GmyForm" action="" method="post" enctype="multipart/form-data">
+                                            <table class="table table-striped table-bordered" id="Table1" border="0">
+                                                <tr>
+			                                        <th width="150">產品編號</th>
+			                                        <td><span id="ProductID" runat="server"></span></td>
+        			                                
+			                                        <th rowspan="10" width="200">
+			                                            <p align="center">產品照片<br />
+        			                                        
+			                                                <input id="uploadFile" name="storePhoto" type="file" name="File1" size="1" />
+        			                                        
+			                                                <br />
+			                                                <div id="storePhotoHideDiv" style="display:none;">
+			                                                    <img id="storePhotoUrl" href="../images/noAvatar2.jpg" ></img>
+			                                                </div>
+    			                                            <div id="PhotoShow" href="../images/noAvatar2.jpg" runat="server"></div>
+            			                                    
+			                                            </p>
+			                                           
+			                                        </th>
+			                                    </tr>
+			                                    <tr>
+			                                        <th width="150">產品名稱</th>
+			                                        <td>
+			                                        <input id="Name" type="text" runat="server" /><span class="startMark">*</span></td>
+        			                                
+			                                    </tr>
+			                                    <tr>
+			                                        <th>產品價格</th>
+			                                        <td>
+			                                            <input id="Price" type="text" runat="server" /></select><span class="startMark">*</span>
+			                                        </td>
+        			                                
+			                                    </tr>
+			                                    <tr>
+			                                        <th>產品分類</th>
+			                                        <td>
+			                                            <select id="Production_Category" runat="server">
+			                                               
+			                                            </select>
+			                                        </td>  
+			                                    </tr>
+			                                    <tr>
+			                                        <th>產品等級</th>
+			                                        <td>
+			                                            <select id="ProductionLevel" runat="server">
+			                                                <option value="0">A+</option>
+			                                                <option value="1">A</option>
+			                                                <option value="2">B+</option>
+			                                                <option value="3">B</option>
+			                                                <option value="4">C+</option>
+			                                                <option value="5">C</option>
+			                                                <option value="6">D+</option>
+			                                                <option value="7">D</option>
+			                                            </select>
+			                                        </td>  
+			                                    </tr>
+			                                    <tr>
+			                                        <th>左右手</th>
+			                                        <td>
+			                                            <select id="Hand" runat="server">
+			                                                <option value="0">請選擇</option>
+			                                                <option value="1">左手</option>
+			                                                <option value="2">右手</option>
+			                                            </select>
+			                                        </td>  
+			                                    </tr>
+			                                    <tr>
+			                                        <th>角度</th>
+			                                        <td>
+			                                            <select id="Angle" runat="server">
+			                                                <option value="0">請選擇</option>
+			                                               
+			                                            </select>
+			                                        </td>  
+			                                    </tr>
+			                                    <tr>
+			                                        <th>桿身</th>
+			                                        <td>
+			                                            <select id="GolfClub" runat="server">
+			                                                <option value="0">請選擇</option>
+			                                               
+			                                            </select>
+			                                        </td>  
+			                                    </tr>
+			                                    <tr>
+			                                        <th>硬度</th>
+			                                        <td>
+			                                            <select id="GolfHard" runat="server">
+			                                                <option value="0">請選擇</option>
+			                                               
+			                                            </select>
+			                                        </td>  
+			                                    </tr>
+			                                    <tr>
+			                                        <th>產品簡介</th>
+			                                        <td>
+			                                            <textarea id="Introduction" rows="5" style="width:95%" runat="server" ></textarea>
+			                                        </td>
+			                                    </tr>
+			                                    <tr>
+			                                        <th>完整商品圖文介紹</th>
+			                                        <td colspan="5">
+			                                            <textarea id="FullIntro" rows="5" style="width:100%" runat="server" ></textarea>
+			                                        </td>
+			                                    </tr>
+        			           
+                                            </table>
+                                            </form>
+                                            <button class="btn btn-lg btn-primary" onclick="CreateProduction()">新增</button>
+                                            <button class="btn btn-lg btn-primary" onclick="ReviewProduction()">預覽</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

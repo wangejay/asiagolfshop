@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="bid.aspx.cs" Inherits="manage_bid" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="productcategory.aspx.cs" Inherits="manage_productcategory" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -30,7 +30,7 @@
            <script type="text/javascript" src="../js/html5shiv.js"></script>
            <script type="text/javascript" src="../js/respond.min.js"></script>
         <![endif]-->
-        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/twitter-bootstrap-hover-dropdown.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap-admin-theme-change-size.js"></script>
@@ -42,71 +42,20 @@
         <script type="text/javascript" src="../js/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/core-b3.js"></script>
         <script type="text/javascript" src="../js/twitter-bootstrap-wizard/jquery.bootstrap.wizard-for.bootstrap3.js"></script>
         <script type="text/javascript" src="../js/boostrap3-typeahead/bootstrap3-typeahead.min.js"></script>
-
-        <script type="text/javascript">
-            $(function() {
-                $('.datepicker').datepicker();
-                $('.uniform_on').uniform();
-                $('.chzn-select').chosen();
-                $('.selectize-select').selectize();
-                $('.textarea-wysihtml5').wysihtml5({
-                    stylesheets: [
-                        'vendors/bootstrap-wysihtml5-rails-b3/vendor/assets/stylesheets/bootstrap-wysihtml5/wysiwyg-color.css'
-                    ]
-                });
-
-                $('#rootwizard').bootstrapWizard({
-                    'nextSelector': '.next',
-                    'previousSelector': '.previous',
-                    onNext: function(tab, navigation, index) {
-                        var $total = navigation.find('li').length;
-                        var $current = index + 1;
-                        var $percent = ($current / $total) * 100;
-                        $('#rootwizard').find('.progress-bar').css('width', $percent + '%');
-                        // If it's the last tab then hide the last button and show the finish instead
-                        if ($current >= $total) {
-                            $('#rootwizard').find('.pager .next').hide();
-                            $('#rootwizard').find('.pager .finish').show();
-                            $('#rootwizard').find('.pager .finish').removeClass('disabled');
-                        } else {
-                            $('#rootwizard').find('.pager .next').show();
-                            $('#rootwizard').find('.pager .finish').hide();
-                        }
-                    },
-                    onPrevious: function(tab, navigation, index) {
-                        var $total = navigation.find('li').length;
-                        var $current = index + 1;
-                        var $percent = ($current / $total) * 100;
-                        $('#rootwizard').find('.progress-bar').css('width', $percent + '%');
-                        // If it's the last tab then hide the last button and show the finish instead
-                        if ($current >= $total) {
-                            $('#rootwizard').find('.pager .next').hide();
-                            $('#rootwizard').find('.pager .finish').show();
-                            $('#rootwizard').find('.pager .finish').removeClass('disabled');
-                        } else {
-                            $('#rootwizard').find('.pager .next').show();
-                            $('#rootwizard').find('.pager .finish').hide();
-                        }
-                    },
-                    onTabShow: function(tab, navigation, index) {
-                        var $total = navigation.find('li').length;
-                        var $current = index + 1;
-                        var $percent = ($current / $total) * 100;
-                        $('#rootwizard').find('.bar').css({width: $percent + '%'});
-                    }
-                });
-                $('#rootwizard .finish').click(function() {
-                    alert('Finished!, Starting over!');
-                    $('#rootwizard').find('a[href*=\'tab1\']').trigger('click');
-                });
-            });
-        </script>
+         <script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="../js/jquery.form.js"></script>
+        <script type="text/javascript" src="../js/uploadPreview.js"></script>
+        <script type="text/javascript" src="../js/jquery.mu.image.resize.js"></script>
+        <script type="text/javascript" src="../js/base.js"></script>
+        <script type="text/javascript" src="../manage/js/productcategory.js"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar wysihtml5-supported">
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <asp:ScriptManager ID="ScriptManager" runat="server">
+            <Services>
+                <asp:ServiceReference Path="~/Supervisor.asmx" />
+            </Services>
+        </asp:ScriptManager>
     </form>
     <!-- main / large navbar -->
     <nav class="navbar navbar-default navbar-fixed-top bootstrap-admin-navbar bootstrap-admin-navbar-under-small" role="navigation">
@@ -139,7 +88,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="page-header">
-                            <h1>總管理後台</h1>
+                            <h1>產品分類管理</h1>
                         </div>
                     </div>
                 </div>
@@ -147,7 +96,37 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default bootstrap-admin-no-table-panel">
                             <div class="panel-heading">
-                                <div class="text-muted bootstrap-admin-box-title">這邊要放競標管理</div>
+                                <div class="text-muted bootstrap-admin-box-title"></div>
+                                
+                              
+                                <div class="tab-pane fade in active" id="categorymanage">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="panel panel-default bootstrap-admin-no-table-panel">
+                                                
+                                                <div class="bootstrap-admin-panel-content">
+                                                    <table class="table table-striped table-bordered" id="Table2">
+                                                        <tr>
+                                                            <td>分類名稱:</td><td><input type="text" class="cSearch" id="search_account"/></td>
+                                                            <td>
+                                                                <button class="" onclick="goCreateCategory()">新增</button>
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <div id="tableProductCategory" runat="server"></div>
+                                                    <button class="" onclick="saveAllCategory()">儲存排序</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <table class="table table-striped table-bordered" id="example" border="0">
+                                    </table>
+                                    
+                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>

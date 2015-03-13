@@ -26,10 +26,11 @@ a
 }
 #header_function_list
 {
-	margin-right:30px;
+	/*margin-right:30px;*/
 	float:right;
-	margin-top: 30px;
-	font-size:14px;
+	margin-top: 25px;
+	/*font-size:14px;*/
+	font-size:1.6rem;
 }
 .header_function_list_element
 {
@@ -46,16 +47,16 @@ a
 }
 #login_Div
 {
-	padding-top:8px;
+	/*padding-top:8px;*/
 }
 #cart_Div
 {
-	padding-top:2px;
+	/*padding-top:2px;*/
 }
 #cart_counter
 {
 	color:Red;
-	font-size:20px;
+	/*font-size:20px;*/
 }
 #head_bottom
 {
@@ -97,3 +98,40 @@ a
 }
 #main_menu a
 {color:#9d9d9d;}
+
+#headerTop
+{margin: 16px 0 0;}
+#main-navbar
+{font-size:1.6rem;
+ margin-left: -30px;}
+
+.thumbnail .productIMG
+{
+	background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+	}
+.thumbnail .imgPlaceHolder
+{width:100%;
+ visibility: hidden;
+}
+
+.thumbnail .caption H4 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6px;
+    white-space: normal;
+    min-height: 54px;
+    margin-top: 0;
+    line-height: 1.3em;
+}
+
+.thumbnail .caption H5 
+{
+	margin-top: -30px;
+    position: relative;
+}
+
+.thumbnail .caption P
+{
+	
+}

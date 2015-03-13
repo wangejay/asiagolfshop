@@ -45,7 +45,7 @@
         </asp:ScriptManager>
     </form>
  
-    <div class='' id="headerTop" runat="server" style=" margin-top:0px;"></div>
+    <div class='' id="headerTop" runat="server"></div>
     <nav class='navbar navbar-inverse' id="headerBottom" role='navigation' runat="server"></nav>
 
     <div class="container">
@@ -54,16 +54,7 @@
 
             <div class="col-md-3">
                 <p class="lead">球具類別</p>
-                <div class="list-group">
-                    <a href="./product.aspx?id=1" class="list-group-item">Drivers 一號木桿</a>
-                    <a href="./product.aspx?id=2" class="list-group-item">FW 球道木桿 </a>
-                    <a href="./product.aspx?id=3" class="list-group-item">Iron sets 鐵桿組</a>
-                    <a href="./product.aspx?id=4" class="list-group-item">Wedges 挖起桿</a>
-                    <a href="./product.aspx?id=5" class="list-group-item">Putters 推桿</a>
-                    <a href="./product.aspx?id=5" class="list-group-item">Hybrid 混合桿</a>
-                    <a href="./product.aspx?id=6" class="list-group-item">Shafts&Grips 桿身、握把</a>
-                    <a href="./product.aspx?id=7" class="list-group-item">Accessories 配件</a>
-                    <a href="./product.aspx?id=8" class="list-group-item">Apparel 服飾</a>
+                <div class="list-group" runat="server" id="left_menu">
                     
                 </div>
             </div>
@@ -101,11 +92,13 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row" id="ProductionDiv" runat="server">
 
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
-                            <img src="images/4.png" alt="">
+                            <div class="productIMG" style="background-image: url(images/5.png);">
+                                <img src="images/5.png" alt="" class="imgPlaceHolder">
+                            </div>
                             <div class="caption">
                                 <h4 class="pull-right">$24.99</h4>
                                 <h4><a href="#">First Product</a>

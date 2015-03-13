@@ -132,23 +132,7 @@
         <div class="row">
             <!-- left, vertical navbar -->
             <div class="col-md-2 bootstrap-admin-col-left">
-                <ul class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
-                    <li>
-                        <a href="member.aspx"><i class="glyphicon glyphicon-chevron-right"></i>會員管理</a>
-                    </li>
-                    <li>
-                        <a href="store.aspx"><i class="glyphicon glyphicon-chevron-right"></i>商城管理</a>
-                    </li>
-                    <li>
-                        <a href="bid.aspx"><i class="glyphicon glyphicon-chevron-right"></i>競標管理</a>
-                    </li>
-                    <li>
-                        <a href="secondhand.aspx"><i class="glyphicon glyphicon-chevron-right"></i>二手管理</a>
-                    </li>
-                    <li>
-                        <a href="coach.aspx"><i class="glyphicon glyphicon-chevron-right"></i>教練管理</a>
-                    </li>
-                </ul>
+                <ul id="left_menu" class="nav navbar-collapse collapse bootstrap-admin-navbar-side" runat="server"></ul>
             </div>
             <!-- content -->
             <div class="col-md-10">

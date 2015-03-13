@@ -34,8 +34,12 @@ public struct dataTables
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 [System.Web.Script.Services.ScriptService]
 public class AspAjax : System.Web.Services.WebService {
-
+    public bool Authenticated =false;
+    public bool InAdminRoles = false;
+    public const int Message_NoAuth = -1;
     public AspAjax () {
+        Authenticated = HttpContext.Current.User.Identity.IsAuthenticated;
+        InAdminRoles = HttpContext.Current.User.IsInRole("admin");
 
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
@@ -110,24 +114,7 @@ public class AspAjax : System.Web.Services.WebService {
         string result1 = sw.Elapsed.TotalMilliseconds.ToString();
         return CreateMessage;
     }
-    //20150209 created by aaron
-    [WebMethod]
-    [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-    public void searchMember()
-    {
-        this.Context.Response.ContentType = "application/json";
-        DTModelBinder Binder = new DTModelBinder();
-        DTParameterModel ParameterModel = (DTParameterModel)Binder.BindModel(HttpContext.Current.Request);
-        dataTables returnvalue = new dataTables();
-
-        MemeberShipDA cMemeberShip = new MemeberShipDA();
-        returnvalue.data=cMemeberShip.searchMemberData(ParameterModel);
-        returnvalue.draw = ParameterModel.Draw;
-        returnvalue.recordsTotal = returnvalue.data.Count;
-        returnvalue.recordsFiltered = returnvalue.data.Count;
-        JavaScriptSerializer serializer = new JavaScriptSerializer();
-        this.Context.Response.Write(serializer.Serialize(returnvalue));
-        //string[] weekDays = { "Sun", "Mon", "Tue", "Wed", "<button>編輯</button>" };
-    }
+    
+    
 }
 
