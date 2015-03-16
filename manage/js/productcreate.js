@@ -81,7 +81,7 @@ function CreateProduction() {
         alert("請填寫產品名稱");
     }
     else if (obj.Price.length == 0){
-        alert("請填寫價格");]
+        alert("請填寫價格");
     }
     else if (isNaN(obj.Price)) {
         alert("價格請填寫數字");
