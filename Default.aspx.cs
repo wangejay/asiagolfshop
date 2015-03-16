@@ -31,13 +31,14 @@ public partial class _Default : System.Web.UI.Page
             if (production.ProductionPhoto.Count > 0)
             {
                 innerString += "<div class='productIMG' style='background-image: url(./photos/production/" + production.ProductionPhoto[0] + ");'>" +
-                    "<img src='images/5.png' class='imgPlaceHolder'>" +
+                    "<img src='images/placeholder.png' class='imgPlaceHolder'>" +
                 "</div>";
             }
             innerString += "<div class='caption'>" +
-                                "<h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a>" +
+                                "<h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></h4>" +
                                 "<h5 class='text-right'>$" + production.Price + "</h5>" +
                                 "<p>" + production.Introduction + "</p>" +
+                                "<p class='text-right'>詳細資訊...</p>" +
                             "</div>" +
                         "</div>" +
                     "</div>";

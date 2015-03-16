@@ -82,7 +82,8 @@ a
 
 #MainTitle {
     font-size: 21px;
-    margin-top: 16px;
+    margin-top: 0;
+    padding-bottom: 26px;
 }
 
 #main_menu

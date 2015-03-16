@@ -88,7 +88,7 @@
 {
 	min-height: 120px;
 	border-top: 1px solid #999;
-    margin-top: 8px;
+    margin-top: 24px;
 	}
 
 .productImgs UL {

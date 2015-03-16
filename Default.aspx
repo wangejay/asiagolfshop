@@ -97,7 +97,7 @@
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <div class="productIMG" style="background-image: url(images/5.png);">
-                                <img src="images/5.png" alt="" class="imgPlaceHolder">
+                                <img src="images/placeholder.png" alt="" class="imgPlaceHolder">
                             </div>
                             <div class="caption">
                                 <h4 class="pull-right">$24.99</h4>

@@ -42,23 +42,23 @@ public partial class product : System.Web.UI.Page
             }
             innerString += "<div class='col-sm-4 col-lg-4 col-md-4' onclick='goDetail(" + production.ID + ")'>" +
                         "<div class='thumbnail'>";
-                        if (production.ProductionPhoto.Count > 0)
+            if (production.ProductionPhoto.Count > 0)
             {
-                innerString += "<img src='./photos/production/" + production.ProductionPhoto[0] + "' alt=''>" ;
+                innerString += "<div class='productIMG' style='background-image: url(./photos/production/" + production.ProductionPhoto[0] + ");'>" +
+                                    "<img src='images/placeholder.png' class='imgPlaceHolder'>" +
+                                "</div>";
             }
 
-                        innerString += "<div class='caption'>" +
-                                "<p><h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></p>" +
-                                "</h4>" +
-                                
-                                "<h5 class='pull-right'>$" + production.Price + "</h5>" +
+            innerString += "<div class='caption'>" +
+                    "<h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></h4>" +
 
-                                
-                                "<p>" + production.Introduction + "</p>" +
-                                "<p class='text-right'>詳細資訊...</p>" +
-                            "</div>" +
-                        "</div>" +
-                    "</div>";
+                    "<h5 class='pull-right'>$" + production.Price + "</h5>" +
+
+                    "<p>" + production.Introduction + "</p>" +
+                    "<p class='text-right'>詳細資訊...</p>" +
+                "</div>" +
+            "</div>" +
+        "</div>";
             if (counter % 3 == 2)
             {
                 innerString += " </div>";
