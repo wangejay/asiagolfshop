@@ -5,14 +5,19 @@ $(function() {
     Supervisor.set_defaultFailedCallback(FailedCallback);
     //$('input[type="text"]').val("");
     editor = CKEDITOR.replace('FullIntro', { 'height': 400 });
-    $("#uploadFile").uploadPreview({ width: "auto", height: "auto", imgDiv: "#storePhotoUrl" });
-    $("#uploadFile").live('change', function() {
-        if (($(this).val).length > 0) {
-            var src = $("#storePhotoHideDiv").find("img").attr("src");
-            $("#PhotoShow").html('<img src="' + src + '" alt="" style="width:180px;"/>');
-            //$("#PhotoShow").find("img").muImageResize({ width: 270, height: 310 });
-        }
-    });
+    for (var i = 1; i <= 5; i++) {
+        $("#uploadFile" + i).uploadPreview({ width: "auto", height: "auto", imgDiv: "#storePhotoUrl" + i });
+        $("#uploadFile" + i).live('change', function() {
+            if (($(this).val).length > 0) {
+                var index = $(this).attr("class").replace("file_", "");
+                var src = $("#storePhotoHideDiv" + index).find("img").attr("src");
+                $("#PhotoShow" + index).html('<img src="' + src + '" alt="" style="width:180px;"/>');
+                //$("#PhotoShow").find("img").muImageResize({ width: 270, height: 310 });
+            }
+        });
+    }
+    
+   
 });
 function SucceededCallback(result, userContext, methodName) {
     switch (methodName) {
