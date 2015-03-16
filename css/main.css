@@ -112,6 +112,22 @@ a
 {font-size:1.6rem;
  margin-left: -30px;}
 
+#ProductionDiv .thumbnail {
+	cursor: pointer;
+}
+
+#ProductionDiv .thumbnail:hover {
+	border-color: #999;
+}
+
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
 .thumbnail .productIMG
 {
 	background-position: center top;
@@ -142,4 +158,9 @@ a
 .thumbnail .caption P
 {
 	
+}
+
+.thumbnail .caption-full {
+  padding: 9px;
+  color: #333;
 }
