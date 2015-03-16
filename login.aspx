@@ -44,7 +44,7 @@
             </Scripts>
         </asp:ScriptManager>
     </form>
-    <div class='' id="headerTop" runat="server" style=" margin-top:0px;"></div>
+    <div class='' id="headerTop" runat="server"></div>
     <div class="navbar-inverse navbar " id="headerBottom" role='navigation' runat="server"></div>
     <div class="container">
             <div class="row">

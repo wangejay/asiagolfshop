@@ -1,4 +1,5 @@
 ﻿var editor;
+var uploadQueryString = "";
 $(function() {
     Supervisor.set_defaultSucceededCallback(SucceededCallback);
     Supervisor.set_defaultFailedCallback(FailedCallback);
@@ -33,12 +34,40 @@ function UpdateProduction() {
     obj.Price = $("#price").val();
     obj.ProductionCategory = $("#Production_Category").val();
     obj.ProductionLevel = $("#ProductionLevel").val();
-    obj.Hand = $("#Hand").val();
-    obj.Angle = $("#Angle").val();
-    obj.GolfClub = $("#GolfClub").val();
-    obj.GolfHard = $("#GolfHard").val();
     obj.Introduction = $("#Introduction").val();
     obj.FullIntro = editor.getData();
+    for (var i = 1; i <= 5; i++) {
+        if ($("#uploadFile" + i).val().length > 0) {
+           
+            uploadQueryString += "&file" + i + "=1";
+        }
+        else {
+            uploadQueryString += "&file" + i + "=0";
+        }
+    }
+    var Hand = new Array();
+    $('input[name="hand"]:checked').each(function(i) {
+        Hand[Hand.length] = this.value;
+    });
+    obj.Hand = Hand;
+
+    var Angle = new Array();
+    $('input[name="angle"]:checked').each(function(i) {
+        Angle[Angle.length] = this.value;
+    });
+    obj.Angle = Angle;
+
+    var GolfClub = new Array();
+    $('input[name="golfClub"]:checked').each(function(i) {
+        GolfClub[GolfClub.length] = this.value;
+    });
+    obj.GolfClub = GolfClub;
+
+    var GolfHard = new Array();
+    $('input[name="hardness"]:checked').each(function(i) {
+        GolfHard[GolfHard.length] = this.value;
+    });
+    obj.GolfHard = GolfHard;
     if (obj.Name.length == 0)
         alert("請填寫產品名稱");
     else if (obj.Price.length == 0)
@@ -52,13 +81,18 @@ function UpdateProduction() {
 function uploadProductPhoto(result) {
     if (result == "0")
         return;
-    var Filevalue = $("#uploadFile").val();
-    if (Filevalue.length > 0) {
+    var hasPic = false;
+    for (var i = 1; i <= 5; i++) {
+        if ($("#uploadFile" + i).val().length > 0) {
+            hasPic = true;
+        }
+    }
+    if (hasPic){
         var obj = new Object();
         var picSave = false;
         var options = {
             type: "POST",
-            url: '../Files.ashx?type=productionPic&productid=' + result,
+            url: '../Files.ashx?type=productionPic&productid=' + result + uploadQueryString,
             async: false,
             success: function(value) {
                 if (value.length > 0) {

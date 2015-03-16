@@ -30,8 +30,11 @@ public partial class detail : System.Web.UI.Page
             inner = "<ul class='list-unstyle list-inline'>";
             foreach (string atom in myProduction.ProductionPhoto)
             {
-                inner += "<li><img src='./photos/production/" + atom + "' /></li>";
-
+                // 加一個判斷過濾無圖片的資料
+                if (!string.IsNullOrEmpty(atom) && atom != " ")
+                {
+                    inner += "<li><img src='./photos/production/" + atom + "' /></li>";
+                }
             }
             inner += "</ul>";
             ImgIndex.InnerHtml = inner;
@@ -72,7 +75,7 @@ public partial class detail : System.Web.UI.Page
             }
             inner += "</select>";
             pGolfHard.InnerHtml = inner;
-
+            pPrice.InnerHtml = myProduction.Price + "元";
 
         }
         catch(Exception ee)

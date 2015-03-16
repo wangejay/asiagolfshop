@@ -42,7 +42,7 @@
             </Services>
         </asp:ScriptManager>
     </form>
-    <div class='' id="headerTop" runat="server" style=" margin-top:0px;"></div>
+    <div class='' id="headerTop" runat="server"></div>
     <nav class='navbar navbar-inverse' id="headerBottom" role='navigation' runat="server"></nav>
 
     <div class="container">

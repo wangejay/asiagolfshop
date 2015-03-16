@@ -27,6 +27,7 @@ public partial class manage_product : System.Web.UI.Page
             theme manageTheme = new theme();
             left_menu.InnerHtml = manageTheme.getManageLeftMenu();
             StoreDB myStore = new StoreDB();
+
             sProduction myProduction = myStore.selectProduction(ID);
 
             String snum = ID.ToString();
@@ -41,6 +42,80 @@ public partial class manage_product : System.Web.UI.Page
             {
                 Production_Category.Items.Add(new ListItem(myPorduct.CategoryName, myPorduct.ID.ToString()));
             }
+            List systemList = new List();
+            string innerstring = "";
+            List<sList> myList = systemList.getList("hand");
+            foreach (sList atom in myList)
+            {
+                bool isCheck = false;
+                foreach (sProduct_List Product_List in myProduction.HandName)
+                {
+                    if (Product_List.ItemID == atom.ID)
+                        isCheck = true;
+                }
+                if (isCheck)
+                    innerstring += "<label><input type='checkbox' name='hand' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                else
+                    innerstring += "<label><input type='checkbox' name='hand' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+            }
+            handBlock.InnerHtml = innerstring;
+            
+
+            innerstring = "";
+            myList = systemList.getList("angle");
+            foreach (sList atom in myList)
+            {
+                bool isCheck = false;
+                foreach (sProduct_List Product_List in myProduction.AngleName)
+                {
+                    if (Product_List.ItemID == atom.ID)
+                        isCheck = true;
+                }
+                if (isCheck)
+                    innerstring += "<label><input type='checkbox' name='angle' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                else
+                    innerstring += "<label><input type='checkbox' name='angle' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+                
+            }
+            AngleBlock.InnerHtml = innerstring;
+
+            innerstring = "";
+            myList = systemList.getList("golfClub");
+            foreach (sList atom in myList)
+            {
+                bool isCheck = false;
+                foreach (sProduct_List Product_List in myProduction.GolfClubName)
+                {
+                    if (Product_List.ItemID == atom.ID)
+                        isCheck = true;
+                }
+                if (isCheck)
+                    innerstring += "<label><input type='checkbox' name='golfClub' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                else
+                    innerstring += "<label><input type='checkbox' name='golfClub' value='" + atom.ID + "'/>" + atom.ItemName + "</label>"; 
+            }
+            golfClubBlock.InnerHtml = innerstring;
+
+            innerstring = "";
+            myList = systemList.getList("hardness");
+            foreach (sList atom in myList)
+            {
+                bool isCheck = false;
+                foreach (sProduct_List Product_List in myProduction.GolfHardName)
+                {
+                    if (Product_List.ItemID == atom.ID)
+                        isCheck = true;
+                }
+                if (isCheck)
+                    innerstring += "<label><input type='checkbox' name='hardness' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                else
+                    innerstring += "<label><input type='checkbox' name='hardness' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+
+                
+            }
+            hardnessBlock.InnerHtml = innerstring;
+
+
             Production_Category.Items.FindByValue(myProduction.ProductionCategory).Selected = true;
             ProductionLevel.Items.FindByValue(myProduction.ProductionLevel).Selected = true;
             //Hand.Items.FindByValue(myProduction.Hand).Selected = true;
@@ -49,6 +124,37 @@ public partial class manage_product : System.Web.UI.Page
             //GolfHard.Items.FindByValue(myProduction.GolfHard).Selected = true;
             Introduction.Value = myProduction.Introduction;
             FullIntro.Value = myProduction.FullIntro;
+            //<img style="width:180px;" alt="" src="blob:http://localhost:26989/1fc4facf-9566-4d6f-8472-00517b948c2f">
+            int counter = 1;
+            foreach(string URL in myProduction.ProductionPhoto)
+            {
+                if (counter == 1)
+                {
+                    PhotoShow1.InnerHtml = "<img style='width:180px;' alt='' src='../photos/production/" + URL + "'/>";
+                }
+                else if (counter == 2)
+                {
+                    PhotoShow2.InnerHtml = "<img style='width:180px;' alt='' src='../photos/production/" + URL + "'/>";
+                }
+                else if (counter == 3)
+                {
+                    PhotoShow3.InnerHtml = "<img style='width:180px;' alt='' src='../photos/production/" + URL + "'/>";
+                }
+                else if (counter == 4)
+                {
+                    PhotoShow4.InnerHtml = "<img style='width:180px;' alt='' src='../photos/production/" + URL + "'/>";
+                }
+                else if (counter == 5)
+                {
+                    PhotoShow5.InnerHtml = "<img style='width:180px;' alt='' src='../photos/production/" + URL + "'/>";
+                }
+                counter++;
+            }
+
+
+           
+            
+            
         }
         catch
         {

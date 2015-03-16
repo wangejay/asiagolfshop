@@ -49,10 +49,13 @@ public partial class product : System.Web.UI.Page
 
                         innerString += "<div class='caption'>" +
                                 "<p><h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></p>" +
-                                "<h4 class='pull-right'>$" + production.Price + "</h4>" +
-
                                 "</h4>" +
+                                
+                                "<h5 class='pull-right'>$" + production.Price + "</h5>" +
+
+                                
                                 "<p>" + production.Introduction + "</p>" +
+                                "<p class='text-right'>詳細資訊...</p>" +
                             "</div>" +
                         "</div>" +
                     "</div>";

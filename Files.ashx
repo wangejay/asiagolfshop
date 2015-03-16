@@ -12,7 +12,7 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     protected string PicName;
     protected string Patch, Patch2;
     protected string returnvalue;
-
+    protected int[] afileIdx={0,0,0,0,0};
     string mainPatch = "";
     public void ProcessRequest(HttpContext context)
     {
@@ -26,6 +26,11 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
             case "productionPic":
                 string productID = context.Request.QueryString["productid"].ToString();
                 mainPatch = System.Web.HttpContext.Current.Server.MapPath("~/photos/production/");
+                afileIdx[0] = int.Parse(context.Request.QueryString["file1"].ToString());
+                afileIdx[1] = int.Parse(context.Request.QueryString["file2"].ToString());
+                afileIdx[2] = int.Parse(context.Request.QueryString["file3"].ToString());
+                afileIdx[3] = int.Parse(context.Request.QueryString["file4"].ToString());
+                afileIdx[4] = int.Parse(context.Request.QueryString["file5"].ToString());
                 if (!System.IO.Directory.Exists(mainPatch)) //檢查文件夾是否存在。
                 {
                     System.IO.Directory.CreateDirectory(mainPatch); //不存在，創建資料夾。
@@ -40,18 +45,25 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     private string PicSave(HttpContext context, string productID)
     {
         HttpFileCollection files = context.Request.Files;
+        
         string newFileName=Guid.NewGuid().ToString()+ ".jpg";
         string savePath = mainPatch + newFileName;
-        string success = "";
+        string success = productID;
         if (files.Count > 0)
         {
             try
             {
+                int fileidx = 0;
                 for (int i = 0; i < files.Count; i++)
                 {
                     HttpPostedFile file = files[i];
-                    file.SaveAs(savePath);
-                    success = updateProductionPhoto(newFileName, productID);
+                    while (afileIdx[fileidx] == 0)
+                        fileidx++;
+                    file.SaveAs(mainPatch + productID + "_" + fileidx + ".jpg");
+                    string message = updateProductionPhoto(productID + "_" + fileidx + ".jpg", productID, fileidx);
+                    //if (int.Parse(success) > 0)
+                    //    success = productID;
+                    fileidx++;
                 }
                 return success;
             }
@@ -119,10 +131,10 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
         }
     }
 
-    private string updateProductionPhoto(string PhotoName, string ID)
+    private string updateProductionPhoto(string PhotoName, string ID,int idx)
     {
         StoreDB myStore = new StoreDB();
-        return myStore.updateProductionPhoto(PhotoName, ID);
+        return myStore.updateProductionPhoto(PhotoName, ID,idx);
     }
     public bool SaveImage(System.Drawing.Bitmap b, String SavePathFilename)
     {

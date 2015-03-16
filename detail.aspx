@@ -32,9 +32,11 @@
    <script src="js/bootstrap.min.js"></script>
    
    <style>
-    #Title
-    { font-size: 30px;
-    margin-top:0;}
+    #Title {
+        font-size: 24px;
+        margin-top: 0;
+        padding-bottom: 23px;
+    }
     
     #mainImg
     { 
@@ -54,13 +56,14 @@
     padding-bottom: 36px;
 }
     
-    #productDisc H3
-    {}
+    #productDisc H3 {
+        font-size: 21px;
+    }
     
-    #productDisc P
-    {
-    	line-height: 2em;
-    	padding-left: 1.2em;}
+    #productDisc P {
+        line-height: 2em;
+        padding-left: 1.2em;
+    }
     
     #productDisc UL
     {list-style: outside none none;
@@ -89,7 +92,6 @@
 	}
 
 .productImgs UL {
-    line-height: 110px;
     margin: 8px auto;
     text-align: center;
     width: 80%;
@@ -100,16 +102,27 @@
 	vertical-align: middle;
     border: 1px solid #999;
     padding: 3px;
-    width: 15%;
+    width: 19.20%;
+    margin-left: 1%;
     cursor: pointer;
-    transition: width .35s ease-out;
+    transition: width .25s ease-out;
     float:left;
 }
 
-.productImgs UL LI:hover 
+.productImgs UL LI:first-child 
+{
+    margin-left: 0;
+}
+
+.productImgs UL:hover LI 
+{
+    width: 18%;
+}
+
+.productImgs UL:hover LI:hover 
 {
     border: 1px solid #444;
-    width: 18%;
+    width: 24%;
 }
 
 .productImgs UL LI IMG
@@ -117,6 +130,19 @@
 	width: 100%;
 	vertical-align: middle;
 	}
+
+.detail H3
+{
+	font-size: 21px;
+	}
+	
+#pPrice {
+    color: red;
+    font-weight: 600;
+    margin-bottom: 32px;
+    margin-top: -32px;
+    text-align: right;
+}
    </style>
 
 </head>
@@ -177,15 +203,26 @@
                     <li runat="server" id="pGolfClub">Consectetur</li>
                     <li runat="server" id="pGolfHard">Adipiscing Elit</li>
                 </ul>
+                <h3>付款方式</h3>
+                <p><img src="./images/ico_credi_201008.png"></p>
+                <h3>交貨方式</h3>
+                <p>
+    貨運 / 宅配 (購物滿800元免運費) 、7-11取貨付款 (購物滿500元免運費)
+</p>
+                <h3>價格</h3>
+                <h4 id="pPrice" runat="server"></h4>
+                <input type="submit" value="加入購物車" id="btn-add-cart" class="button-secondary button-add-to-cart">
             </div>
 
         </div>
         <!-- /.row -->
-
         
-        <div class="row" id="fullintroduction" runat="server">
+        <div class="row detail" >
+        <h3>詳細資訊</h3>
+        <div class="col-md-12" id="fullintroduction" runat="server">
         </div>
-        <hr>
+        </div>
+        <!--hr-->
 
         <!-- Footer -->
         <footer>
@@ -207,8 +244,8 @@
 ($(function() {
     $('.productImgs>UL>LI')
         .mouseover(function() {
-            $('#productImgBig').css('visibility', 'hidden');
             $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
+            $('#productImgBig').css('visibility', 'hidden');
         })
         .click(function() {
             $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));

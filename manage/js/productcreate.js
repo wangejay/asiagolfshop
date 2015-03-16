@@ -1,4 +1,5 @@
 ﻿var editor;
+var uploadQueryString = "";
 $(function() {
     Supervisor.set_defaultSucceededCallback(SucceededCallback);
     Supervisor.set_defaultFailedCallback(FailedCallback);
@@ -61,9 +62,21 @@ function CreateProduction() {
         GolfHard[GolfHard.length] = this.value;
     });
     obj.GolfHard = GolfHard;
-
-    
-    if (obj.Name.length == 0)
+//var Filevalue = $("#uploadFile").val();
+    var hasPic=false;
+    for(var i=1;i<=5;i++)
+    {
+        if ($("#uploadFile" + i).val().length > 0) {
+            hasPic = true;
+            uploadQueryString += "&file" + i + "=1";
+        }
+        else {
+            uploadQueryString += "&file" + i + "=0";
+        }
+    }
+    if (!hasPic)
+        alert("請上傳至少一張照片");
+    else if (obj.Name.length == 0)
         alert("請填寫產品名稱");
     else if (obj.Price.length == 0)
         alert("請填寫價格");
@@ -82,7 +95,7 @@ function uploadProductPhoto(result) {
         var picSave = false;
         var options = {
             type: "POST",
-            url: '../Files.ashx?type=productionPic&productid=' + result,
+            url: '../Files.ashx?type=productionPic&productid=' + result + uploadQueryString,
             async: false,
             success: function(value) {
                 if (value.length > 0) {

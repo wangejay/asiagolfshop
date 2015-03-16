@@ -100,9 +100,7 @@ public class theme
                             "<li class='active'>" +
                                 "<a href='../manage/productcreate.aspx'>" +
                                 "<i class='glyphicon glyphicon-user'>" + "</i>&nbsp;新增產品" + "</a>" + "</li>" +
-                            "<li class='active'>" +
-                                "<a href='../manage/product.aspx'>" +
-                                "<i class='glyphicon glyphicon-user'>" + "</i>&nbsp;產品資訊" + "</a>" + "</li>" +
+                           
                             "<li>" + "<a href='../manage/productsearch.aspx'>" +
                                 "<i class='glyphicon glyphicon-th-list'>" + "</i>&nbsp;查詢產品" + "</a>" + "</li>" +
                             "<li>" + "<a href='../manage/productcategory.aspx'>" + 
