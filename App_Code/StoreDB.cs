@@ -605,6 +605,7 @@ public class StoreDB
             myCategory.isPause = dr["isPause"].ToString();
             returnValue.Add(myCategory);
         }
+        dr.Close();
         return returnValue;
     }
     public string searchProductionCategoryName(string id)
@@ -620,6 +621,7 @@ public class StoreDB
         {
             returnValue = dr["CategoryName"].ToString();
         }
+        dr.Close();
         return returnValue;
     }
 }
