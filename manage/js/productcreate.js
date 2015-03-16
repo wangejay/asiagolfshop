@@ -89,6 +89,7 @@ function CreateProduction() {
     }
     if (error.length > 0) {
         alert(error);
+        return;
     }
     else {
         Supervisor.CreateProduction(obj);
