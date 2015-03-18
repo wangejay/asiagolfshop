@@ -114,7 +114,19 @@ public class AspAjax : System.Web.Services.WebService {
         string result1 = sw.Elapsed.TotalMilliseconds.ToString();
         return CreateMessage;
     }
-    
+    [WebMethod]
+    public int AddToCart(sOrderProduction OrderProduction)
+    {
+        if (!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            return Message_NoAuth;
+        }
+        else
+        {
+            Cart myCart = new Cart();
+            return myCart.AddToCart(HttpContext.Current.User.Identity.Name, OrderProduction);
+        }
+    }
     
 }
 

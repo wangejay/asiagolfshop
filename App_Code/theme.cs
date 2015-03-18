@@ -57,6 +57,14 @@ public class theme
     }
     public string getHeadertop()
     {
+        Cart myCart = new Cart();
+        int counter = 0;
+        if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            MemeberShipDA myMember = new MemeberShipDA();
+            string UserID = myMember.getUserID(HttpContext.Current.User.Identity.Name);
+            counter = myCart.CartCounterByUserID(UserID);
+        }
         return
         "<div class='container'>" +
             "<div class='row'>" +
@@ -72,7 +80,7 @@ public class theme
                     //"</div>" +
                     "<div id='login_Div' class='header_function_list_element'><a href='./login.aspx'>登入</a>/<a href='./signup.aspx'>註冊</a></div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
-                        "<span class='sapn_title'>購物車</span><span id='cart_counter'>0</span><span class='sapn_title'>件</span></div>" +
+                        "<span class='sapn_title'>購物車</span><span id='cart_counter'>" + counter + "</span><span class='sapn_title'>件</span></div>" +
                 "</div>" +
             "</div>" +
         "</div>";
