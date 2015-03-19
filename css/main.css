@@ -164,3 +164,59 @@ a
   padding: 9px;
   color: #333;
 }
+
+
+
+/* 購物步驟用 */
+.orderStep { /* ul */
+    list-style: outside none none;
+    
+	margin-left: -15px;
+	padding: 0px;
+}
+.orderStep li 
+{
+	display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: middle;
+}
+.orderStep li::before {
+	display: inline-block;
+    content: "";
+    border-width: 4px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(91, 192, 222);
+}
+
+.orderStep .currentStep 
+{
+	font-size: 18px;
+	font-weight: 600;
+	color: #428BCA;
+}
+
+.orderStep .currentStep::before 
+{
+	border-color: transparent transparent rgb(91, 192, 222) rgb(91, 192, 222);
+	position: relative;
+	bottom: -6px;
+	left: -5px;
+	border-width: 4px;
+}
+.orderStep .currentStep::after 
+{
+	display: inline-block;
+	content: "";
+	border-style: solid;
+	border-width: 4px;
+	border-color: #5BC0DE #5BC0DE transparent transparent;
+	position: relative;
+	top: -12px;
+	right: -5px;
+}
+
+.currentStep+LI::before, .orderStep li:first-child::before {
+	display: none;
+	content: "";
+}

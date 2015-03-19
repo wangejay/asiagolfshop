@@ -49,40 +49,63 @@
 
     <!-- Page Content -->
     <div class="container">
+        
         <div class="row">
-            <div class="col-md-3">
-               
-            </div>
-            <div class="col-md-9">
-                <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header" runat="server" id="Title">您的購物清單</h1>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Portfolio Item Row -->
-        <div class="row">
-            <div class="col-md-12" id="CartTable" runat="server">
-                         
-            </div>
-            <div id="totalPrice" runat="server"></div>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" onclick="gobackProductionList()">繼續購物</button>
-            <button class="btn btn-primary" onclick="goOrder()">開始結帳</button>
-        </div>
-        <!-- /.row -->
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12" runat="server" id="footerDiv">
-                    
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="orderStep list-unstyled list-inline">
+                            <li>
+                                放入購物車
+                            </li>
+                            <li class="currentStep">
+                                確認購物明細
+                            </li>
+                            <li>
+                                輸入購買資料
+                            </li>
+                            <li>
+                                完成訂購
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <!-- /.row -->
-        </footer>
+                
+                <!-- Portfolio Item Heading -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header" runat="server" id="Title">您的購物清單</h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- Portfolio Item Row -->
+                <div class="row">
+                    <div class="col-md-12" id="CartTable" runat="server">
+                                 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <div id="totalPrice" runat="server"></div>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-info btn-lg" onclick="gobackProductionList()"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> 繼續選購</button>
+                        <button class="btn btn-primary btn-lg" onclick="goOrder()">開始結帳 <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></span></button>
+                    </div>
+                </div>
+                <!-- /.row -->
+                
+                
+                <footer>
+                    <div class="row">
+                        <div class="col-md-12" runat="server" id="footerDiv">
+                            
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </footer>
+                <!-- Footer -->
             </div>
         </div>
         
