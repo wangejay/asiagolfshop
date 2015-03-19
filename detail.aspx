@@ -18,7 +18,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <link href="css/portfolio-item.css" rel="stylesheet">
-
+    <link href="css/detail.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,127 +30,18 @@
 
     <!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.min.js"></script>
+   <script src="js/base.js"></script>
+   <script src="js/detail.js"></script>
    
-   <style>
-    #Title {
-        font-size: 24px;
-        margin-top: 0;
-        padding-bottom: 23px;
-    }
-    
-    #mainImg
-    { 
-    	background-position: center top;
-        background-repeat: no-repeat;
-        background-size: 80%;
-        text-align: center;
-        /* 商品大圖區塊最小高度 */
-        /* min-height: 450px; */
-    }
-    
-    #mainImg #productImgBig
-    { width: 80%; }
-    
-    #productDisc {
-    background-color: #eee;
-    padding-bottom: 36px;
-}
-    
-    #productDisc H3 {
-        font-size: 21px;
-    }
-    
-    #productDisc P {
-        line-height: 2em;
-        padding-left: 1.2em;
-    }
-    
-    #productDisc UL
-    {list-style: outside none none;
-     padding-left: 1.2em;}
-    
-    #productDisc UL LI {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 0.4em;
-    }
-    
-    
-
-#productDisc UL LI::before {
-    color: #999;
-    content: "-";
-    display: inline-block;
-    margin-left: -10px;
-    margin-right: 4px;
-}
-
-.productImgs 
-{
-	min-height: 150px;
-	border-top: 1px solid #999;
-    margin-top: 24px;
-	}
-
-.productImgs UL {
-    margin: 8px auto;
-    text-align: center;
-    width: 80%;
-}
-
-.productImgs UL LI 
-{
-	vertical-align: middle;
-    border: 1px solid #999;
-    padding: 3px;
-    width: 19.20%;
-    margin-left: 1%;
-    cursor: pointer;
-    transition: width .25s ease-out;
-    float:left;
-}
-
-.productImgs UL LI:first-child 
-{
-    margin-left: 0;
-}
-
-.productImgs UL:hover LI 
-{
-    width: 18%;
-}
-
-.productImgs UL:hover LI:hover 
-{
-    border: 1px solid #444;
-    width: 24%;
-}
-
-.productImgs UL LI IMG
-{
-	width: 100%;
-	vertical-align: middle;
-	}
-
-.detail H3
-{
-	font-size: 21px;
-	}
-	
-#pPrice {
-    color: red;
-    font-weight: 600;
-    margin-bottom: 32px;
-    margin-top: -32px;
-    text-align: right;
-}
-   </style>
 
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <asp:ScriptManager ID="ScriptManager" runat="server">
+            <Services>
+                <asp:ServiceReference Path="AspAjax.asmx" />
+            </Services>
+        </asp:ScriptManager>
     </form>
     <div class='' id="headerTop" runat="server"></div>
     <nav class='navbar navbar-inverse' id="headerBottom" role='navigation' runat="server"></nav>
@@ -180,7 +71,7 @@
 
             <div class="col-md-8">
                 <div id="mainImg" runat="server">
-                    <!--img src="images/placeholder.png" /-->
+                    <!-- img id="productImgBig" src="images/placeholder.png" -->
                 </div>
                 
                 <div class="productImgs" id="ImgIndex" runat="server">
@@ -212,7 +103,7 @@
 </p>
                 <h3>價格</h3>
                 <h4 id="pPrice" runat="server"></h4>
-                <input type="submit" value="加入購物車" id="btn-add-cart" class="button-secondary button-add-to-cart">
+                <input type="button" value="加入購物車" id="btn-add-cart" onclick="goCart()" class="button-secondary button-add-to-cart">
             </div>
 
         </div>
@@ -228,10 +119,9 @@
         <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                <div class="col-lg-12" runat="server" id="footerDiv">
+                    
                 </div>
-            </div>
             <!-- /.row -->
         </footer>
             </div>
@@ -241,21 +131,5 @@
     </div>
 </body>
 
-<script>
-($(function() {
-    $('.productImgs>UL>LI')
-        .mouseover(function() {
-            $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
-            $('#productImgBig').css('visibility', 'hidden');
-        })
-        .click(function() {
-            $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
-        });
-    $('.productImgs>UL')
-        .mouseout(function() {
-            $('#productImgBig').css('visibility', 'visible');
-            $('#mainImg').css('background-image', 'none');
-        });
-}));
-</script>
+
 </html>

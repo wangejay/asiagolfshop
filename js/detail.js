@@ -4,7 +4,9 @@ function initPage() {
     AspAjax.set_defaultSucceededCallback(SucceededCallback);
     AspAjax.set_defaultFailedCallback(FailedCallback);
     AspAjax.IsAuthenticated();
-    $('.productImgs>UL>LI')
+    
+        // 滑鼠移動到縮圖上會換產品圖的程式碼
+        $('.productImgs UL LI')
         .mouseover(function() {
             $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
             $('#productImgBig').css('visibility', 'hidden');
@@ -12,7 +14,7 @@ function initPage() {
         .click(function() {
             $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
         });
-    $('.productImgs>UL')
+        $('.productImgs UL')
         .mouseout(function() {
             $('#productImgBig').css('visibility', 'visible');
             $('#mainImg').css('background-image', 'none');

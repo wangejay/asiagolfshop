@@ -77,7 +77,7 @@ public class StoreDB
         //db.AddInParameter(command, "@HardLevel", DbType.Int16, obj.GolfHard);
        
         success = db.ExecuteScalar(command).ToString();
-        
+        command.Connection.Close();
         for (int i = 0; i < obj.Angle.Length; i++)
         {
             SetListinDB(success, "angle", obj.Angle[i]);
@@ -107,6 +107,7 @@ public class StoreDB
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ProductID", DbType.Int64, ProductID);
         returnvalue = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
         return returnvalue;
     }
     private string SetListinDB(string ProductID, string GroupName, string ItemID)
@@ -119,6 +120,7 @@ public class StoreDB
         db.AddInParameter(command, "@GroupName", DbType.String, GroupName);
         db.AddInParameter(command, "@ItemID", DbType.Int32, ItemID);
         returnvalue = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
         return returnvalue;
     }
     public string UpdateProduction(sProduction obj)
@@ -140,6 +142,7 @@ public class StoreDB
        
         success = db.ExecuteNonQuery(command).ToString();
         //success = db.ExecuteScalar(command).ToString();
+        command.Connection.Close();
         DeleteListinDB(obj.ID);
         for (int i = 0; i < obj.Angle.Length; i++)
         {
@@ -261,6 +264,7 @@ public class StoreDB
 
         }
         dr.Close();
+        command.Connection.Close();
         List<sProduct_List> totalListItem = getHandInfo(myProduction.ID);
         myProduction.Hand = getMultiSettingItemID(totalListItem, "hand");
         myProduction.HandName = getMultiSettingItemName(totalListItem, "hand");
@@ -339,6 +343,7 @@ public class StoreDB
             returnvalue.Add(myList);
         }
         dr.Close();
+        command.Connection.Close();
         return returnvalue;
     }
     public List<sProduction> searchProductionbyCateogry(string category)
@@ -379,7 +384,7 @@ public class StoreDB
             returnValue.Add(myProduction);
         }
         dr.Close();
-        
+        command.Connection.Close();
         return returnValue;
     }
     public sProduction searchProductionbyID(string id)
@@ -421,9 +426,9 @@ public class StoreDB
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
 
-          
         }
         dr.Close();
+        command.Connection.Close();
         return myProduction;
     }
     public List<sProduction> searchProduction(int counter)
@@ -459,6 +464,7 @@ public class StoreDB
             returnValue.Add(myProduction);
         }
         dr.Close();
+        command.Connection.Close();
         return returnValue;
     }
     public List<sProduction> searchProduction()
@@ -494,6 +500,7 @@ public class StoreDB
             returnValue.Add(myProduction);
         }
         dr.Close();
+        command.Connection.Close();
         return returnValue;
     }
     public string updateProductionPhoto(string PhotoName, string ProductID,int idx)
@@ -505,6 +512,7 @@ public class StoreDB
         db.AddInParameter(command, "@ProductionPhoto", DbType.String, PhotoName);
         db.AddInParameter(command, "@ID", DbType.Int32, ProductID);
         success = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
         if (int.Parse(success) > 0)
             success = MessageSuccess;
         return success;
@@ -543,6 +551,7 @@ public class StoreDB
         db.AddInParameter(command, "@isPause", DbType.Boolean, isPause);
         db.AddInParameter(command, "@ID", DbType.Int32, CategoryID);
         success = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
         if (int.Parse(success) > 0)
             success = MessageSuccess;
         return success;
@@ -556,6 +565,7 @@ public class StoreDB
         db.AddInParameter(command, "@isDelete", DbType.Boolean, 1);
         db.AddInParameter(command, "@ID", DbType.Int32, CategoryID);
         success = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
         if (int.Parse(success) > 0)
             success = MessageSuccess;
         return success;
@@ -607,6 +617,7 @@ public class StoreDB
             returnValue.Add(myCategory);
         }
         dr.Close();
+        command.Connection.Close();
         return returnValue;
     }
     public string searchProductionCategoryName(string id)
@@ -623,6 +634,7 @@ public class StoreDB
             returnValue = dr["CategoryName"].ToString();
         }
         dr.Close();
+        command.Connection.Close();
         return returnValue;
     }
 

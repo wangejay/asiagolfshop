@@ -40,7 +40,8 @@ public partial class detail : System.Web.UI.Page
             inner += "</ul>";
             ImgIndex.InnerHtml = inner;
             if(myProduction.ProductionPhoto.Count>0)
-                mainImg.Style["background-image"] = "url(./photos/production/" + myProduction.ProductionPhoto[0] + ")";//InnerHtml = "<img id='productImgBig' src='./photos/production/" + myProduction.ProductionPhoto[0] + "' />";
+                mainImg.InnerHtml = "<img id='productImgBig' src='./photos/production/" + myProduction.ProductionPhoto[0] + "' />";
+            // mainImg.Style["background-image"] = "url(./photos/production/" + myProduction.ProductionPhoto[0] + ")";
             fullintroduction.InnerHtml = myProduction.FullIntro;
             Title.InnerHtml = myProduction.Name;
             pDescription.InnerHtml = myProduction.Introduction;

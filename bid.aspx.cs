@@ -28,6 +28,7 @@ public partial class bid : System.Web.UI.Page
         theme mytheme = new theme();
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
+        footerDiv.InnerHtml = mytheme.getFooter();
         left_menu.InnerHtml = mytheme.getLeftMenu();
         bidDB myStore = new bidDB();
         //MainTitle.InnerHtml = ID.Length == 0 ? "全部商品" : myStore.searchBidItembyName(ID);
