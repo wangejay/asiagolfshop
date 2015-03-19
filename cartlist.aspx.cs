@@ -16,6 +16,10 @@ public partial class cartlist : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            Response.Redirect("./default.aspx", false);
+        }
         theme mytheme = new theme();
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
