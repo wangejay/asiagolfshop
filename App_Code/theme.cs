@@ -80,8 +80,8 @@ public class theme
                     //"</div>" +
                     "<div id='login_Div' class='header_function_list_element'><a href='./login.aspx'>登入</a>/<a href='./signup.aspx'>註冊</a></div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
-                        "<span class='sapn_title'>購物車</span><span id='cart_counter'>" + counter + "</span><span class='sapn_title'>件   </span>"+
-                        "<span class='sapn_title'><a href='./cartlist.aspx'>結帳去</a></span>"+
+                        "<span class='sapn_title'>已選購</span><span id='cart_counter'>" + counter + "</span><span class='sapn_title'>件   </span>"+
+                        "<span class='sapn_title'><a href='./cartlist.aspx'>購物車</a></span>" +
                         "</div>" +
                 "</div>" +
             "</div>" +
@@ -107,6 +107,9 @@ public class theme
                             "<span class='pull-right glyphicon glyphicon-chevron-toggle'>" + "</span>" +
                         "</a>" +
                         "<ul id='storeSetting' class='nav nav-list collapse secondmenu' style='height: 0px;'>" +
+
+                            "<li>" + "<a href='../manage/productorders.aspx'>" +
+                                "<i class='glyphicon glyphicon-asterisk'>" + "</i>&nbsp;訂單查詢" + "</a>" + "</li>" +
                             "<li class='active'>" +
                                 "<a href='../manage/productcreate.aspx'>" +
                                 "<i class='glyphicon glyphicon-user'>" + "</i>&nbsp;新增產品" + "</a>" + "</li>" +

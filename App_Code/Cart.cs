@@ -195,6 +195,69 @@ public class Cart
         }
         return returnvalue;
     }
+    public List<object> SearchOrder(DTParameterModel ParameterModel)
+    {
+        List<object> returnvalue = new List<object>();
+        string wheresql = " where 1=1";
+        foreach (DTCondition myCondition in ParameterModel.Condition)
+        {
+            switch (myCondition.Name)
+            {
+                case "search_account":
+                    if (myCondition.Value.Length > 0)
+                    {
+                        wheresql += " and A.ID = @" + myCondition.Name + " ";
+                    }
+                    break;
+                case "search_OrderStatus":
+                    if (myCondition.Value.Length > 0)
+                    {
+                       
+                        wheresql += " and A.OrderStatus like @" + myCondition.Name + " ";
+                    }
+                    break;
+            }
+        }
+        DataBase db = new DataBase();
+        string sqlString = "select A.ID ,B.OrderStatus,A.Order_Name,"+
+"(select COUNT(*) from order_OrderProduction where order_OrderProduction.OrderID=A.ID) as pCounter ,"+
+"(select SUM(order_OrderProduction.Price) from order_OrderProduction where order_OrderProduction.OrderID=A.ID) as pTotalPrice " +
+"from order_OrderInfo A left join order_OrderStatus B on A.OrderStatus=B.ID"  
+            + wheresql;
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        foreach (DTCondition myCondition in ParameterModel.Condition)
+        {
+            switch (myCondition.Name)
+            {
+                case "search_account":
+                    if (myCondition.Value.Length > 0)
+                    {
+                        db.AddInParameter(command, "@" + myCondition.Name, DbType.Int64, myCondition.Value);
+                    }
+                    break;
+                case "search_OrderStatus":
+                    if (myCondition.Value.Length > 0)
+                    {
+                        db.AddInParameter(command, "@" + myCondition.Name, DbType.String, "%" + myCondition.Value + "%");
+                    }
+                    break;
+               
+            }
+        }
+
+        DbDataReader dr = db.ExecuteReader(command);
+        while (dr.Read())
+        {
+            string[] atom = { dr["ID"].ToString(), dr["OrderStatus"].ToString(), dr["Order_Name"].ToString(), dr["pCounter"].ToString(),
+                                dr["pTotalPrice"].ToString(),
+                                "<a href='../manage/order.aspx?id=" + dr["ID"].ToString() + "'>檢視</a>" };
+            returnvalue.Add(atom);
+        }
+        dr.Close();
+        command.Connection.Close();
+
+        return returnvalue;
+    }
     public string CreateOrder(sOrder myOrder, string UserName)
     {
         string returnValue = "";
@@ -339,6 +402,27 @@ public class Cart
         }
         return returnvalue;
     }
+    public List<sOrderSelectList> getOrderStatus()
+    {
+        List<sOrderSelectList> returnvalue = new List<sOrderSelectList>();
+        sOrderSelectList mySelectList = new sOrderSelectList();
+        DataBase db = new DataBase();
+        string sqlString = "select * from order_OrderStatus";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        using (command.Connection)
+        {
+            DbDataReader dr = db.ExecuteReader(command);
+            while (dr.Read())
+            {
+                mySelectList.ID = dr["ID"].ToString();
+                mySelectList.Name = dr["OrderStatus"].ToString();
+                returnvalue.Add(mySelectList);
+            }
+            dr.Close();
+        }
+        return returnvalue;
+    }
+
     public List<sOrderSelectList> getTaiwanCityName()
     {
         List<sOrderSelectList> returnvalue = new List<sOrderSelectList>();
