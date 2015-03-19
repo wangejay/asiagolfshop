@@ -43,10 +43,10 @@ function goDetail(id) {
 function goCart() {
     var obj = new Object();
     obj.ProductionID = gup("id");
-    obj.Hand = $("#sHand").val();
-    obj.Angle = $("#sAngle").val();
-    obj.GolfClub = $("#sGolfClub").val();
-    obj.GolfHand = $("#sGolfHard").val();
+    obj.Hand = $("#sHand").val().length == 0 ? 0 : $("#sHand").val();
+    obj.Angle = $("#sAngle").val().length == 0 ? 0 : $("#sAngle").val();
+    obj.GolfClub = $("#sGolfClub").val().length == 0 ? 0 : $("#sGolfClub").val();
+    obj.GolfHand = $("#sGolfHard").val().length == 0 ? 0 : $("#sGolfHard").val();
     obj.ProductionCounter = 1;
     //alert(idx);
     AspAjax.AddToCart(obj);
