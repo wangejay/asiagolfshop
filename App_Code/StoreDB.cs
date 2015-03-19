@@ -338,6 +338,7 @@ public class StoreDB
             myList.ItemName = dr["ItemName"].ToString();
             returnvalue.Add(myList);
         }
+        dr.Close();
         return returnvalue;
     }
     public List<sProduction> searchProductionbyCateogry(string category)
@@ -624,4 +625,9 @@ public class StoreDB
         dr.Close();
         return returnValue;
     }
+
+
+
+
+   
 }

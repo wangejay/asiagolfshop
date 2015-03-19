@@ -68,9 +68,6 @@
                     <div id="ProductionDiv" runat="server">
                     
                     </div>
-                    
-
-                    <hr>
 
             </div>
         </div>

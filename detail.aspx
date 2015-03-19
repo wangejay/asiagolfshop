@@ -42,7 +42,7 @@
     { 
     	background-position: center top;
         background-repeat: no-repeat;
-        background-size: 80% auto;
+        background-size: 80%;
         text-align: center;
         /* 商品大圖區塊最小高度 */
         /* min-height: 450px; */
@@ -86,7 +86,7 @@
 
 .productImgs 
 {
-	min-height: 120px;
+	min-height: 150px;
 	border-top: 1px solid #999;
     margin-top: 24px;
 	}
@@ -180,6 +180,7 @@
 
             <div class="col-md-8">
                 <div id="mainImg" runat="server">
+                    <!--img src="images/placeholder.png" /-->
                 </div>
                 
                 <div class="productImgs" id="ImgIndex" runat="server">

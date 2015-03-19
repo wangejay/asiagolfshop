@@ -49,155 +49,75 @@
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">球具類別</p>
-                <div class="list-group">
-                    <a href="./product.aspx?id=1" class="list-group-item">Drivers 一號木桿</a>
-                    <a href="./product.aspx?id=2" class="list-group-item">FW 球道木桿 </a>
-                    <a href="./product.aspx?id=3" class="list-group-item">Iron sets 鐵桿組</a>
-                    <a href="./product.aspx?id=4" class="list-group-item">Wedges 挖起桿</a>
-                    <a href="./product.aspx?id=5" class="list-group-item">Putters 推桿</a>
-                    <a href="./product.aspx?id=5" class="list-group-item">Hybrid 混合桿</a>
-                    <a href="./product.aspx?id=6" class="list-group-item">Shafts&Grips 桿身、握把</a>
-                    <a href="./product.aspx?id=7" class="list-group-item">Accessories 配件</a>
-                    <a href="./product.aspx?id=8" class="list-group-item">Apparel 服飾</a>
-                    
+                <div class="list-group" runat="server" id="left_menu">
                 </div>
             </div>
             <div class="col-md-9">
                  <!-- Page Header -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Page Heading
-                                <small>Secondary Text</small>
+                            <h1 class="page-header" runat="server" id="MainTitle">競標區
+                                
                             </h1>
                         </div>
                     </div>
                     <!-- /.row -->
                     <!-- Projects Row -->
-                    <div class="row">
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg1.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg2.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg3.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
+                    <div id="ProductionDiv" runat="server">
+                    
                     </div>
-                    <!-- /.row -->
-
-                    <!-- Projects Row -->
-                    <div class="row">
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg4.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg5.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg6.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                    </div>
-
-                    <!-- Projects Row -->
-                    <div class="row">
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg7.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg8.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                        <div class="col-md-4 portfolio-item">
-                            <a href="./biddetail.aspx">
-                                <img class="img-responsive" src="./images/golfimg1.png" alt="">
-                            </a>
-                            <h3>
-                                <a href="#">高爾夫球具組</a>
-                            </h3>
-                            <p>剩餘:02:41:30</p>
-                            <p>目前出價:25元</p>
-                            <p>直購價:30,000元</p>
-                            <p><button onclick="goBidDetail(1)">下標去</button></p>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-
-                    <hr>
 
             </div>
         </div>
+        
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+            <!--
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+                -->
+            </div>
+        </div>
+        
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+        
+        
     </div>
+    <!-- /.container -->
+    
 </body>
 </html>
