@@ -11,13 +11,10 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
-public partial class biddetail : System.Web.UI.Page
+public partial class payment : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        theme mytheme = new theme();
-        headerTop.InnerHtml = mytheme.getHeadertop();
-        headerBottom.InnerHtml = mytheme.getHeaderbottom();
-        footerDiv.InnerHtml = mytheme.getFooter();
+
     }
 }

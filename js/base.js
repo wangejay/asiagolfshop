@@ -1,4 +1,6 @@
 ﻿var MessageSuccess = "success";
+var Message_SuccessInt = 1;
+var Message_NoAuth = -1;
 function gup(name) {
     name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
     var regexS = '[\\?&]' + name + '=([^&#]*)';

@@ -223,9 +223,8 @@
 
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a>
-                    </p>
+                <div class="col-lg-12" runat="server" id="footerDiv">
+                  
                 </div>
             </div>
         </footer>

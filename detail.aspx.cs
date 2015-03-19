@@ -24,6 +24,7 @@ public partial class detail : System.Web.UI.Page
             headerTop.InnerHtml = mytheme.getHeadertop();
             headerBottom.InnerHtml = mytheme.getHeaderbottom();
             left_menu.InnerHtml = mytheme.getLeftMenu();
+            footerDiv.InnerHtml = mytheme.getFooter();
             string inner = "";
             StoreDB myStore = new StoreDB();
             sProduction myProduction = myStore.searchProductionbyID(ID);
@@ -44,7 +45,7 @@ public partial class detail : System.Web.UI.Page
             Title.InnerHtml = myProduction.Name;
             pDescription.InnerHtml = myProduction.Introduction;
 
-            inner = "左/右手 : <select>";
+            inner = "左/右手 : <select id='sHand'>";
             foreach(sProduct_List atom in myProduction.HandName)
             {
                 inner += "<option value='" + atom.ItemID + "'>" + atom.ItemName + "</option>";
@@ -52,7 +53,7 @@ public partial class detail : System.Web.UI.Page
             inner+="</select>";
             pHand.InnerHtml = inner;
 
-            inner = "角度 :    <select>";
+            inner = "角度 :    <select id='sAngle'>";
             foreach (sProduct_List atom in myProduction.AngleName)
             {
                 inner += "<option value='" + atom.ItemID + "'>" + atom.ItemName + "</option>";
@@ -60,7 +61,7 @@ public partial class detail : System.Web.UI.Page
             inner += "</select>";
             pAngle.InnerHtml = inner;
 
-            inner = "桿身 :    <select>";
+            inner = "桿身 :    <select id='sGolfClub'>";
             foreach (sProduct_List atom in myProduction.GolfClubName)
             {
                 inner += "<option value='" + atom.ItemID + "'>" + atom.ItemName + "</option>";
@@ -68,7 +69,7 @@ public partial class detail : System.Web.UI.Page
             inner += "</select>";
             pGolfClub.InnerHtml = inner;
 
-            inner = "硬度 :    <select>";
+            inner = "硬度 :    <select id='sGolfHard'>";
             foreach (sProduct_List atom in myProduction.GolfHardName)
             {
                 inner += "<option value='" + atom.ItemID + "'>" + atom.ItemName + "</option>";

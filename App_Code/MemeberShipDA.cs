@@ -126,4 +126,17 @@ public class MemeberShipDA
         
         return returnvalue;
     }
+    public string getUserID(string UserName)
+    {
+        
+        string returnvalue = "";
+        DataBase db = new DataBase();
+        string sqlString = "SELECT UserId FROM aspnet_Users ";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        using (command.Connection)
+        {
+            returnvalue=db.ExecuteScalar(command).ToString();
+            return returnvalue;
+        }
+    }
 }
