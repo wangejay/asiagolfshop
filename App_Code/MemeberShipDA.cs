@@ -131,8 +131,9 @@ public class MemeberShipDA
         
         string returnvalue = "";
         DataBase db = new DataBase();
-        string sqlString = "SELECT UserId FROM aspnet_Users ";
+        string sqlString = "SELECT UserId FROM aspnet_Users where UserName=@UserName";
         DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@UserName", DbType.String, UserName);
         using (command.Connection)
         {
             returnvalue=db.ExecuteScalar(command).ToString();

@@ -140,6 +140,20 @@ public class AspAjax : System.Web.Services.WebService {
             return myCart.deleteCartProduction(CartID, HttpContext.Current.User.Identity.Name);
         }
     }
+    [WebMethod]
+    public List<sOrderSelectList> getTown(int CityID)
+    {
+        Cart myCart = new Cart();
+        return myCart.getTaiwanTownName(CityID);
+    }
+    [WebMethod]
+    public string setOrder(sOrder order)
+    {
+        Cart myCart = new Cart();
+        return myCart.CreateOrder(order, HttpContext.Current.User.Identity.Name);
+    }
+    
+    //
     
 }
 

@@ -48,81 +48,134 @@
     
 
     <!-- Page Content -->
+    
+    <!-- 調整了 HTML 結構，還沒 commit  -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-               
-            </div>
-            <div class="col-md-9">
+            <div class="col-md-8 col-md-offset-2">
                 <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header" runat="server" id="Title">付款資訊</h1>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Portfolio Item Row -->
-        <div class="row">
-            付款方式
-            <div class="col-md-12" id="PaymentWay" runat="server">
-                         
-            </div>
-        </div>
-        <div class="row">
-            訂購人資訊
-            <div class="col-md-12" id="OrderInfo" runat="server">
-                  <div class="row">
-                    訂購人姓名:<input type="text"  class="" id="mname" value="" name="member_name">
-                  </div>  
-                  <div class="row">
-                    聯絡電話:<input type="text"  class="" id="Text1" value="" name="member_name">
-                  </div>    
-                  <div class="row">
-                    email:<input type="text"  class="" id="Text3" value="" name="member_name">
-                  </div>   
-            </div>
-        </div>
-        <div class="row">
-            收件人資訊
-            <div class="col-md-12" id="ReceiverInfo" runat="server">
-                       <div class="row">
-                    收件人姓名:<input type="text"  class="" id="Text2" value="" name="member_name">
-                  </div>  
-                  <div class="row">
-                    聯絡電話:<input type="text"  class="" id="Text4" value="" name="member_name">
-                  </div>    
-                  <div class="row">
-                    email:<input type="text"  class="" id="Text5" value="" name="member_name">
-                  </div>
-                  <div class="row">
-                    收件人地址:<select id="cityName" runat="server"></select><select id="townName"></select>
-                    <input type="text"  class="" id="Text6" value="" name="member_name">
-                  </div>    
-                  <div class="row">
-                    配送時間:<div  id="receiverTime" runat="server"></div>
-                  </div>     
-            </div>
-        </div>
-        <div class="row">
-            發票資訊
-            <div class="col-md-12" id="InvoceInfo" runat="server">
-                         
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn btn-primary" onclick="goOrder()">下一步</button>
-        </div>
-        <!-- /.row -->
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12" runat="server" id="footerDiv">
-                    
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header" runat="server" id="Title">付款資訊</h1>
+                    </div>
                 </div>
-            </div>
+                <!-- /.row -->
+
+                <!-- Portfolio Item Row -->
+                <div class="row">
+                    <div class="col-md-9">
+                        <h3>付款方式</h3>
+                        
+                        <div id="PaymentWay" runat="server">
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-9" id="OrderInfo" runat="server">
+                        <h3>訂購人資訊</h3>
+                        
+                        <div class="row">
+                        
+                            <div class="col-md-3">
+                                <label for="mName">訂購人姓名：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="mName" value="" name="member_name">
+                            </div>
+                            
+                            
+                            <div class="col-md-3">
+                                <label for="mPhone">聯絡電話：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="mPhone" value="" name="member_phome">
+                            </div>
+                            
+                            
+                            <div class="col-md-3">
+                                <label for="mMail">email：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="mMail" value="" name="member_mail" runat="server" />
+                            </div>
+
+                        </div>  
+                    </div>
+                    
+                    <div class="col-md-9" id="ReceiverInfo" runat="server">
+                        <h3>收件人資訊</h3>
+                        
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="rName">收件人姓名：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="rName" value="" name="receiver_name">
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <label for="rPhone">聯絡電話：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="rPhone" value="" name="receiver_phone">
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <label for="rMail">email：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="rMail" value="" name="receiver_mail">
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <label for="rAddr">收件人地址：</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select id="cityName" runat="server"></select><select id="townName"></select>
+                                <input type="text"  class="form-control" id="rAddr" value="" name="receiver_addr" />
+                            </div>
+                            
+                            <div class="col-md-3">
+                                配送時間：
+                            </div>
+                            <div class="col-md-9">
+                                <div id="receiverTime" runat="server"></div>
+                            </div>
+                            
+                          </div>    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9" runat="server">
+                        <h3>發票資訊</h3>
+                        <div class="col-md-12" id="InvoiceInfo" runat="server">
+                                 
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="Div1" class="col-md-9">
+                        統一編號：<input type="text"  class="form-control" id="company_id" value="" name="company_id" />
+                        發票抬頭：<input type="text"  class="form-control" id="company_title" value="" name="company_title" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 text-right">
+                        <button class="btn bt-lg btn-primary" onclick="goOrder()">下一步</button>
+                    </div>
+                </div>
             <!-- /.row -->
-        </footer>
+            
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12" runat="server" id="footerDiv">
+                        
+                    </div>
+                </div>
+                <!-- /.row -->
+            </footer>
+            
             </div>
         </div>
         

@@ -323,6 +323,7 @@ public class StoreDB
             returnvalue.Add(dr["ProductionPhoto"].ToString());
         }
         dr.Close();
+        command.Connection.Close();
         return returnvalue;
     }
     private List<sProduct_List> getHandInfo(Int64 ProductID)
@@ -424,8 +425,7 @@ public class StoreDB
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto1"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto2"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
-            myProduction.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
-
+            myProduction.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());  
         }
         dr.Close();
         command.Connection.Close();
@@ -539,7 +539,7 @@ public class StoreDB
         db.AddInParameter(command, "@CategoryName", DbType.String, category);
         db.AddInParameter(command, "@Sequence", DbType.Int16, totalCounter);
         returnValue = db.ExecuteScalar(command).ToString();
-        
+        command.Connection.Close();
         return returnValue;
     }
     public string PauseCategory(string CategoryID,bool isPause)
@@ -578,6 +578,7 @@ public class StoreDB
         string sqlString = "select count(*) from store_ProductCategory";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         returnvalue = (int)db.ExecuteScalar(command);
+        command.Connection.Close();
         //returnvalue = command.ExecuteNonQuery();
         return returnvalue;
 
@@ -594,6 +595,7 @@ public class StoreDB
             db.AddInParameter(command, "@CategoryName", DbType.String, category);
             db.AddInParameter(command, "@ID", DbType.Int32, ID);
             db.ExecuteNonQuery(command).ToString();
+            command.Connection.Close();
         }
         catch (Exception e)
         {
@@ -637,9 +639,4 @@ public class StoreDB
         command.Connection.Close();
         return returnValue;
     }
-
-
-
-
-   
 }
