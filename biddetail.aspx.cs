@@ -18,5 +18,6 @@ public partial class biddetail : System.Web.UI.Page
         theme mytheme = new theme();
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
+        footerDiv.InnerHtml = mytheme.getFooter();
     }
 }

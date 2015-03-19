@@ -199,5 +199,13 @@
             </div>
         </div>
     </div>
+    <footer>
+            <div class="row">
+                <div class="col-lg-12" runat="server" id="footerDiv">
+                    
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
 </body>
 </html>

@@ -118,8 +118,8 @@
         <!-- Footer -->
         <footer>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                <div class="col-lg-12" runat="server" id="footerDiv">
+                    
                 </div>
             </div>
             <!-- /.row -->
@@ -131,21 +131,5 @@
     </div>
 </body>
 
-<script>
-($(function() {
-    $('.productImgs>UL>LI')
-        .mouseover(function() {
-            $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
-            $('#productImgBig').css('visibility', 'hidden');
-        })
-        .click(function() {
-            $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
-        });
-    $('.productImgs>UL')
-        .mouseout(function() {
-            $('#productImgBig').css('visibility', 'visible');
-            $('#mainImg').css('background-image', 'none');
-        });
-}));
-</script>
+
 </html>

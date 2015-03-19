@@ -21,6 +21,7 @@ public partial class _Default : System.Web.UI.Page
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
         left_menu.InnerHtml = mytheme.getLeftMenu();
+        footerDiv.InnerHtml = mytheme.getFooter();
         StoreDB myStore = new StoreDB();
         List<sProduction> myProduction = myStore.searchProduction(9);
         string innerString = "";

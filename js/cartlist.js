@@ -21,15 +21,15 @@ function initPage() {
 function SucceededCallback(result, userContext, methodName) {
     baseSucceededCallback(result, userContext, methodName);
     switch (methodName) {
-        case "AddToCart":
+        case "deleteCartProduction":
             if (result == Message_NoAuth)
                 alert("請先登入");
-            else {
-                alert("已加入購物車");
-                $("#cart_counter").html(result);
+            else if (result == Message_SuccessInt) {
+                alert("已刪除商品");
+                window.location.reload();
             }
             break;
-    }
+    } 
 }
 function FailedCallback(error, userContext, methodName) {
     baseFailedCallback(error, userContext, methodName);
@@ -48,4 +48,13 @@ function goCart() {
     obj.ProductionCounter = 1;
     //alert(idx);
     AspAjax.AddToCart(obj);
+}
+function deleteCart(idx) {
+    AspAjax.deleteCartProduction(idx);
+}
+function gobackProductionList() {
+    window.location = "./product.aspx";
+}
+function goOrder() {
+    window.location = "./payment.aspx";
 }

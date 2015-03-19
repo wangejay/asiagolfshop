@@ -80,7 +80,9 @@ public class theme
                     //"</div>" +
                     "<div id='login_Div' class='header_function_list_element'><a href='./login.aspx'>登入</a>/<a href='./signup.aspx'>註冊</a></div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
-                        "<span class='sapn_title'>購物車</span><span id='cart_counter'>" + counter + "</span><span class='sapn_title'>件</span></div>" +
+                        "<span class='sapn_title'>購物車</span><span id='cart_counter'>" + counter + "</span><span class='sapn_title'>件   </span>"+
+                        "<span class='sapn_title'><a href='./cartlist.aspx'>結帳去</a></span>"+
+                        "</div>" +
                 "</div>" +
             "</div>" +
         "</div>";
@@ -137,5 +139,9 @@ public class theme
             inner += "<a href='./product.aspx?id=" + myPorduct.ID + "' class='list-group-item'>" + myPorduct.CategoryName + "</a>";
         }
         return inner;
+    }
+    public string getFooter()
+    {
+        return "<p>Copyright &copy; AsiaGolfShop 2014</p>";
     }
 }
