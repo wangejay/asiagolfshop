@@ -49,10 +49,28 @@
 
     <!-- Page Content -->
     
-    <!-- 調整了 HTML 結構，還沒 commit  -->
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="orderStep list-unstyled list-inline">
+                            <li>
+                                放入購物車
+                            </li>
+                            <li>
+                                確認購物明細
+                            </li>
+                            <li class="currentStep">
+                                輸入購買資料
+                            </li>
+                            <li>
+                                完成訂購
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
                 <!-- Portfolio Item Heading -->
                 <div class="row">
                     <div class="col-md-12">
@@ -154,14 +172,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="Div1" class="col-md-9">
+                    <div class="col-md-9">
                         統一編號：<input type="text"  class="form-control" id="company_id" value="" name="company_id" />
                         發票抬頭：<input type="text"  class="form-control" id="company_title" value="" name="company_title" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-9 text-right">
-                        <button class="btn bt-lg btn-primary" onclick="goOrder()">下一步</button>
+                        <button class="btn bt-lg btn-primary" onclick="goOrder()">下一步  <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></button>
                     </div>
                 </div>
             <!-- /.row -->
