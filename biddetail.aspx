@@ -18,7 +18,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
     <link href="css/portfolio-item.css" rel="stylesheet">
-
+    <link href="css/detail.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,9 +34,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <asp:ScriptManager ID="ScriptManager" runat="server">
+            <Services>
+                <asp:ServiceReference Path="AspAjax.asmx" />
+            </Services>
+        </asp:ScriptManager>
     </form>
     <div class='' id="headerTop" runat="server"></div>
     <nav class='navbar navbar-inverse' id="headerBottom" role='navigation' runat="server"></nav>
@@ -47,24 +49,14 @@
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">球具類別</p>
-                <div class="list-group">
-                    <a href="./product.aspx?id=1" class="list-group-item">Drivers 一號木桿</a>
-                    <a href="./product.aspx?id=2" class="list-group-item">FW 球道木桿 </a>
-                    <a href="./product.aspx?id=3" class="list-group-item">Iron sets 鐵桿組</a>
-                    <a href="./product.aspx?id=4" class="list-group-item">Wedges 挖起桿</a>
-                    <a href="./product.aspx?id=5" class="list-group-item">Putters 推桿</a>
-                    <a href="./product.aspx?id=5" class="list-group-item">Hybrid 混合桿</a>
-                    <a href="./product.aspx?id=6" class="list-group-item">Shafts&Grips 桿身、握把</a>
-                    <a href="./product.aspx?id=7" class="list-group-item">Accessories 配件</a>
-                    <a href="./product.aspx?id=8" class="list-group-item">Apparel 服飾</a>
-                    
+                <div class="list-group" runat="server" id="left_menu">
                 </div>
             </div>
             <div class="col-md-9">
                 <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Portfolio Item
+                <h1 class="page-header" runat="server" id="Title">Portfolio Item
                     <small>Item Subheading</small>
                 </h1>
             </div>
@@ -75,58 +67,52 @@
         <div class="row">
 
             <div class="col-md-8">
-                <img class="img-responsive" src="./images/golfimg1.png" alt="">
+                <div id="mainImg" runat="server">
+                    <!-- img id="productImgBig" src="images/placeholder.png" -->
+                </div>
+                
+                <div class="productImgs" id="ImgIndex" runat="server">
+                    <ul class="list-inline">
+                        <li><img src="images/5.png" /></li>
+                        <li><img src="images/product1.gif" /></li>
+                        <li><img src="images/product2.gif" /></li>
+                        <li><img src="images/product3.gif" /></li>
+                        <li><img src="images/golfimg8.png" /></li>
+                    </ul>
+                </div>                
             </div>
 
-            <div class="col-md-4">
-                <h3>高爾夫球具組</h3>
-                <p>使用兩年，狀況良好，因有新球具故忍痛割愛。希望能讓有需求的人士接手。</p>
-                <h3>目前出價</h3>
-                <p>2500元</p>
-                <h3>最低出價</h3>
-                <p>2000元</p>
-                <h3>直購價</h3>
-                <p>20000元</p>
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-        <!-- Related Projects Row -->
-        <div class="row">
-
-            <div class="col-lg-12">
-                <h3 class="page-header">商品圖片</h3>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="./images/golfimg2.png" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="./images/golfimg3.png" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="./images/golfimg4.png" alt="">
-                </a>
-            </div>
-
-            <div class="col-sm-3 col-xs-6">
-                <a href="#">
-                    <img class="img-responsive portfolio-item" src="./images/golfimg5.png" alt="">
-                </a>
+            <div id="productDisc" class="col-md-4">
+                <h3>產品描述</h3>
+                <p id="pDescription" runat="server">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                <h3>產品規格</h3>
+                <ul>
+                    <li runat="server" id="pHand">Lorem Ipsum</li>
+                    <li runat="server" id="pAngle">Dolor Sit Amet</li>
+                    <li runat="server" id="pGolfClub">Consectetur</li>
+                    <li runat="server" id="pGolfHard">Adipiscing Elit</li>
+                </ul>
+                <h3>競標資訊</h3>
+                    <ul>
+                    <li runat="server" id="pStartTime">Lorem Ipsum</li>
+                    <li runat="server" id="pEndTime">Dolor Sit Amet</li>
+                    <li runat="server" id="pRecordCounter">Consectetur</li>
+                </ul>
+                
+                <h3>最高出價</h3>
+                <h4 id="pMaxBidPrice" runat="server">12345</h4>
+                <button type="button" id="btn-add-cart" onclick="goCart()" class="btn btn-block btn-primary"> 我要出價 </button>
             </div>
 
         </div>
         <!-- /.row -->
 
-        <hr>
+        <div class="row detail" >
+        <h3>詳細資訊</h3>
+        <div class="col-md-12" id="fullintroduction" runat="server">
+        </div>
+        </div>
+        <!--hr-->
 
         <!-- Footer -->
         <footer>
@@ -134,7 +120,6 @@
                 <div class="col-lg-12" runat="server" id="footerDiv">
                     
                 </div>
-            </div>
             <!-- /.row -->
         </footer>
             </div>
@@ -143,4 +128,22 @@
 
     </div>
 </body>
+<script>
+
+    // 滑鼠移動到縮圖上會換產品圖的程式碼
+    $('.productImgs UL LI')
+        .mouseover(function() {
+            $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
+            $('#productImgBig').css('visibility', 'hidden');
+        })
+        .click(function() {
+            $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
+        });
+    $('.productImgs UL')
+        .mouseout(function() {
+            $('#productImgBig').css('visibility', 'visible');
+            $('#mainImg').css('background-image', 'none');
+        });
+        
+</script>
 </html>

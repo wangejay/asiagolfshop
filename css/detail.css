@@ -51,60 +51,70 @@
     margin-right: 4px;
 }
 
-.productImgs 
-{
+/* 橫列五縮圖搭配滑鼠滑移縮放效果 */
+.productImgs  {
+	letter-spacing: -5px;
 	min-height: 150px;
 	border-top: 1px solid #999;
-    margin-top: 24px;
-	}
-
-.productImgs UL {
-    margin: 8px auto;
-    text-align: center;
-    width: 80%;
-    overflow: hidden;
+	margin-top: 24px;
 }
 
-.productImgs UL LI 
-{
+
+.productImgs  UL {
+  list-style: outside none none;
+  margin: 8px auto;
+  /*text-align: center;*/
 	vertical-align: middle;
-    border: 1px solid #999;
-    padding: 3px;
-    width: 19.20%;
-    margin-left: 1%;
-    cursor: pointer;
-    transition: width .25s ease-out;
-    float:left;
+  width: 80%;
+  overflow: hidden;
 }
 
-.productImgs UL LI:first-child 
-{
-    margin-left: 0;
+
+.productImgs  LI {
+  /* 寬度*5 + 左間距*4 = 100% */
+  width: 19.2%;
+	
+  /*display: inline-block;*/
+  float: left;
+  vertical-align: middle;
+  border: solid #999;
+  border-width: 1px;
+  padding: 3px;
+  margin-left: 1%;
+  cursor: pointer;
+  transition: width 0.25s ease-out 0s;
+	letter-spacing: 1px;
+}
+.productImgs  LI:first-child {
+  /* 最左邊方塊的左間距歸零 */
+  margin-left: 0;
 }
 
-.productImgs UL:hover LI 
-{
+/* （滑鼠移上後）縮小的尺寸*4 + 放大的尺寸 = 100% */
+.productImgs  UL:hover LI {
+  /* 這邊是縮小的尺寸 */
     width: 18%;
 }
-
-.productImgs UL:hover LI:hover 
-{
-    border: 1px solid #444;
+.productImgs  UL:hover LI:hover {
+  /* 這邊是放大的尺寸 */
     width: 24%;
+	
+	border-color: #666;
 }
 
-.productImgs UL LI IMG
-{
+/* 讓裡面的圖自動縮放以及置中 */
+.productImgs  IMG{
 	width: 100%;
 	vertical-align: middle;
-	}
+}
+/* /橫列縮圖搭配滑鼠滑移縮放效果 */
 
 .detail H3
 {
 	font-size: 21px;
 	}
 	
-#pPrice {
+#pPrice, #pMaxBidPrice {
     color: red;
     font-weight: 600;
     margin-bottom: 32px;

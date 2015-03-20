@@ -28,10 +28,10 @@ public partial class detail : System.Web.UI.Page
             string inner = "";
             StoreDB myStore = new StoreDB();
             sProduction myProduction = myStore.searchProductionbyID(ID);
-            inner = "<ul class='list-unstyle list-inline'>";
+            inner = "<ul class='list-inline'>";
             foreach (string atom in myProduction.ProductionPhoto)
             {
-                // 加一個判斷過濾無圖片的資料
+                // 加一個過濾無圖片資料的判斷
                 if (!string.IsNullOrEmpty(atom) && atom != " ")
                 {
                     inner += "<li><img src='./photos/production/" + atom + "' /></li>";
@@ -41,7 +41,7 @@ public partial class detail : System.Web.UI.Page
             ImgIndex.InnerHtml = inner;
             if(myProduction.ProductionPhoto.Count>0)
                 mainImg.InnerHtml = "<img id='productImgBig' src='./photos/production/" + myProduction.ProductionPhoto[0] + "' />";
-            // mainImg.Style["background-image"] = "url(./photos/production/" + myProduction.ProductionPhoto[0] + ")";
+            
             fullintroduction.InnerHtml = myProduction.FullIntro;
             Title.InnerHtml = myProduction.Name;
             pDescription.InnerHtml = myProduction.Introduction;

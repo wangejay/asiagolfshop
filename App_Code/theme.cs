@@ -143,6 +143,19 @@ public class theme
         }
         return inner;
     }
+
+    public string getBidLeftMenu()
+    {
+        string inner = "";
+        StoreDB myStore = new StoreDB();
+        List<sProductionCategory> lProduction = myStore.searchProductionCategory();
+        foreach (sProductionCategory myPorduct in lProduction)
+        {
+            inner += "<a href='./bid.aspx?id=" + myPorduct.ID + "' class='list-group-item'>" + myPorduct.CategoryName + "</a>";
+        }
+        return inner;
+    }
+
     public string getFooter()
     {
         return "<p>Copyright &copy; AsiaGolfShop 2014</p>";

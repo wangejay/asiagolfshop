@@ -103,7 +103,7 @@
 </p>
                 <h3>價格</h3>
                 <h4 id="pPrice" runat="server"></h4>
-                <input type="button" value="加入購物車" id="btn-add-cart" onclick="goCart()" class="button-secondary button-add-to-cart">
+                <button type="button" id="btn-add-cart" onclick="goCart()" class="btn btn-block btn-primary"> 加入購物車 </button>
             </div>
 
         </div>

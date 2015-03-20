@@ -29,37 +29,37 @@ public partial class bid : System.Web.UI.Page
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
         footerDiv.InnerHtml = mytheme.getFooter();
-        left_menu.InnerHtml = mytheme.getLeftMenu();
+        left_menu.InnerHtml = mytheme.getBidLeftMenu();
         bidDB myStore = new bidDB();
         //MainTitle.InnerHtml = ID.Length == 0 ? "全部商品" : myStore.searchBidItembyName(ID);
         MainTitle.InnerHtml = "全部商品";
-        List<sBidItem> myProduction = myStore.searchBidItembyCateogry(ID);
+        List<sBidItem> myBidItem = myStore.searchBidItembyCateogry(ID);
         string innerString = "";
         int counter = 0;
-        foreach (sBidItem production in myProduction)
+        foreach (sBidItem thisBidItem in myBidItem)
         {
             if (counter % 3 == 0)
             {
                 innerString += " <div class='row'>";
             }
-            innerString += "<div class='col-sm-4 col-lg-4 col-md-4' onclick='goDetail(" + production.ID + ")'>" +
+            innerString += "<div class='col-sm-4 col-lg-4 col-md-4' onclick='goBidDetail(" + thisBidItem.ID + ")'>" +
                         "<div class='thumbnail'>";
-            if (production.ProductionPhoto.Count > 0)
+            if (thisBidItem.ProductionPhoto.Count > 0)
             {
-                innerString += "<div class='productIMG' style='background-image: url(./photos/production/" + production.ProductionPhoto[0] + ");'>" +
+                innerString += "<div class='productIMG' style='background-image: url(./photos/production/" + thisBidItem.ProductionPhoto[0] + ");'>" +
                                     "<img src='images/placeholder.png' class='imgPlaceHolder'>" +
                                 "</div>";
             }
 
             innerString += "<div class='caption'>" +
-                    "<h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></h4>" +
+                    "<h4>" + "<a href='./biddetail.aspx?id=" + thisBidItem.ID + "'>" + thisBidItem.Name + "</a></h4>" +
 
-                    "<h5 class='pull-right'>最高出價： $" + production.MaxBidPrice + "</h5>" +
+                    "<h5 class='pull-right'>最高出價： $" + thisBidItem.MaxBidPrice + "</h5>" +
 
-                    //"<p>" + production.Introduction + "</p>" +
+                    //"<p>" + thisBidItem.Introduction + "</p>" +
                         "<ul>" +
-                            "<li>" + "出價次數：" + production.RecordCounter + "</li>" +
-                            "<li>" + "結束時間：" + production.EndTime + "</li>" +
+                            "<li>" + "出價次數：" + thisBidItem.RecordCounter + "</li>" +
+                            "<li>" + "結束時間：" + thisBidItem.EndTime + "</li>" +
                         "</ul>" +
                     "<button class='btn btn-block btn-primary'>我要出價</button>" +
                 "</div>" +

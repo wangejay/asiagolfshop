@@ -1,3 +1,3 @@
 ﻿function goBidDetail(index) {
-    window.location = "./biddetail.aspx";
+    window.location = "./biddetail.aspx?id=" + index;
 }

@@ -84,7 +84,8 @@ public class bidDB
             myBidItem.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
             myBidItem.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
 
-            myBidItem.EndTime = dr["endTime"].ToString();
+            myBidItem.StartTime = dr["StartTime"].ToString();
+            myBidItem.EndTime = dr["EndTime"].ToString();
             temp.Add(myBidItem);
         }
 
@@ -131,11 +132,149 @@ public class bidDB
         string sqlString;
         DataBase db = new DataBase();
 
-        sqlString = "SELECT MAX(Price) FROM bid_Record WHERE ProductID=@ID";
+        sqlString = "SELECT MAX(BidPrice) FROM bid_Record WHERE ProductID=@ID";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ID", DbType.Int16, ID);
-        int dr = (int)db.ExecuteNonQuery(command);
+        int dr = (int) db.ExecuteNonQuery(command);
 
         return dr.ToString();
+    }
+
+    public sBidItem searchBitItembyID(string id)
+    {
+        List<sBidItem> returnValue = new List<sBidItem>();
+        List<sBidItem> temp = new List<sBidItem>();
+        sBidItem myBidItem = new sBidItem();
+        DataBase db = new DataBase();
+        string sqlString = "select * from bid_Items where ID=@ID order by ID desc";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@ID", DbType.Int32, id);
+        DbDataReader dr = db.ExecuteReader(command);
+        while (dr.Read())
+        {
+            myBidItem.ID = int.Parse(dr["ID"].ToString());
+            myBidItem.Name = dr["Name"].ToString();
+            myBidItem.Price = dr["Price"].ToString();
+            myBidItem.ProductionCategory = dr["Category"].ToString();
+            myBidItem.ProductionLevel = dr["ProductLevel"].ToString();
+            myBidItem.Introduction = dr["Introduction"].ToString();
+            myBidItem.FullIntro = dr["HTML"].ToString();
+            //myBidItem.Hand = dr["Hand"].ToString();
+            //myBidItem.Angle = dr["Angle"].ToString();
+            //myBidItem.GolfClub = dr["GolfClub"].ToString();
+            //myBidItem.GolfHard = dr["HardLevel"].ToString();
+            //myBidItem.ProductionPhoto = dr["ProductionPhoto"].ToString();
+            
+            List<sProduct_List> totalListItem = getHandInfo(myBidItem.ID);
+            myBidItem.Hand = getMultiSettingItemID(totalListItem, "hand");
+            myBidItem.HandName = getMultiSettingItemName(totalListItem, "hand");
+            myBidItem.Angle = getMultiSettingItemID(totalListItem, "angle");
+            myBidItem.AngleName = getMultiSettingItemName(totalListItem, "angle");
+            myBidItem.GolfClub = getMultiSettingItemID(totalListItem, "golfclub");
+            myBidItem.GolfClubName = getMultiSettingItemName(totalListItem, "golfclub");
+            myBidItem.GolfHard = getMultiSettingItemID(totalListItem, "hardness");
+            myBidItem.GolfHardName = getMultiSettingItemName(totalListItem, "hardness");
+
+            myBidItem.ProductionPhoto = new List<string>();
+            myBidItem.ProductionPhoto.Add(dr["ProductionPhoto0"].ToString());
+            myBidItem.ProductionPhoto.Add(dr["ProductionPhoto1"].ToString());
+            myBidItem.ProductionPhoto.Add(dr["ProductionPhoto2"].ToString());
+            myBidItem.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
+            myBidItem.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
+
+            myBidItem.StartTime = dr["StartTime"].ToString();
+            myBidItem.EndTime = dr["EndTime"].ToString();
+
+            
+            temp.Add(myBidItem);
+        }
+
+        dr.Close();
+
+        foreach (sBidItem atom in temp)
+        {
+            myBidItem.ID = atom.ID;
+            myBidItem.Name = atom.Name;
+            myBidItem.Price = atom.Price;
+            myBidItem.ProductionCategory = atom.ProductionCategory;
+            myBidItem.ProductionLevel = atom.ProductionLevel;
+            myBidItem.Introduction = atom.Introduction;
+            myBidItem.FullIntro = atom.FullIntro;
+            myBidItem.ProductionPhoto = atom.ProductionPhoto;
+
+            myBidItem.Hand = atom.Hand;
+            myBidItem.HandName = atom.HandName;
+            myBidItem.Angle = atom.Angle;
+            myBidItem.AngleName = atom.AngleName;
+            myBidItem.GolfClub = atom.GolfClub;
+            myBidItem.GolfClubName = atom.GolfClubName;
+            myBidItem.GolfHard = atom.GolfHard;
+            myBidItem.GolfHardName = atom.GolfHardName;
+            myBidItem.ProductionPhoto = atom.ProductionPhoto;
+
+            myBidItem.StartTime = atom.StartTime;
+            myBidItem.EndTime = atom.EndTime;
+
+            myBidItem.RecordCounter = getRecordCounter(atom.ID);
+            myBidItem.MaxBidPrice = getMaxBidPrice(atom.ID);
+
+            returnValue.Add(myBidItem);
+        }
+        command.Connection.Close();
+        return myBidItem;
+    }
+
+
+
+    private List<sProduct_List> getHandInfo(Int64 ProductID)
+    {
+        List<sProduct_List> returnvalue = new List<sProduct_List>();
+        sProduct_List myList = new sProduct_List();
+        DataBase db = new DataBase();
+        string sqlString = "select A.ItemID,A.GroupName,B.ItemName from store_Production_List A left join system_List B on " +
+            "(A.ItemID=B.ItemID and A.GroupName=B.GroupName)  where ProductID=@ProductID";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@ProductID", DbType.Int64, ProductID);
+        DbDataReader dr = db.ExecuteReader(command);
+        while (dr.Read())
+        {
+            myList.ItemID = dr["ItemID"].ToString();
+            myList.GroupName = dr["GroupName"].ToString();
+            myList.ItemName = dr["ItemName"].ToString();
+            returnvalue.Add(myList);
+        }
+        dr.Close();
+        command.Connection.Close();
+        return returnvalue;
+    }
+    private string[] getMultiSettingItemID(List<sProduct_List> totalListItem, string name)
+    {
+        List<string> tempString = new List<string>();
+        foreach (sProduct_List atom in totalListItem)
+        {
+            if (atom.GroupName.Trim().ToLower() == name)
+                tempString.Add(atom.ItemID);
+        }
+        string[] returnvalue = new string[tempString.Count];
+        int counter = 0;
+        foreach (string atom in tempString)
+        {
+            returnvalue[counter] = atom;
+            counter++;
+        }
+        return returnvalue;
+    }
+    private List<sProduct_List> getMultiSettingItemName(List<sProduct_List> totalListItem, string name)
+    {
+        List<sProduct_List> returnvalue = new List<sProduct_List>();
+        foreach (sProduct_List atom in totalListItem)
+        {
+            if (atom.GroupName.Trim().ToLower() == name)
+            {
+                returnvalue.Add(atom);
+            }
+        }
+
+        return returnvalue;
     }
 }
