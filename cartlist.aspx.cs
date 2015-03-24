@@ -27,7 +27,7 @@ public partial class cartlist : System.Web.UI.Page
         int TotalPrice = 0;
         Cart myCart = new Cart();
         List<sOrderProduction> sCartInfo = myCart.CartProductionInfoByUserName(HttpContext.Current.User.Identity.Name);
-        string innerString = "<table class='table table-striped table-hover carlistTable'><thead><tr><th>商品圖片</th><th>商品明細</th><th>單價</th><th>數量</th><th>小記</th><th>變更明細</th></tr></thead><tbody>";
+        string innerString = "<table class='table table-striped table-hover carlistTable'><thead><tr><th>商品圖片</th><th>商品明細</th><th>規格</th><th>單價</th><th>數量</th><th>小計</th><th></th></tr></thead><tbody>";
         foreach (sOrderProduction atom in sCartInfo)
         {
             int subPrice=atom.ProductionPrice * atom.ProductionCounter;
@@ -36,17 +36,18 @@ public partial class cartlist : System.Web.UI.Page
                 "<td><img src='./photos/production/" + atom.PhotoName + "' width='100px'></td>" +
                 "<td>" +
                     "<h4 class='productName'>" + atom.ProductionName + "</h4>" +
+                "</td>" +
+                "<td>" +
                     "<ul class='productDetail list-unstyled'>" +
-                        //"<li>" + atom.ProductionName + "</li>" +
                         "<li>" + atom.AngleName + "</li>" +
                         "<li>" + atom.GolfClubName + "</li>" +
                         "<li>" + atom.GolfHandName + "</li>" +
                         "<li>" + atom.HandName + "</li>" +
                     "</ul>" +
                 "</td>" +
-                "<td>" + atom.ProductionPrice + "</td>" +
+                "<td>$" + atom.ProductionPrice + "</td>" +
                 "<td>" + atom.ProductionCounter + "</td>" +
-                "<td>" + subPrice + "</td>" +
+                "<td>$" + subPrice + "</td>" +
                 "<td>" + "<button class='btn btn-link' onclick='deleteCart(" + atom.ID + ")'/><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> 刪除</button>" + "</td>" +
                 "</tr>";
         }

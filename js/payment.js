@@ -3,22 +3,14 @@
 function initPage() {
     AspAjax.set_defaultSucceededCallback(SucceededCallback);
     AspAjax.set_defaultFailedCallback(FailedCallback);
-    $('.productImgs>UL>LI')
-        .mouseover(function() {
-            $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
-            $('#productImgBig').css('visibility', 'hidden');
-        })
-        .click(function() {
-            $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
-        });
-    $('.productImgs>UL')
-        .mouseout(function() {
-            $('#productImgBig').css('visibility', 'visible');
-            $('#mainImg').css('background-image', 'none');
-        });
-        $("#cityName").change(function() {
-            AspAjax.getTown($(this).val());
-        });
+
+    $('#sameAsOrderer').change(function() {
+        if (this.checked) {
+            $('#rName').val($('#mName').val());
+            $('#rPhone').val($('#mPhone').val());
+            $('#rMail').val($('#mMail').val());
+        }
+    });
 }
 function SucceededCallback(result, userContext, methodName) {
     baseSucceededCallback(result, userContext, methodName);
@@ -75,4 +67,7 @@ function setOrderResponse(result) {
         alert("訂購成功，非常感謝您的訂購");
         window.location = "./default.aspx";
     }
+}
+function gobackProductionList() {
+    window.location = "./product.aspx";
 }

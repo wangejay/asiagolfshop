@@ -43,7 +43,7 @@ public partial class detail : System.Web.UI.Page
                 mainImg.InnerHtml = "<img id='productImgBig' src='./photos/production/" + myProduction.ProductionPhoto[0] + "' />";
             
             fullintroduction.InnerHtml = myProduction.FullIntro;
-            Title.InnerHtml = myProduction.Name;
+            MainTitle.InnerHtml = myProduction.Name;
             pDescription.InnerHtml = myProduction.Introduction;
 
             inner = "左/右手 : <select id='sHand'>";

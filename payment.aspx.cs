@@ -28,47 +28,45 @@ public partial class payment : System.Web.UI.Page
 
         Cart myCart = new Cart();
         List<sOrderSelectList> list = myCart.getPaymentList();
-        string inner = "<ul class='list-inline'>";
+        string inner = "";
         foreach (sOrderSelectList atom in list)
         {
-            inner += "<li>" + 
-                        "<label for='paytype" + atom.ID + "'>" + 
+            inner += "<label class='radio-inline' for='paytype" + atom.ID + "'>" + 
                             "<input type='radio' value='" + atom.ID + "' name='paytype' id='paytype" + atom.ID + "'>" +
                             atom.Name + 
-                        "</label>" + 
-                    "</li>";
+                        "</label>";
         }
-        PaymentWay.InnerHtml = inner + "</ul>";
-        inner = "<ul class='list-inline'>";
+        PaymentWay.InnerHtml = inner;
+
+        inner = "";
         list = myCart.getPaymentTimeZone();
         foreach (sOrderSelectList atom in list)
         {
-            inner += "<li>" + 
-                        "<label for='paytime" + atom.ID + "'>" + 
-                            "<input type='radio' value='" + atom.ID + "' name='paytime' id='paytime" + atom.ID + "'>" +
+            inner += "<label class='radio-inline' for='paytime" + atom.ID + "'>" + 
+                            "<input type='radio' value='" + atom.ID + "' name='paytime' id='paytime" + atom.ID + "'> " +
                             atom.Name + 
-                        "</label>" + 
-                    "</li>";
+                        "</label>";
         }
-        receiverTime.InnerHtml = inner + "</ul>";
+        receiverTime.InnerHtml = inner;
+
         list = myCart.getTaiwanCityName();
 
         foreach (sOrderSelectList atom in list)
         {
             cityName.Items.Add(new ListItem(atom.Name, atom.ID));
         }
-        inner = "<ul class='list-inline'>";
+
+        inner = "";
         list = myCart.getInvoiceWayList();
         foreach (sOrderSelectList atom in list)
         {
-            inner += "<li>" +
-                        "<label for='InvoiceInfo" + atom.ID + "'>" +
-                            "<input type='radio' value='" + atom.ID + "' name='InvoiceInfo' id='InvoiceInfo" + atom.ID + "'>" +
+            inner += "<label class='radio-inline' for='InvoiceInfo" + atom.ID + "'>" +
+                            "<input type='radio' value='" + atom.ID + "' name='InvoiceInfo' id='InvoiceInfo" + atom.ID + "'> " +
                             atom.Name +
-                        "</label>" +
-                    "</li>";
+                        "</label>";
         }
-        InvoiceInfo.InnerHtml = inner + "</ul>";
+        InvoiceInfo.InnerHtml = inner;
+
         mMail.Value = HttpContext.Current.User.Identity.Name;
     }
 }

@@ -43,7 +43,7 @@ public partial class biddetail : System.Web.UI.Page
                 mainImg.InnerHtml = "<img id='productImgBig' src='./photos/production/" + myBidItem.ProductionPhoto[0] + "' />";
             
             fullintroduction.InnerHtml = myBidItem.FullIntro;
-            Title.InnerHtml = myBidItem.Name;
+            MainTitle.InnerHtml = myBidItem.Name;
             pDescription.InnerHtml = myBidItem.Introduction;
             
             inner = "左/右手 : <select id='sHand'>";

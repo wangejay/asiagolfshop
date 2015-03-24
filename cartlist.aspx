@@ -54,7 +54,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="row">
                     <div class="col-lg-12">
-                        <ul class="orderStep list-unstyled list-inline">
+                        <ul class="orderStep list-inline">
                             <li>
                                 放入購物車
                             </li>
@@ -74,7 +74,7 @@
                 <!-- Portfolio Item Heading -->
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="page-header" runat="server" id="Title">您的購物清單</h1>
+                        <h2 class="page-header lead" runat="server" id="Title">您的購物清單</h2>
                     </div>
                 </div>
                 <!-- /.row -->

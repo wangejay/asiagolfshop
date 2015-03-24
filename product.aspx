@@ -58,15 +58,15 @@
                  <!-- Page Header -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header" runat="server" id="MainTitle">Page Heading
-                                
+                            <h1 class="page-header lead" runat="server" id="MainTitle">
+                                Page Heading
                             </h1>
                         </div>
                     </div>
                     <!-- /.row -->
                     <!-- Projects Row -->
                     <div id="ProductionDiv" runat="server">
-                    
+                        
                     </div>
 
             </div>

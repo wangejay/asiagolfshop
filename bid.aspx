@@ -56,7 +56,7 @@
                  <!-- Page Header -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header" runat="server" id="MainTitle">競標區
+                            <h1 class="page-header lead" runat="server" id="MainTitle">競標區
                                 
                             </h1>
                         </div>

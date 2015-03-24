@@ -56,7 +56,7 @@
                 <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header" runat="server" id="Title">Portfolio Item
+                <h1 class="page-header lead" runat="server" id="MainTitle">Portfolio Item
                     <small>Item Subheading</small>
                 </h1>
             </div>
