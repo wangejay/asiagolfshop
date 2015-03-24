@@ -57,7 +57,7 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-md-9 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-2">
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="orderStep list-inline">
