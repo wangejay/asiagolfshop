@@ -78,11 +78,16 @@ public class theme
                     //    "<input id='header_search' type='text' value=''>" +
                     //    "<img id='header_search_img' onclick='' title='搜尋Search' alt='搜尋Search' src='./images/btn_search.png'/>" +
                     //"</div>" +
-                    "<div id='login_Div' class='header_function_list_element'><a href='./login.aspx'>登入</a>/<a href='./signup.aspx'>註冊</a></div>" +
+                    "<div id='login_Div' class='header_function_list_element'>" +
+                        "<a href='./login.aspx' style='text-decoration: none;'> <span class='glyphicon glyphicon-log-in' aria-hidden='true'></span> 登入</a> / " +
+                        "<a href='./signup.aspx' style='text-decoration: none;'>註冊</a>" + 
+                    "</div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
-                        "<span class='sapn_title'>已選購</span><span id='cart_counter'>" + counter + "</span><span class='sapn_title'>件   </span>"+
-                        "<span class='sapn_title'><a href='./cartlist.aspx'>購物車</a></span>" +
-                        "</div>" +
+                        "<a href='./cartlist.aspx' style='text-decoration: none;'>" +
+                            "<span class='sapn_title'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></span> " +
+                            "<span class='label label-success' id='cart_counter'>" + counter + "</span>" +
+                        "</a>" + 
+                    "</div>" +
                 "</div>" +
             "</div>" +
         "</div>";
