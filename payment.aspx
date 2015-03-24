@@ -154,7 +154,7 @@
                                 <div class="form-group">
                                     <label for="rAddr" class="col-md-3">收件人地址：</label>
                                     <div class="col-md-9">
-                                        <select id="cityName" runat="server"></select><select id="townName"></select>
+                                        <select id="cityName" runat="server"></select><select id="townName"><option> --- 區</option></select>
                                         <input type="text"  class="form-control" id="rAddr" value="" name="receiver_addr" style="margin-top: 6px;" />
                                     </div>
                                 </div>
@@ -200,8 +200,8 @@
                 <div class="row">
                     <div class="col-md-9 text-right">
                         <div class="form-group">
-                            <button class="btn btn-info btn-lg" onclick="gobackProductionList()"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> 繼續選購</button>
-                            <button class="btn btn-lg btn-primary" onclick="goOrder()">下一步  <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></button>
+                            <button class="btn btn-info" onclick="gobackProductionList()"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> 繼續選購</button>
+                            <button class="btn btn-primary" onclick="goOrder()">我要結帳  <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></button>
                         </div>
                     </div>
                 </div>
