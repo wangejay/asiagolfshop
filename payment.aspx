@@ -200,8 +200,8 @@
                 <div class="row">
                     <div class="col-md-9 text-right">
                         <div class="form-group">
-                            <button class="btn btn-info" onclick="gobackProductionList()"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> 繼續選購</button>
-                            <button class="btn btn-primary" onclick="goOrder()">我要結帳  <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></button>
+                            <button class="btn btn-info" onclick="gobackProductionList()" style="background-color: #6E899C;"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> 繼續選購</button>
+                            <button class="btn btn-primary" onclick="goOrder()" style="background-color: #2a5d80;">我要結帳  <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></button>
                         </div>
                     </div>
                 </div>
