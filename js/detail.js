@@ -28,7 +28,7 @@ function SucceededCallback(result, userContext, methodName) {
                 alert("請先登入");
             else {
                 alert("已加入購物車");
-                $("#cart_counter").html(result);
+                $("#cart_counter").html(result).removeClass('hidden');
             }
             break;
     }

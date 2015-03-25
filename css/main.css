@@ -28,7 +28,7 @@ a
 {
 	/*margin-right:30px;*/
 	float:right;
-	margin-top: 25px;
+	margin-top: 14px;
 	/*font-size:14px;*/
 	font-size:1.6rem;
 }
@@ -51,17 +51,15 @@ a
 }
 #cart_Div
 {
-	/*padding-top:2px;*/
+	margin-top: 3px;
 }
 #cart_counter
 {
 	font-size: 10px;
 	position: relative;
-	/*bottom: 4px;*/
 	
 	padding: 0 4px;
-	left: -28px;
-	bottom: 12px;
+	left: -12px;
 }
 #head_bottom
 {

@@ -74,7 +74,7 @@ function baseFailedCallback(error, userContext, methodName) {
 }
 function SetAuthenticatet(result) {
     if (result.length > 0) {
-        var inner = result.split('@')[0] + ' 您好，' + '<a href="javascript:logout()" style="text-decoration: none;"> <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登出</a>';
+        var inner = result.split('@')[0] + ' 您好，' + '<a href="javascript:logout()" style="text-decoration: none; font-size: 2.4rem;color: inherit;"> <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>';
         $("#login_Div").html(inner);
     }
 }

@@ -65,6 +65,10 @@ public class theme
             string UserID = myMember.getUserID(HttpContext.Current.User.Identity.Name);
             counter = myCart.CartCounterByUserID(UserID);
         }
+        string ifHidden = "";
+        if (counter < 1) {
+            ifHidden = "hidden ";
+        }
         return
         "<div class='container'>" +
             "<div class='row'>" +
@@ -79,13 +83,13 @@ public class theme
                     //    "<img id='header_search_img' onclick='' title='搜尋Search' alt='搜尋Search' src='./images/btn_search.png'/>" +
                     //"</div>" +
                     "<div id='login_Div' class='header_function_list_element'>" +
-                        "<a href='./login.aspx' style='text-decoration: none;'> <span class='glyphicon glyphicon-log-in' aria-hidden='true'></span> 登入</a> / " +
+                        "<a href='./login.aspx' style='text-decoration: none;'>登入</a> / " +
                         "<a href='./signup.aspx' style='text-decoration: none;'>註冊</a>" + 
                     "</div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
-                        "<a href='./cartlist.aspx' style='text-decoration: none;'>" +
-                            "<span class='sapn_title'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></span> " +
-                            "<span class='label label-success' id='cart_counter'>" + counter + "</span>" +
+                        "<a href='./cartlist.aspx' style='text-decoration: none; font-size: 2.6rem;color: inherit;'>" +
+                            "<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>" +
+                            "<span class='label label-success " + ifHidden + "' id='cart_counter'>" + counter + "</span>" +
                         "</a>" + 
                     "</div>" +
                 "</div>" +
