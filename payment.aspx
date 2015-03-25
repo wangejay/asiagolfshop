@@ -154,7 +154,7 @@
                                 <div class="form-group">
                                     <label for="rAddr" class="col-md-3">收件人地址：</label>
                                     <div class="col-md-9">
-                                        <select id="cityName" runat="server"></select><select id="townName"><option> --- 區</option></select>
+                                        <select id="cityName" runat="server"></select><select id="townName"><option> 請選擇鄉鎮市區 </option></select>
                                         <input type="text"  class="form-control" id="rAddr" value="" name="receiver_addr" style="margin-top: 6px;" />
                                     </div>
                                 </div>
