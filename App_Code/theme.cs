@@ -83,11 +83,13 @@ public class theme
                     //    "<img id='header_search_img' onclick='' title='搜尋Search' alt='搜尋Search' src='./images/btn_search.png'/>" +
                     //"</div>" +
                     "<div id='login_Div' class='header_function_list_element'>" +
+                        "<span style='position: relative; top: 4px;'>" +
                         "<a href='./login.aspx' style='text-decoration: none;'>登入</a> / " +
                         "<a href='./signup.aspx' style='text-decoration: none;'>註冊</a>" + 
+                        "</span>" +
                     "</div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
-                        "<a href='./cartlist.aspx' style='text-decoration: none; font-size: 2.6rem;color: inherit;'>" +
+                        "<a href='./cartlist.aspx' style='font-size: 2.4rem;'>" +
                             "<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span>" +
                             "<span class='label label-success " + ifHidden + "' id='cart_counter'>" + counter + "</span>" +
                         "</a>" + 

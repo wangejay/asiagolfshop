@@ -3,7 +3,12 @@
 }
 a
 {
-	text-decoration:none
+	text-decoration:none;
+	color: inherit;
+}
+a:hover
+{
+	text-decoration: none;
 }
 #head
 {
@@ -26,12 +31,17 @@ a
 }
 #header_function_list
 {
-	/*margin-right:30px;*/
 	float:right;
-	margin-top: 14px;
-	/*font-size:14px;*/
 	font-size:1.6rem;
+	color: #444;
+	margin-top: 16px;
 }
+
+#header_function_list a:hover
+{
+	color: #666;
+}
+
 .header_function_list_element
 {
 	float:left;
@@ -51,7 +61,7 @@ a
 }
 #cart_Div
 {
-	margin-top: 3px;
+	margin-top: 5px;
 }
 #cart_counter
 {
