@@ -38,7 +38,7 @@ public partial class _Default : System.Web.UI.Page
             innerString += "<div class='caption'>" +
                                 "<h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></h4>" +
                                 "<h5 class='text-right'>$" + production.Price + "</h5>" +
-                                "<p class='multipleEllipsis'><span class='multipleEllipsisText'>" + production.Introduction + "</span></p>" +
+                                "<p>" + production.Introduction + "</p>" +
                                 "<button class='btn btn-block btn-primary'>詳細資訊</button>" +
                             "</div>" +
                         "</div>" +

@@ -55,7 +55,7 @@ public partial class product : System.Web.UI.Page
 
                     "<h5 class='pull-right'>$" + production.Price + "</h5>" +
 
-                    "<p class='multipleEllipsis'><span class='multipleEllipsisText'>" + production.Introduction + "</span></p>" +
+                    "<p>" + production.Introduction + "</p>" +
                     "<button class='btn btn-block btn-primary'>詳細資訊</button>" +
                 "</div>" +
             "</div>" +

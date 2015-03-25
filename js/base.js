@@ -95,3 +95,14 @@ function logout() {
 function SetLogoutResponset() {
     window.location.reload();
 }
+
+($(function() {
+    $('.caption P').each(function() {
+        $this = $(this);
+        pText = $this.text();
+        if (pText.length > 34) {
+            //$this.html(pText.substr(0, 34) + " <span class='glyphicon glyphicon-option-horizontal' aria-hidden='true'></span> ");
+            $this.html(pText.substr(0, 32) + " … ");
+        }
+    });
+}));
