@@ -4,7 +4,7 @@ function initPage() {
     AspAjax.set_defaultSucceededCallback(SucceededCallback);
     AspAjax.set_defaultFailedCallback(FailedCallback);
 
-    $('#sameAsOrderer').change(orderInfoAction);
+    $('#sameAsOrderer').click(orderInfoAction);
 }
 function SucceededCallback(result, userContext, methodName) {
     baseSucceededCallback(result, userContext, methodName);
@@ -67,24 +67,7 @@ function gobackProductionList() {
 }
 
 function orderInfoAction() {
-    if (this.checked) {
-
-        $('#rName').prop("disabled", true).val($('#mName').val());
-        $('#rPhone').prop("disabled", true).val($('#mPhone').val());
-        $('#rMail').prop("disabled", true).val($('#mMail').val());
-
-        $('#mName').keyup(function() {
-                    $('#rName').val($(this).val());
-                });
-        $('#mPhone').keyup(function() {
-                    $('#rPhone').val($(this).val());
-                });
-        $('#mMail').keyup(function() {
-                    $('#rMail').val($(this).val());
-                });
-
-    } else {
-        $('#rName,#rPhone,#rMail').prop("disabled", false);
-        $('#mName,#mPhone,#mMail').off("keyup");
-    }
+        $('#rName').val($('#mName').val());
+        $('#rPhone').val($('#mPhone').val());
+        $('#rMail').val($('#mMail').val());
 }

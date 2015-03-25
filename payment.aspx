@@ -35,9 +35,19 @@
     <style>
     #sameAsOrdererOffset 
     {
-    	position: relative;
-        top: -60px;
-        left: 120px;
+    	margin-top: -60px;
+        margin-left: 158px;
+        margin-bottom: 30px;
+    }
+    label.col-md-3
+    {
+    	padding-right: 0;
+        width: 20%;
+        margin-left: 5%;	
+    }
+    .lead
+    {
+        	
     }
     </style>
 </head>
@@ -57,7 +67,7 @@
     
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-2">
+            <div class="col-md-7" style="margin-left: 20.8333%;">
                 <div class="row">
                     <div class="col-lg-12">
                         <ul class="orderStep list-inline">
@@ -80,8 +90,8 @@
                 <!-- Portfolio Item Row -->
             <from class="form-horizontal">
                 <div class="row">
-                    <div class="col-md-9">
-                        <h3 class="page-header lead">付款方式</h3>
+                    <div class="col-md-12">
+                        <h3 class="page-header lead" style="margin-bottom: 8px;">付款方式</h3>
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-md-9 col-md-offset-3" id="PaymentWay" runat="server"></div>
@@ -89,7 +99,7 @@
                         </div>                        
                     </div>
 
-                    <div class="col-md-9" id="OrderInfo" runat="server">
+                    <div class="col-md-12" id="OrderInfo" runat="server">
                         <h3 class="page-header lead">訂購人資訊</h3>
                         
                         <div class="row">
@@ -121,12 +131,10 @@
                         </div>  
                     </div>
                     
-                    <div class="col-md-9" id="ReceiverInfo" runat="server">
+                    <div class="col-md-12" id="ReceiverInfo" runat="server">
                         <h3 class="page-header lead">收件人資訊</h3> 
-                        <div class="checkbox" id="sameAsOrdererOffset">
-                            <label>
-                                <input type="checkbox" id="sameAsOrderer"> 同訂購人資訊
-                            </label>
+                        <div id="sameAsOrdererOffset">
+                                <button class="btn btn-link" id="sameAsOrderer"> 同訂購人資訊 </button>
                         </div>
                         
                         <div class="row">
@@ -170,7 +178,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9" runat="server">
+                    <div class="col-md-12" runat="server">
                         <h3 class="page-header lead">發票資訊</h3>
                         <div class="row">
                             <div class="form-group">
@@ -180,7 +188,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="row">
                             <div class="form-group">
                                 <label class="col-md-3" for="company_id">統一編號：</label>
@@ -198,7 +206,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-9 text-right">
+                    <div class="col-md-12 text-right">
                         <div class="form-group">
                             <button class="btn btn-info" onclick="gobackProductionList()" style="background-color: #6E899C;"><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> 繼續選購</button>
                             <button class="btn btn-primary" onclick="goOrder()" style="background-color: #2a5d80;">我要結帳  <span class='glyphicon glyphicon-circle-arrow-right' aria-hidden='true'></button>
