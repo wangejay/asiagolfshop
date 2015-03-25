@@ -57,7 +57,11 @@ a
 {
 	font-size: 10px;
 	position: relative;
-	bottom: 4px;
+	/*bottom: 4px;*/
+	
+	padding: 0 4px;
+	left: -28px;
+	bottom: 12px;
 }
 #head_bottom
 {
