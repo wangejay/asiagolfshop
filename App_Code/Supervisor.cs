@@ -97,7 +97,7 @@ public class Supervisor : System.Web.Services.WebService {
 
     }
     [WebMethod]
-    public void SearchOrder(int ID)
+    public void SearchOrderbyID(int ID)
     {
         if (!Authenticated || !InAdminRoles)
         {
