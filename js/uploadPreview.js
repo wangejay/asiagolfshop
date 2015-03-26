@@ -24,8 +24,10 @@
 			var imgDiv = $(opts.imgDiv);
 			imgDiv.width(opts.width);
 			imgDiv.height(opts.height);
-		   
-			var version = parseInt($.browser.version,10);
+			$.browser = new Object();
+			$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+			var version = parseInt($.browser.version, 10);
+
 		   
 			autoScaling = function() {
 		   

@@ -4,7 +4,10 @@
 			width:300,
 			height:300,
 			wrap_fix:true // Let image display like in-line.
-		};
+};
+$.browser = new Object();
+$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+			
 		var _set = $.extend(_defaultSettings, params); 
 		var isIE7 = $.browser.msie && (7 == ~~ $.browser.version);
 
