@@ -57,6 +57,20 @@
                 <div class="list-group" runat="server" id="left_menu">
                     
                 </div>
+                <div>
+                
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- 阿舍 -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-1136960231422726"
+                         data-ad-slot="8185870896"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                
+                </div>
             </div>
 
             <div class="col-md-9">
