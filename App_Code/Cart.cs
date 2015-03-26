@@ -303,9 +303,9 @@ public class Cart
         using (command.Connection)
         {
             db.AddInParameter(command, "@UserID", DbType.String, UserID);
-            db.AddInParameter(command, "@PayWay", DbType.Int16, myOrder.PayWay);
-            db.AddInParameter(command, "@PayTime", DbType.Int16, myOrder.PayTime);
-            db.AddInParameter(command, "@InvoiceWay", DbType.Int16, myOrder.InvoiceInfo.InvoiceWay);
+            db.AddInParameter(command, "@PayWay", DbType.Int32, myOrder.PayWay);
+            db.AddInParameter(command, "@PayTime", DbType.Int32, myOrder.PayTime);
+            db.AddInParameter(command, "@InvoiceWay", DbType.Int32, myOrder.InvoiceInfo.InvoiceWay);
             db.AddInParameter(command, "@CompanyID", DbType.String, myOrder.InvoiceInfo.CompanyID);
             db.AddInParameter(command, "@CompanyName", DbType.String, myOrder.InvoiceInfo.CompanyName);
             db.AddInParameter(command, "@Order_Name", DbType.String, myOrder.SenderInfo.Order_Name);
@@ -315,8 +315,8 @@ public class Cart
             db.AddInParameter(command, "@Receiver_Name", DbType.String, myOrder.ReceiverInfo.Receiver_Email);
             db.AddInParameter(command, "@Receiver_Phone", DbType.String, myOrder.ReceiverInfo.Receiver_Phone);
             db.AddInParameter(command, "@Receiver_Email", DbType.String, myOrder.ReceiverInfo.Receiver_Email);
-            db.AddInParameter(command, "@Receiver_City", DbType.Int16, myOrder.ReceiverInfo.Receiver_City);
-            db.AddInParameter(command, "@Receiver_Town", DbType.Int16, myOrder.ReceiverInfo.Receiver_Town);
+            db.AddInParameter(command, "@Receiver_City", DbType.Int32, myOrder.ReceiverInfo.Receiver_City);
+            db.AddInParameter(command, "@Receiver_Town", DbType.Int32, myOrder.ReceiverInfo.Receiver_Town);
             db.AddInParameter(command, "@Receiver_Address", DbType.String, myOrder.ReceiverInfo.Receiver_Address);
             
             orderID = int.Parse(db.ExecuteScalar(command).ToString());

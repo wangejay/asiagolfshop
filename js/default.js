@@ -2,7 +2,7 @@
 function initPage() {
     AspAjax.set_defaultSucceededCallback(SucceededCallback);
     AspAjax.set_defaultFailedCallback(FailedCallback);
-    AspAjax.IsAuthenticated();
+    //AspAjax.IsAuthenticated();
 }
 function SucceededCallback(result, userContext, methodName) {
     baseSucceededCallback(result, userContext, methodName);

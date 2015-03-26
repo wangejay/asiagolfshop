@@ -57,6 +57,7 @@ public class theme
     }
     public string getHeadertop()
     {
+        string returnvalue = "";
         Cart myCart = new Cart();
         int counter = 0;
         if (HttpContext.Current.User.Identity.IsAuthenticated)
@@ -69,24 +70,36 @@ public class theme
         if (counter < 1) {
             ifHidden = "hidden ";
         }
-        return
-        "<div class='container'>" +
+        returnvalue = "<div class='container'>" +
             "<div class='row'>" +
-                "<a href='./default.aspx'>" + 
-                    "<img src='./images/logo.png' style='height: 48px;' />" + 
+                "<a href='./default.aspx'>" +
+                    "<img src='./images/logo.png' style='height: 48px;' />" +
                     "<img src='./images/asia-golf-shop-title.png' style='height: 30px; margin-top: 7px; margin-left: 4px;' />" +
                     "</a>" +
                 "<div id='header_function_list'>" +
-                    //"<div id='header_search_txt' class='header_function_list_element'>" +
-                    //    "<i></i>" +
-                    //    "<input id='header_search' type='text' value=''>" +
-                    //    "<img id='header_search_img' onclick='' title='搜尋Search' alt='搜尋Search' src='./images/btn_search.png'/>" +
-                    //"</div>" +
-                    "<div id='login_Div' class='header_function_list_element'>" +
-                        "<span style='position: relative; top: 4px;'>" +
-                        "<a href='./login.aspx' style='text-decoration: none;'>登入</a> / " +
-                        "<a href='./signup.aspx' style='text-decoration: none;'>註冊</a>" + 
-                        "</span>" +
+            //"<div id='header_search_txt' class='header_function_list_element'>" +
+            //    "<i></i>" +
+            //    "<input id='header_search' type='text' value=''>" +
+            //    "<img id='header_search_img' onclick='' title='搜尋Search' alt='搜尋Search' src='./images/btn_search.png'/>" +
+            //"</div>" +
+                    "<div id='login_Div' class='header_function_list_element'>";
+        if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            returnvalue +=
+                HttpContext.Current.User.Identity.Name.Substring(0,HttpContext.Current.User.Identity.Name.IndexOf("@")) + " 您好" + 
+        "<a href='javascript:logout()'>"+
+        " <span class='glyphicon glyphicon-log-in' aria-hidden='true' style='font-size: 2.4rem; position: relative; top: 5px;'></span></a>";
+                          
+        }
+        else
+        {
+            returnvalue +=
+                            "<span style='position: relative; top: 4px;'>" +
+                            "<a href='./login.aspx' style='text-decoration: none;'>登入</a> / " +
+                            "<a href='./signup.aspx' style='text-decoration: none;'>註冊</a>" +
+                            "</span>";
+        }
+        returnvalue +=
                     "</div>" +
                     "<div id='cart_Div' class='header_function_list_element'>" +
                         "<a href='./cartlist.aspx' style='font-size: 2.4rem;'>" +
@@ -97,6 +110,8 @@ public class theme
                 "</div>" +
             "</div>" +
         "</div>";
+        return returnvalue;
+        
     
     }
     public string getManageLeftMenu()

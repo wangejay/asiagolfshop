@@ -193,13 +193,13 @@
                             <div class="form-group">
                                 <label class="col-md-3" for="company_id">統一編號：</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="Text1" value="" name="company_id" />
+                                    <input type="text" class="form-control" id="company_id" value="" name="company_id" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3" for="company_title">發票抬頭：</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="Text2" value="" name="company_title" />
+                                    <input type="text" class="form-control" id="company_title" value="" name="company_title" />
                                 </div>
                             </div>
                         </div>

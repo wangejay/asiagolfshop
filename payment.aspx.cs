@@ -26,6 +26,7 @@ public partial class payment : System.Web.UI.Page
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
         footerDiv.InnerHtml = mytheme.getFooter();
 
+
         Cart myCart = new Cart();
         List<sOrderSelectList> list = myCart.getPaymentList();
         string inner = "";
