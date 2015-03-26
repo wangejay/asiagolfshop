@@ -195,6 +195,24 @@ public class Cart
         }
         return returnvalue;
     }
+    public sOrder SearchOrder(int ID)
+    {
+        sOrder returnvalue = new sOrder();
+        DataBase db = new DataBase();
+        string sqlString = "select A.ID ,B.OrderStatus,A.Order_Name," +
+"(select COUNT(*) from order_OrderProduction where order_OrderProduction.OrderID=A.ID) as pCounter ," +
+"(select SUM(order_OrderProduction.Price) from order_OrderProduction where order_OrderProduction.OrderID=A.ID) as pTotalPrice " +
+"from order_OrderInfo A left join order_OrderStatus B on A.OrderStatus=B.ID";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        DbDataReader dr = db.ExecuteReader(command);
+        while (dr.Read())
+        {
+            
+        }
+        dr.Close();
+        command.Connection.Close();
+        return returnvalue;
+    }
     public List<object> SearchOrder(DTParameterModel ParameterModel)
     {
         List<object> returnvalue = new List<object>();

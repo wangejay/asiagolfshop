@@ -1,5 +1,7 @@
 ﻿window.onload = initPage;
 
+
+
 function initPage() {
     AspAjax.set_defaultSucceededCallback(SucceededCallback);
     AspAjax.set_defaultFailedCallback(FailedCallback);

@@ -97,6 +97,29 @@ public class Supervisor : System.Web.Services.WebService {
 
     }
     [WebMethod]
+    public void SearchOrder(int ID)
+    {
+        if (!Authenticated || !InAdminRoles)
+        {
+            return;
+        }
+        this.Context.Response.ContentType = "application/json";
+        DTModelBinder Binder = new DTModelBinder();
+        DTParameterModel ParameterModel = (DTParameterModel)Binder.BindModel(HttpContext.Current.Request);
+        dataTables returnvalue = new dataTables();
+
+        Cart myCart = new Cart();
+        returnvalue.data = myCart.SearchOrder(ParameterModel);
+        returnvalue.draw = ParameterModel.Draw;
+        returnvalue.recordsTotal = returnvalue.data.Count;
+        returnvalue.recordsFiltered = returnvalue.data.Count;
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        this.Context.Response.Write(serializer.Serialize(returnvalue));
+        //string[] weekDays = { "Sun", "Mon", "Tue", "Wed", "<button>編輯</button>" };
+
+    }
+
+    [WebMethod]
     public string UpdateProduction(sProduction obj)
     {
         //return "1";
