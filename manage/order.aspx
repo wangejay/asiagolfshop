@@ -100,11 +100,11 @@
                                     <tbody>
                                         <tr>
                                             <th width="100" height="30">訂單編號</th>
-                                            <td>00000000095<span style="display:none" id="OID">95</span></td>
+                                            <td runat="server" id="orderid"></td>
                                             <td width="20">&nbsp;</td>
                                             <th width="100">訂單狀態</th>
                                             <td>
-                                                <select id="OStatus">
+                                                <select id="OStatus" runat="server">
                                                     <option value="1">等待處理</option>
                                                     <option value="2">處理中</option>
                                                     <option value="3" selected="selected">印製中</option>
