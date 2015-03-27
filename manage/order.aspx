@@ -105,27 +105,17 @@
                                             <th width="100">訂單狀態</th>
                                             <td>
                                                 <select id="OStatus" runat="server">
-                                                    <option value="1">等待處理</option>
-                                                    <option value="2">處理中</option>
-                                                    <option value="3" selected="selected">印製中</option>
-                                                    <option value="4">出貨中</option>
-                                                    <option value="5">已到達</option>
-                                                    <option value="6">已結案</option>
-                                                    <option value="11">退貨</option>
-                                                    <option value="12">退貨完成</option>
-                                                    <option value="39">取消訂單</option>
-                                                    <option value="33">逾期</option>
                                                 </select></td>
                                             <td width="20">&nbsp;</td>
                                             <th width="90">訂單日期</th>
-                                            <td id="ODate">2015/2/11 下午 10:54:05</td>
+                                            <td id="ODate" runat="server">2015/2/11 下午 10:54:05</td>
                                         </tr>
                                         <tr>
                                             <th height="30">訂單會員</th>
-                                            <td>ninaricci</td>
+                                            <td id="orderMember" runat="server"></td>
                                             <td>&nbsp;</td>
                                             <th>E-mail</th>
-                                            <td>neko0228@hotmail.com</td>
+                                            <td id="orderEmail" runat="server">neko0228@hotmail.com</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>

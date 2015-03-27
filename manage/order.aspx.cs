@@ -27,7 +27,7 @@ public partial class manage_order : System.Web.UI.Page
             theme manageTheme = new theme();
             left_menu.InnerHtml = manageTheme.getManageLeftMenu();
             Cart myCart = new Cart();
-            sOrder myOrder = myCart.SearchOrder(ID);
+            
             //設定table資本資料
             List myList = new List();
             List<sList> ListData = myList.getList("oStatus");
@@ -41,7 +41,11 @@ public partial class manage_order : System.Web.UI.Page
             ////////////////////
 
             //設定table的值
+            sOrder myOrder = myCart.SearchOrder(ID);
             orderid.InnerHtml = myOrder.OrderID;
+            ODate.InnerText = myOrder.OrderTime;
+            orderMember.InnerText = myOrder.SenderInfo.Order_Name;
+            orderEmail.InnerText = myOrder.SenderInfo.Order_Email;
             ////////////////////
 
         }

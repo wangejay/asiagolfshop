@@ -92,9 +92,14 @@ public class Cart
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ID", DbType.Int32, ID);
         DbDataReader dr = db.ExecuteReader(command);
+        returnvalue.SenderInfo = new sSenderInfo();
         while (dr.Read())
         {
             returnvalue.OrderID = dr["ID"].ToString();
+            returnvalue.OrderTime = dr["OrderTime"].ToString();
+            returnvalue.SenderInfo.Order_Name = dr["Order_Name"].ToString();
+            returnvalue.SenderInfo.Order_Email = dr["Order_Email"].ToString();
+            returnvalue.SenderInfo.Order_Phone = dr["Order_Phone"].ToString();
         }
         dr.Close();
         command.Connection.Close();
