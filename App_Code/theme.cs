@@ -149,7 +149,23 @@ public class theme
 
                     "</li>" +
                     "<li>" +
-                        "<a href='bid.aspx'>" + "<i class='glyphicon glyphicon-chevron-right'>" + "</i>競標管理" + "</a>" +
+                        "<a href='#bidSetting' class='nav-header collapsed' data-toggle='collapse'>" +
+                            "<i class='glyphicon glyphicon-cog'>" + "</i>競標管理" +
+                            "<span class='pull-right glyphicon glyphicon-chevron-toggle'>" + "</span>" +
+                        "</a>" +
+                        "<ul id='bidSetting' class='nav nav-list collapse secondmenu' style='height: 0px;'>" +
+
+                            "<li>" + "<a href='../manage/bidorders.aspx'>" +
+                                "<i class='glyphicon glyphicon-asterisk'>" + "</i>&nbsp;競標訂單查詢" + "</a>" + "</li>" +
+                            "<li class='active'>" +
+                                "<a href='../manage/bidCreate.aspx'>" +
+                                "<i class='glyphicon glyphicon-user'>" + "</i>&nbsp;新增競標品" + "</a>" + "</li>" +
+
+                            "<li>" + "<a href='../manage/bidsearch.aspx'>" +
+                                "<i class='glyphicon glyphicon-th-list'>" + "</i>&nbsp;查詢競標" + "</a>" + "</li>" +
+                           
+
+                        "</ul>" +
                     "</li>" +
                     "<li>" +
                         "<a href='bid.aspx'>" + "<i class='glyphicon glyphicon-chevron-right'>" + "</i>二手管理" + "</a>" +

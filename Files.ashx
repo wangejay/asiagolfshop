@@ -38,6 +38,21 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
 
                 returnvalue = PicSave(context, productID);
                 break;
+            case "bidPic":
+                string bidID = context.Request.QueryString["bidid"].ToString();
+                mainPatch = System.Web.HttpContext.Current.Server.MapPath("~/photos/bid/");
+                afileIdx[0] = int.Parse(context.Request.QueryString["file1"].ToString());
+                afileIdx[1] = int.Parse(context.Request.QueryString["file2"].ToString());
+                afileIdx[2] = int.Parse(context.Request.QueryString["file3"].ToString());
+                afileIdx[3] = int.Parse(context.Request.QueryString["file4"].ToString());
+                afileIdx[4] = int.Parse(context.Request.QueryString["file5"].ToString());
+                if (!System.IO.Directory.Exists(mainPatch)) //檢查文件夾是否存在。
+                {
+                    System.IO.Directory.CreateDirectory(mainPatch); //不存在，創建資料夾。
+                }
+
+                returnvalue = PicSave(context, bidID);
+                break;
         }  
         context.Response.Write(returnvalue);
         context.Response.End();
@@ -46,8 +61,7 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
     {
         HttpFileCollection files = context.Request.Files;
         
-        string newFileName=Guid.NewGuid().ToString()+ ".jpg";
-        string savePath = mainPatch + newFileName;
+       
         string success = productID;
         if (files.Count > 0)
         {
@@ -60,7 +74,7 @@ public class Files : IHttpHandler, System.Web.SessionState.IRequiresSessionState
                     while (afileIdx[fileidx] == 0)
                         fileidx++;
                     file.SaveAs(mainPatch + productID + "_" + fileidx + ".jpg");
-                    string message = updateProductionPhoto(productID + "_" + fileidx + ".jpg", productID, fileidx);
+                    //string message = updateProductionPhoto(productID + "_" + fileidx + ".jpg", productID, fileidx);
                     //if (int.Parse(success) > 0)
                     //    success = productID;
                     fileidx++;

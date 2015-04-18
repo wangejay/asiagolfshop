@@ -55,6 +55,52 @@ public class StoreDB
 		// TODO: Add constructor logic here
 		//
 	}
+    public string CreateBid(sBidItem obj)
+    {
+        string success = "";
+        DataBase db = new DataBase();
+        string sqlString = "insert into bid_Items (Name,Price,StartPrice,Category,ProductLevel,Introduction,HTML,StartTime,EndTime)" +
+        " values " +
+        "(@Name,@Price,@StartPrice,@Category,@ProductLevel,@Introduction,@HTML,@StartTime,@EndTime)" +
+        " SELECT @@identity ";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@Name", DbType.String, obj.Name);
+        db.AddInParameter(command, "@Price", DbType.Int32, obj.Price);
+        db.AddInParameter(command, "@StartPrice", DbType.Int32, obj.StartPrice);
+        db.AddInParameter(command, "@Category", DbType.Int16, obj.ProductionCategory);
+        db.AddInParameter(command, "@ProductLevel", DbType.Int16, obj.ProductionLevel);
+        db.AddInParameter(command, "@Introduction", DbType.String, obj.Introduction);
+        db.AddInParameter(command, "@HTML", DbType.String, obj.FullIntro);
+        db.AddInParameter(command, "@StartTime", DbType.Date, obj.StartTime);
+        db.AddInParameter(command, "@EndTime", DbType.Date, obj.EndTime);
+
+        //db.AddInParameter(command, "@Hand", DbType.Int16, obj.Hand);
+        //db.AddInParameter(command, "@Angle", DbType.Int32, obj.Angle);
+        //db.AddInParameter(command, "@GolfClub", DbType.Int16, obj.GolfClub);
+        //db.AddInParameter(command, "@HardLevel", DbType.Int16, obj.GolfHard);
+
+        success = db.ExecuteScalar(command).ToString();
+        command.Connection.Close();
+        for (int i = 0; i < obj.Angle.Length; i++)
+        {
+            SetListinDB(success, "angle", obj.Angle[i]);
+        }
+        for (int i = 0; i < obj.Hand.Length; i++)
+        {
+            SetListinDB(success, "hand", obj.Hand[i]);
+        }
+        for (int i = 0; i < obj.GolfClub.Length; i++)
+        {
+            SetListinDB(success, "golfClub", obj.GolfClub[i]);
+        }
+        for (int i = 0; i < obj.GolfHard.Length; i++)
+        {
+            SetListinDB(success, "hardness", obj.GolfHard[i]);
+        }
+
+        return success;
+    }
+
     public string CreateProduction(sProduction obj)
     {
         string success = "";
@@ -516,18 +562,21 @@ public class StoreDB
         if (int.Parse(success) > 0)
             success = MessageSuccess;
         return success;
-        /*
-        string returnvalue = "";
-        DataBase db = new DataBase();
-        string sqlString = "insert into store_Production_Photo (ProductID,ProductionPhoto) values(@ProductID,@ProductionPhoto)";
-        DbCommand command = db.GetSqlStringCommond(sqlString);
-        db.AddInParameter(command, "@ProductID", DbType.Int64, ProductID);
-        db.AddInParameter(command, "@ProductionPhoto", DbType.String, PhotoName);
-        returnvalue = db.ExecuteNonQuery(command).ToString();
-        return returnvalue;
-         * */
     }
-
+    public string updateBidPhoto(string PhotoName, string BidID, int idx)
+    {
+        string success = "";
+        DataBase db = new DataBase();
+        string sqlString = "update bid_Items set ProductionPhoto" + idx + "=@ProductionPhoto where ID=@ID";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@ProductionPhoto", DbType.String, PhotoName);
+        db.AddInParameter(command, "@ID", DbType.Int32, BidID);
+        success = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
+        if (int.Parse(success) > 0)
+            success = MessageSuccess;
+        return success;
+    }
     public string CreateProductionCategory(string category)
     {
         string returnValue = MessageSuccess;

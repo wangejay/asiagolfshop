@@ -12,6 +12,7 @@ public struct sBidItem
 {
     public int ID;
     public string Name;
+    public string StartPrice;
     public string Price;
     public string ProductionCategory;
     public string ProductionLevel;
