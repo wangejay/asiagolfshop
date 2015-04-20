@@ -59,9 +59,9 @@ public class StoreDB
     {
         string success = "";
         DataBase db = new DataBase();
-        string sqlString = "insert into bid_Items (Name,Price,StartPrice,Category,ProductLevel,Introduction,HTML,StartTime,EndTime)" +
+        string sqlString = "insert into bid_Items (Name,Price,StartPrice,Category,ProductLevel,Introduction,HTML,StartTime,EndTime,PriceInterval)" +
         " values " +
-        "(@Name,@Price,@StartPrice,@Category,@ProductLevel,@Introduction,@HTML,@StartTime,@EndTime)" +
+        "(@Name,@Price,@StartPrice,@Category,@ProductLevel,@Introduction,@HTML,@StartTime,@EndTime,@PriceInterval)" +
         " SELECT @@identity ";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@Name", DbType.String, obj.Name);
@@ -73,6 +73,7 @@ public class StoreDB
         db.AddInParameter(command, "@HTML", DbType.String, obj.FullIntro);
         db.AddInParameter(command, "@StartTime", DbType.Date, obj.StartTime);
         db.AddInParameter(command, "@EndTime", DbType.Date, obj.EndTime);
+        db.AddInParameter(command, "@PriceInterval", DbType.Date, obj.addPrice);
 
         //db.AddInParameter(command, "@Hand", DbType.Int16, obj.Hand);
         //db.AddInParameter(command, "@Angle", DbType.Int32, obj.Angle);

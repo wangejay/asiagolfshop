@@ -182,9 +182,9 @@
     			                                
 		                                    </tr>
 		                                    <tr>
-		                                        <td width="150">競標品名稱</td>
+		                                        <td width="150">競標品加價</td>
 		                                        <td colspan="5">
-		                                        <input id="Text2" type="text" runat="server" /><span class="startMark">*</span></td>
+		                                        <input id="addPrice" type="text" runat="server" /><span class="startMark">*</span></td>
     			                                
 		                                    </tr>
 		                                    <tr>

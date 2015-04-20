@@ -33,6 +33,7 @@ public struct sBidItem
     public string StartTime;
     public string EndTime;
     public List<sBidRecord> lBidRecord;
+    public string addPrice;
 
 
 }

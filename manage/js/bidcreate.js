@@ -20,7 +20,7 @@ $(function() {
 function SucceededCallback(result, userContext, methodName) {
     switch (methodName) {
 
-        case "CreateProduction":
+        case "CreateBid":
             uploadProductPhoto(result);
             break;
 
@@ -39,8 +39,9 @@ function CreateProduction() {
     obj.ProductionLevel = $("#ProductionLevel").val();
     obj.Introduction = $("#Introduction").val();
     obj.FullIntro = editor.getData();
-    obj.StartTime$("#startTime").val();
-    obj.EndTime$("#endTime").val();
+    obj.StartTime=$("#startTime").val();
+    obj.EndTime = $("#endTime").val();
+    obj.addPrice = $("#addPrice").val();
     var Hand = new Array();
     $('input[name="hand"]:checked').each(function(i) {
         Hand[Hand.length] = this.value;
@@ -125,7 +126,7 @@ function uploadProductPhoto(result) {
 function saveProductionSuccess(result) {
     if (result > 0) {
         alert("新增成功");
-        window.location = "./product.aspx?id=" + result;
+        //window.location = "./bid.aspx?id=" + result;
     }
     else
         alert("新增失敗");
