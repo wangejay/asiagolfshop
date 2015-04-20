@@ -46,7 +46,7 @@ public partial class bid : System.Web.UI.Page
                         "<div class='thumbnail'>";
             if (thisBidItem.ProductionPhoto.Count > 0)
             {
-                innerString += "<div class='productIMG' style='background-image: url(./photos/production/" + thisBidItem.ProductionPhoto[0] + ");'>" +
+                innerString += "<div class='productIMG' style='background-image: url(./photos/bid/" + thisBidItem.ProductionPhoto[0] + ");'>" +
                                     "<img src='images/placeholder.png' class='imgPlaceHolder'>" +
                                 "</div>";
             }
