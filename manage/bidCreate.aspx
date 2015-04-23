@@ -47,7 +47,7 @@
         <script type="text/javascript" src="../js/uploadPreview.js"></script>
         <script type="text/javascript" src="../js/jquery.mu.image.resize.js"></script>
         <script type="text/javascript" src="../js/base.js"></script>
-        <script type="text/javascript" src="../manage/js/bidcreate.js"></script>
+        <script type="text/javascript" src="../manage/js/bidcreate.js?v=1"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar wysihtml5-supported">
     <form id="form1" runat="server">

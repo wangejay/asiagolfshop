@@ -67,6 +67,7 @@ function CreateProduction() {
     obj.GolfHard = GolfHard;
     //var Filevalue = $("#uploadFile").val();
     var hasPic = false;
+    uploadQueryString = "";
     for (var i = 1; i <= 5; i++) {
         if ($("#uploadFile" + i).val().length > 0) {
             hasPic = true;

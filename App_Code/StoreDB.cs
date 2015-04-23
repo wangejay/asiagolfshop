@@ -73,7 +73,7 @@ public class StoreDB
         db.AddInParameter(command, "@HTML", DbType.String, obj.FullIntro);
         db.AddInParameter(command, "@StartTime", DbType.Date, obj.StartTime);
         db.AddInParameter(command, "@EndTime", DbType.Date, obj.EndTime);
-        db.AddInParameter(command, "@PriceInterval", DbType.Date, obj.addPrice);
+        db.AddInParameter(command, "@PriceInterval", DbType.Int32, obj.addPrice);
 
         //db.AddInParameter(command, "@Hand", DbType.Int16, obj.Hand);
         //db.AddInParameter(command, "@Angle", DbType.Int32, obj.Angle);
@@ -84,19 +84,19 @@ public class StoreDB
         command.Connection.Close();
         for (int i = 0; i < obj.Angle.Length; i++)
         {
-            SetListinDB(success, "angle", obj.Angle[i]);
+            SetBidListinDB(success, "angle", obj.Angle[i]);
         }
         for (int i = 0; i < obj.Hand.Length; i++)
         {
-            SetListinDB(success, "hand", obj.Hand[i]);
+            SetBidListinDB(success, "hand", obj.Hand[i]);
         }
         for (int i = 0; i < obj.GolfClub.Length; i++)
         {
-            SetListinDB(success, "golfClub", obj.GolfClub[i]);
+            SetBidListinDB(success, "golfClub", obj.GolfClub[i]);
         }
         for (int i = 0; i < obj.GolfHard.Length; i++)
         {
-            SetListinDB(success, "hardness", obj.GolfHard[i]);
+            SetBidListinDB(success, "hardness", obj.GolfHard[i]);
         }
 
         return success;
@@ -153,6 +153,19 @@ public class StoreDB
         string sqlString = "DELETE FROM store_Production_List where ProductID = @ProductID";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ProductID", DbType.Int64, ProductID);
+        returnvalue = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
+        return returnvalue;
+    }
+    private string SetBidListinDB(string BidID, string GroupName, string ItemID)
+    {
+        string returnvalue = "";
+        DataBase db = new DataBase();
+        string sqlString = "insert into bid_Item_List (BidID,GroupName,ItemID) values(@BidID,@GroupName,@ItemID)";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@BidID", DbType.Int64, BidID);
+        db.AddInParameter(command, "@GroupName", DbType.String, GroupName);
+        db.AddInParameter(command, "@ItemID", DbType.Int32, ItemID);
         returnvalue = db.ExecuteNonQuery(command).ToString();
         command.Connection.Close();
         return returnvalue;
