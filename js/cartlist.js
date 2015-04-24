@@ -4,19 +4,6 @@ function initPage() {
     AspAjax.set_defaultSucceededCallback(SucceededCallback);
     AspAjax.set_defaultFailedCallback(FailedCallback);
     AspAjax.IsAuthenticated();
-    $('.productImgs>UL>LI')
-        .mouseover(function() {
-            $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
-            $('#productImgBig').css('visibility', 'hidden');
-        })
-        .click(function() {
-            $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
-        });
-    $('.productImgs>UL')
-        .mouseout(function() {
-            $('#productImgBig').css('visibility', 'visible');
-            $('#mainImg').css('background-image', 'none');
-        });
 }
 function SucceededCallback(result, userContext, methodName) {
     baseSucceededCallback(result, userContext, methodName);
