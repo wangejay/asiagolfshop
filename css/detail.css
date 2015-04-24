@@ -107,12 +107,21 @@
 	width: 100%;
 	vertical-align: middle;
 }
-/* /橫列縮圖搭配滑鼠滑移縮放效果 */
+
+.detail 
+{
+	padding: 0 24px;
+}
 
 .detail H3
 {
-	font-size: 21px;
-	}
+	border-top: 1px dashed #ccc;
+    font-size: 21px;
+    font-weight: bold;
+    margin-left: -24px;
+    margin-right: -24px;
+    padding-top: 10px;
+}
 	
 #pPrice, #pMaxBidPrice {
     color: red;
