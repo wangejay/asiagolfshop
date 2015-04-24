@@ -298,15 +298,15 @@ public class bidDB
 
 
 
-    private List<sProduct_List> getHandInfo(Int64 ProductID)
+    private List<sProduct_List> getHandInfo(Int64 BidID)
     {
         List<sProduct_List> returnvalue = new List<sProduct_List>();
         sProduct_List myList = new sProduct_List();
         DataBase db = new DataBase();
-        string sqlString = "select A.ItemID,A.GroupName,B.ItemName from store_Production_List A left join system_List B on " +
-            "(A.ItemID=B.ItemID and A.GroupName=B.GroupName)  where ProductID=@ProductID";
+        string sqlString = "select A.ItemID,A.GroupName,B.ItemName from bid_Item_List A left join system_List B on " +
+                           "(A.ItemID=B.ItemID and A.GroupName=B.GroupName) where A.ID=@BidID";
         DbCommand command = db.GetSqlStringCommond(sqlString);
-        db.AddInParameter(command, "@ProductID", DbType.Int64, ProductID);
+        db.AddInParameter(command, "@BidID", DbType.Int64, BidID);
         DbDataReader dr = db.ExecuteReader(command);
         while (dr.Read())
         {

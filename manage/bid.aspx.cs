@@ -158,7 +158,7 @@ public partial class manage_bid : System.Web.UI.Page
         }
         catch
         {
-            Page.Response.Redirect("./productsearch.aspx");
+            Page.Response.Redirect("./bidsearch.aspx");
         }
 
         
