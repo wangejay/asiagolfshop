@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="../css/jquery.datepick.css" />
         <link rel="stylesheet" media="screen" href="../css/bootstrap.min.css">
         <link rel="stylesheet" media="screen" href="../css/bootstrap-theme.min.css">
 
@@ -17,8 +18,8 @@
         <link rel="stylesheet" media="screen" href="../css/bootstrap-admin-theme-change-size.css">
 
         <!-- Vendors -->
-        <link rel="stylesheet" media="screen" href="../js/bootstrap-datepicker/css/datepicker.css">
-        <link rel="stylesheet" media="screen" href="../css/datepicker.fixes.css">
+
+   
         <link rel="stylesheet" media="screen" href="../js/uniform/themes/default/css/uniform.default.min.css">
         <link rel="stylesheet" media="screen" href="../css/uniform.default.fixes.css">
         <link rel="stylesheet" media="screen" href="../js/chosen.min.css">
@@ -31,13 +32,15 @@
            <script type="text/javascript" src="../js/respond.min.js"></script>
         <![endif]-->
         <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.datepick.js"></script>
+	<script type="text/javascript" src="../js/jquery.datepick-zh-TW.js"></script>
         <script type="text/javascript" src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/twitter-bootstrap-hover-dropdown.min.js"></script>
         <script type="text/javascript" src="../js/bootstrap-admin-theme-change-size.js"></script>
         <script type="text/javascript" src="../js/uniform/jquery.uniform.min.js"></script>
         <script type="text/javascript" src="../js/chosen.jquery.min.js"></script>
         <script type="text/javascript" src="../js/selectize/dist/js/standalone/selectize.min.js"></script>
-        <script type="text/javascript" src="../js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
         <script type="text/javascript" src="../js/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/wysihtml5.js"></script>
         <script type="text/javascript" src="../js/bootstrap-wysihtml5-rails-b3/vendor/assets/javascripts/bootstrap-wysihtml5/core-b3.js"></script>
         <script type="text/javascript" src="../js/twitter-bootstrap-wizard/jquery.bootstrap.wizard-for.bootstrap3.js"></script>
@@ -172,13 +175,13 @@
 		                                    <tr>
 		                                        <td width="150">開始時間</td>
 		                                        <td colspan="5">
-		                                        <input id="startTime" type="text" runat="server" /><span class="startMark">*</span></td>
+		                                        <input id="startTime" type="text" runat="server" class="date"/><span class="startMark">*</span></td>
     			                                
 		                                    </tr>
 		                                    <tr>
 		                                        <td width="150">結束時間</td>
 		                                        <td colspan="5">
-		                                        <input id="endTime" type="text" runat="server" /><span class="startMark">*</span></td>
+		                                        <input id="endTime" type="text" runat="server" class="date" /><span class="startMark">*</span></td>
     			                                
 		                                    </tr>
 		                                    <tr>

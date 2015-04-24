@@ -49,6 +49,30 @@ public class Supervisor : System.Web.Services.WebService {
         this.Context.Response.Write(serializer.Serialize(returnvalue));
         //string[] weekDays = { "Sun", "Mon", "Tue", "Wed", "<button>編輯</button>" };
     }
+
+    [WebMethod]
+    [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+    public void SearchBid()
+    {
+        if (!Authenticated || !InAdminRoles)
+        {
+            return;
+        }
+        this.Context.Response.ContentType = "application/json";
+        DTModelBinder Binder = new DTModelBinder();
+        DTParameterModel ParameterModel = (DTParameterModel)Binder.BindModel(HttpContext.Current.Request);
+        dataTables returnvalue = new dataTables();
+
+        bidDB myStore = new bidDB();
+        returnvalue.data = myStore.searchBid(ParameterModel);
+        returnvalue.draw = ParameterModel.Draw;
+        returnvalue.recordsTotal = returnvalue.data.Count;
+        returnvalue.recordsFiltered = returnvalue.data.Count;
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        this.Context.Response.Write(serializer.Serialize(returnvalue));
+        //string[] weekDays = { "Sun", "Mon", "Tue", "Wed", "<button>編輯</button>" };
+
+    }
     [WebMethod]
     [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
     public void SearchProduct()
