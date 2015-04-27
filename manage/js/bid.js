@@ -41,6 +41,7 @@ function UpdateBid() {
     obj.ProductionLevel = $("#ProductionLevel").val();
     obj.Introduction = $("#Introduction").val();
     obj.FullIntro = editor.getData();
+    obj.isDelete = $("#isDeleteSelect").val();
     for (var i = 1; i <= 5; i++) {
         if ($("#uploadFile" + i).val().length > 0) {
 
@@ -97,7 +98,7 @@ function uploadBidPhoto(result) {
         var picSave = false;
         var options = {
             type: "POST",
-            url: '../Files.ashx?type=productionPic&productid=' + result + uploadQueryString,
+            url: '../Files.ashx?type=bidPic&bidid=' + result + uploadQueryString,
             async: false,
             success: function(value) {
                 if (value.length > 0) {

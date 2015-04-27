@@ -47,7 +47,7 @@
         <script type="text/javascript" src="../js/uploadPreview.js"></script>
         <script type="text/javascript" src="../js/jquery.mu.image.resize.js"></script>
         <script type="text/javascript" src="../js/base.js"></script>
-        <script type="text/javascript" src="../manage/js/bid.js"></script>
+        <script type="text/javascript" src="../manage/js/bid.js?v=5566"></script>
         
         <style>
             label {
@@ -57,10 +57,14 @@
             label:last-child {
             	border: none;
             }
-            input[type=text],textarea {
+            input[type=text],textarea 
+            {
+            	padding:8px;
             	width: 95%;
             }
-            select {
+            select 
+            {
+            	padding:8px;
             	min-width: 200px;
             }
         </style>
@@ -115,10 +119,8 @@
                                 <form id="GmyForm" name="GmyForm" action="" method="post" enctype="multipart/form-data">
                                     <table class="table table-striped table-bordered" id="Table1" border="0">
                                             <tr>
-		                                        <td width="150">產品編號</td>
+		                                        <td width="150">競標品編號</td>
 		                                        <td colspan="5"><span id="ProductID" runat="server"></span></td>
-    			                                
-		                                        
 		                                    </tr>
                                             <tr>
                                                 <td width="150" rowspan="2">產品照片</td>
@@ -258,7 +260,15 @@
     			           
                                         </table>
                                     </form>
-                                <button class="btn btn-lg btn-primary" onclick="UpdateBid()">更新</button>
+                                    
+                                    <button class="btn btn-lg btn-primary" onclick="UpdateBid()">更新</button>
+                                    
+                                    <select id="isDeleteSelect" runat="server">
+                                        <option value="0">陳列中</option>
+                                        <option value="1">下架中</option>
+                                    </select>
+		                        
+                                
                                
                             </div>
                         </div>

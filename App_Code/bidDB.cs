@@ -29,11 +29,13 @@ public struct sBidItem
     public List<string> ProductionPhoto;
 
     public string RecordCounter;
-    public string MaxBidPrice;
+    public int MaxBidPrice;
     public string StartTime;
-    public string EndTime;
+    public DateTime EndTime;
+    //public string EndTime;
     public List<sBidRecord> lBidRecord;
     public string addPrice;
+    public string isDelete;
 
 
 }
@@ -124,9 +126,9 @@ public class bidDB
         DataBase db = new DataBase();
         string sqlString;
         if (category.Length == 0)
-            sqlString = "select * from bid_Items  order by ID desc";
+            sqlString = "select * from bid_Items where isDelete=0 order by ID desc";
         else
-            sqlString = "select * from bid_Items where Category=@Category order by ID desc";
+            sqlString = "select * from bid_Items where Category=@Category and isDelete=0 order by ID desc";
 
         DbCommand command = db.GetSqlStringCommond(sqlString);
 
@@ -157,7 +159,10 @@ public class bidDB
             myBidItem.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
 
             myBidItem.StartTime = dr["StartTime"].ToString();
-            myBidItem.EndTime = dr["EndTime"].ToString();
+            //myBidItem.EndTime = dr["EndTime"].ToString();
+            myBidItem.EndTime = Convert.ToDateTime(dr["EndTime"]);
+            myBidItem.isDelete = dr["isDelete"].ToString();
+
             temp.Add(myBidItem);
         }
 
@@ -179,6 +184,12 @@ public class bidDB
             myBidItem.RecordCounter = getRecordCounter(atom.ID);
             myBidItem.MaxBidPrice = getMaxBidPrice(atom.ID);
 
+            if (myBidItem.MaxBidPrice <= 0){
+                myBidItem.MaxBidPrice = int.Parse(atom.Price);
+            }
+
+            myBidItem.isDelete = atom.isDelete;
+
             returnValue.Add(myBidItem);
         }
 
@@ -199,7 +210,7 @@ public class bidDB
     }
 
 
-    private string getMaxBidPrice(int ID)
+    private int getMaxBidPrice(int ID)
     {
         string sqlString;
         DataBase db = new DataBase();
@@ -209,7 +220,7 @@ public class bidDB
         db.AddInParameter(command, "@ID", DbType.Int16, ID);
         int dr = (int) db.ExecuteNonQuery(command);
 
-        return dr.ToString();
+        return dr;
     }
 
     public sBidItem searchBitItembyID(string id)
@@ -255,7 +266,9 @@ public class bidDB
             myBidItem.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
 
             myBidItem.StartTime = dr["StartTime"].ToString();
-            myBidItem.EndTime = dr["EndTime"].ToString();
+            //myBidItem.EndTime = dr["EndTime"].ToString();
+            myBidItem.EndTime = Convert.ToDateTime(dr["EndTime"].ToString());
+            myBidItem.isDelete = dr["isDelete"].ToString();
 
             
             temp.Add(myBidItem);
@@ -289,6 +302,8 @@ public class bidDB
 
             myBidItem.RecordCounter = getRecordCounter(atom.ID);
             myBidItem.MaxBidPrice = getMaxBidPrice(atom.ID);
+
+            myBidItem.isDelete = atom.isDelete;
 
             returnValue.Add(myBidItem);
         }

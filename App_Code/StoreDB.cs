@@ -33,6 +33,7 @@ public struct sProduction
     public string Introduction;
     public string FullIntro;
     public List<string> ProductionPhoto;
+    public int isDelete;
 }
 public struct sProductionCategory
 {
@@ -241,7 +242,7 @@ public class StoreDB
         DataBase db = new DataBase();
 
         string sqlString = "update bid_Items set Name=@Name,Price=@Price,Category=@Category,ProductLevel=@ProductLevel," +
-        "Introduction=@Introduction,HTML=@HTML" +
+        "Introduction=@Introduction,HTML=@HTML,isDelete=@isDelete" +
         " where ID=@ID ";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ID", DbType.Int32, obj.ID);
@@ -251,6 +252,7 @@ public class StoreDB
         db.AddInParameter(command, "@ProductLevel", DbType.Int16, obj.ProductionLevel);
         db.AddInParameter(command, "@Introduction", DbType.String, obj.Introduction);
         db.AddInParameter(command, "@HTML", DbType.String, obj.FullIntro);
+        db.AddInParameter(command, "@isDelete", DbType.Int32, obj.isDelete);
 
         success = db.ExecuteNonQuery(command).ToString();
         //success = db.ExecuteScalar(command).ToString();

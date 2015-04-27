@@ -12,8 +12,6 @@
     <title>阿舍高爾夫-競標</title>
      <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    
-        
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="./css/main.css" />

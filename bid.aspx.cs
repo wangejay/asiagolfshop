@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Data.Common;
 using System.Collections.Generic;
+using System.Globalization;
 
 public partial class bid : System.Web.UI.Page
 {
@@ -42,7 +43,7 @@ public partial class bid : System.Web.UI.Page
             {
                 innerString += " <div class='row'>";
             }
-            innerString += "<div class='col-sm-4 col-lg-4 col-md-4' onclick='goBidDetail(" + thisBidItem.ID + ")'>" +
+            innerString += "<div class='col-xs-4' onclick='goBidDetail(" + thisBidItem.ID + ")'>" +
                         "<div class='thumbnail'>";
             if (thisBidItem.ProductionPhoto.Count > 0)
             {
@@ -54,14 +55,14 @@ public partial class bid : System.Web.UI.Page
             innerString += "<div class='caption'>" +
                     "<h4>" + "<a href='./biddetail.aspx?id=" + thisBidItem.ID + "'>" + thisBidItem.Name + "</a></h4>" +
 
-                    "<h5 class='pull-right'>最高出價： $" + thisBidItem.MaxBidPrice + "</h5>" +
+                    "<h5 class=''>目前出價：NT$" + thisBidItem.MaxBidPrice + "</h5>" +
 
                     //"<p>" + thisBidItem.Introduction + "</p>" +
-                        "<ul>" +
-                            "<li>" + "出價次數：" + thisBidItem.RecordCounter + "</li>" +
-                            "<li>" + "結束時間：" + thisBidItem.EndTime + "</li>" +
+                        "<ul class='list-inline'>" +
+                            "<li>" + "已有" + thisBidItem.RecordCounter + "次出價，</li>" +
+                            "<li>" + "還有" + thisBidItem.EndTime.ToString("y") + "結標。</li>" +
                         "</ul>" +
-                    "<button class='btn btn-block btn-primary'>我要出價</button>" +
+                    //"<button class='btn btn-block btn-primary'>我要出價</button>" +
                 "</div>" +
             "</div>" +
         "</div>";

@@ -60,7 +60,6 @@ public partial class manage_bid : System.Web.UI.Page
             }
             handBlock.InnerHtml = innerstring;
 
-
             innerstring = "";
             myList = systemList.getList("angle");
             foreach (sList atom in myList)
@@ -118,6 +117,9 @@ public partial class manage_bid : System.Web.UI.Page
 
             Production_Category.Items.FindByValue(myBid.ProductionCategory).Selected = true;
             ProductionLevel.Items.FindByValue(myBid.ProductionLevel).Selected = true;
+            
+            isDeleteSelect.Items.FindByValue(myBid.isDelete.ToString()).Selected = true;
+
             //Hand.Items.FindByValue(myProduction.Hand).Selected = true;
             //Angle.Items.FindByValue(myProduction.Angle).Selected = true;
             //GolfClub.Items.FindByValue(myProduction.GolfClub).Selected = true;
