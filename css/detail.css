@@ -19,18 +19,20 @@
 #productDisc {
     background-color: #eee;
     padding-bottom: 36px;
-}
+}    
 #productDisc H3 {
-    font-size: 18px;
+    font-size: 16px;
 }
+
 #productDisc P {
     line-height: 2em;
     padding-left: 1.2em;
 }
-#productDisc UL {
-    list-style: outside none none;
-    padding-left: 1.2em;
-}
+
+#productDisc UL
+{list-style: outside none none;
+ padding-left: 1.2em;}
+
 #productDisc UL LI {
     border-bottom: 1px solid #ccc;
     margin-bottom: 0.4em;
