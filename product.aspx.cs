@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Globalization;
 
 public partial class product : System.Web.UI.Page
 {
@@ -41,7 +42,7 @@ public partial class product : System.Web.UI.Page
             {
                 innerString += " <div class='row'>";
             }
-            innerString += "<div class='col-sm-4 col-lg-4 col-md-4' onclick='goDetail(" + production.ID + ")'>" +
+            innerString += "<div class='col-xs-4' onclick='goDetail(" + production.ID + ")'>" +
                         "<div class='thumbnail'>";
             if (production.ProductionPhoto.Count > 0)
             {
@@ -49,14 +50,16 @@ public partial class product : System.Web.UI.Page
                                     "<img src='images/placeholder.png' class='imgPlaceHolder'>" +
                                 "</div>";
             }
+          
 
             innerString += "<div class='caption'>" +
                     "<h4>" + "<a href='./detail.aspx?id=" + production.ID + "'>" + production.Name + "</a></h4>" +
 
-                    "<h5 class='pull-right'>$" + production.Price + "</h5>" +
+                    "<span class='originPrice pull-left'><del>NT$12345</del></span>" +
+                    "<h5 class=''>NT$" + double.Parse(production.Price).ToString("#,#", CultureInfo.InvariantCulture) + "</h5>" +
 
-                    "<p>" + production.Introduction + "</p>" +
-                    "<button class='btn btn-block btn-primary'>詳細資訊</button>" +
+                    //"<p>" + production.Introduction + "</p>" +
+                    //"<button class='btn btn-block btn-primary'>詳細資訊</button>" +
                 "</div>" +
             "</div>" +
         "</div>";
