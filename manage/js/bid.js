@@ -22,8 +22,8 @@ $(function() {
 function SucceededCallback(result, userContext, methodName) {
     switch (methodName) {
 
-        case "UpdateProduction":
-            uploadProductPhoto(result);
+        case "UpdateBid":
+            uploadBidPhoto(result);
             break;
 
     }
@@ -32,7 +32,7 @@ function FailedCallback(error, userContext, methodName) {
     //  alert("功能有問題 請再試一次 或重新整理" + error.get_message() + " " + methodName);
 }
 
-function UpdateProduction() {
+function UpdateBid() {
     var obj = new Object();
     obj.ID = gup("id");
     obj.Name = $("#name").val();
@@ -81,9 +81,9 @@ function UpdateProduction() {
         alert("價格請填寫數字");
     }
     else
-        Supervisor.UpdateProduction(obj);
+        Supervisor.UpdateBid(obj);
 }
-function uploadProductPhoto(result) {
+function uploadBidPhoto(result) {
     if (result == "0")
         return;
     var hasPic = false;
@@ -117,7 +117,7 @@ function uploadProductPhoto(result) {
 function saveProductionSuccess(result) {
     if (result > 0) {
         alert("更新成功");
-        window.location = "./product.aspx?id=" + result;
+        window.location = "./bid.aspx?id=" + result;
     }
     else
         alert("更新失敗");

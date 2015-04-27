@@ -54,9 +54,9 @@ public partial class manage_bid : System.Web.UI.Page
                         isCheck = true;
                 }
                 if (isCheck)
-                    innerstring += "<label><input type='checkbox' name='hand' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='hand' value='" + atom.ID + "' checked='checked'/> " + atom.ItemName + "</label>";
                 else
-                    innerstring += "<label><input type='checkbox' name='hand' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='hand' value='" + atom.ID + "'/> " + atom.ItemName + "</label>";
             }
             handBlock.InnerHtml = innerstring;
 
@@ -72,9 +72,9 @@ public partial class manage_bid : System.Web.UI.Page
                         isCheck = true;
                 }
                 if (isCheck)
-                    innerstring += "<label><input type='checkbox' name='angle' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='angle' value='" + atom.ID + "' checked='checked'/> " + atom.ItemName + "</label>";
                 else
-                    innerstring += "<label><input type='checkbox' name='angle' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='angle' value='" + atom.ID + "'/> " + atom.ItemName + "</label>";
 
             }
             AngleBlock.InnerHtml = innerstring;
@@ -90,9 +90,9 @@ public partial class manage_bid : System.Web.UI.Page
                         isCheck = true;
                 }
                 if (isCheck)
-                    innerstring += "<label><input type='checkbox' name='golfClub' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='golfClub' value='" + atom.ID + "' checked='checked'/> " + atom.ItemName + "</label>";
                 else
-                    innerstring += "<label><input type='checkbox' name='golfClub' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='golfClub' value='" + atom.ID + "'/> " + atom.ItemName + "</label>";
             }
             golfClubBlock.InnerHtml = innerstring;
 
@@ -107,9 +107,9 @@ public partial class manage_bid : System.Web.UI.Page
                         isCheck = true;
                 }
                 if (isCheck)
-                    innerstring += "<label><input type='checkbox' name='hardness' value='" + atom.ID + "' checked='checked'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='hardness' value='" + atom.ID + "' checked='checked'/> " + atom.ItemName + "</label>";
                 else
-                    innerstring += "<label><input type='checkbox' name='hardness' value='" + atom.ID + "'/>" + atom.ItemName + "</label>";
+                    innerstring += "<label><input type='checkbox' name='hardness' value='" + atom.ID + "'/> " + atom.ItemName + "</label>";
 
 
             }

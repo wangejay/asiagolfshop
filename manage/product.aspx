@@ -48,6 +48,22 @@
         <script type="text/javascript" src="../js/jquery.mu.image.resize.js"></script>
         <script type="text/javascript" src="../js/base.js"></script>
         <script type="text/javascript" src="../manage/js/production.js"></script>
+        
+        <style>
+            label {
+            	border-right: 1px solid #aaa;
+                padding: 0 8px;
+            }
+            label:last-child {
+            	border: none;
+            }
+            input[type=text],textarea {
+            	width: 95%;
+            }
+            select {
+            	min-width: 200px;
+            }
+        </style>
 </head>
 <body class="bootstrap-admin-with-small-navbar wysihtml5-supported">
     <form id="form1" runat="server">
@@ -230,13 +246,13 @@
 		                                    <tr>
 		                                        <td>產品簡介</td>
 		                                        <td colspan="5">
-		                                            <textarea id="Introduction" rows="5" style="width:95%" runat="server" ></textarea>
+		                                            <textarea id="Introduction" rows="5" runat="server" ></textarea>
 		                                        </td>
 		                                    </tr>
 		                                    <tr>
 		                                        <td>完整商品圖文介紹</td>
 		                                        <td colspan="5">
-		                                            <textarea id="FullIntro" rows="5" style="width:100%" runat="server" ></textarea>
+		                                            <textarea id="FullIntro" rows="5" runat="server" ></textarea>
 		                                        </td>
 		                                    </tr>
     			           

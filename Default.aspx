@@ -228,23 +228,18 @@
 
         </div>
 
-    </div>
-    <!-- /.container -->
+    </div><!-- /.container -->
 
-    <div class="container">
 
-        <hr>
+    <hr>
 
-        <footer>
-            <div class="row">
-                <div class="col-lg-12" runat="server" id="footerDiv">
-                  
-                </div>
+    <footer class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" runat="server" id="footerDiv">
+              
             </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
+        </div>
+    </footer><!-- /.container -->
 
     
 </body>

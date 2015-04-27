@@ -304,7 +304,7 @@ public class bidDB
         sProduct_List myList = new sProduct_List();
         DataBase db = new DataBase();
         string sqlString = "select A.ItemID,A.GroupName,B.ItemName from bid_Item_List A left join system_List B on " +
-                           "(A.ItemID=B.ItemID and A.GroupName=B.GroupName) where A.ID=@BidID";
+                           "(A.ItemID=B.ItemID and A.GroupName=B.GroupName) where A.BidID=@BidID";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@BidID", DbType.Int64, BidID);
         DbDataReader dr = db.ExecuteReader(command);

@@ -157,6 +157,18 @@ public class StoreDB
         command.Connection.Close();
         return returnvalue;
     }
+
+    private string DeleteBidListinDB(Int64 BidID)
+    {
+        string returnvalue = "";
+        DataBase db = new DataBase();
+        string sqlString = "DELETE FROM bid_Item_List where BidID = @BidID";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@BidID", DbType.Int64, BidID);
+        returnvalue = db.ExecuteNonQuery(command).ToString();
+        command.Connection.Close();
+        return returnvalue;
+    }
     private string SetBidListinDB(string BidID, string GroupName, string ItemID)
     {
         string returnvalue = "";
@@ -222,7 +234,47 @@ public class StoreDB
         }
         return success;
     }
-    
+
+    public string UpdateBid(sProduction obj)
+    {
+        string success = "";
+        DataBase db = new DataBase();
+
+        string sqlString = "update bid_Items set Name=@Name,Price=@Price,Category=@Category,ProductLevel=@ProductLevel," +
+        "Introduction=@Introduction,HTML=@HTML" +
+        " where ID=@ID ";
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        db.AddInParameter(command, "@ID", DbType.Int32, obj.ID);
+        db.AddInParameter(command, "@Name", DbType.String, obj.Name);
+        db.AddInParameter(command, "@Price", DbType.Int32, obj.Price);
+        db.AddInParameter(command, "@Category", DbType.Int16, obj.ProductionCategory);
+        db.AddInParameter(command, "@ProductLevel", DbType.Int16, obj.ProductionLevel);
+        db.AddInParameter(command, "@Introduction", DbType.String, obj.Introduction);
+        db.AddInParameter(command, "@HTML", DbType.String, obj.FullIntro);
+
+        success = db.ExecuteNonQuery(command).ToString();
+        //success = db.ExecuteScalar(command).ToString();
+        command.Connection.Close();
+        DeleteBidListinDB(obj.ID);
+        for (int i = 0; i < obj.Angle.Length; i++)
+        {
+            SetBidListinDB(obj.ID.ToString(), "angle", obj.Angle[i]);
+        }
+        for (int i = 0; i < obj.Hand.Length; i++)
+        {
+            SetBidListinDB(obj.ID.ToString(), "hand", obj.Hand[i]);
+        }
+        for (int i = 0; i < obj.GolfClub.Length; i++)
+        {
+            SetBidListinDB(obj.ID.ToString(), "golfClub", obj.GolfClub[i]);
+        }
+        for (int i = 0; i < obj.GolfHard.Length; i++)
+        {
+            SetBidListinDB(obj.ID.ToString(), "hardness", obj.GolfHard[i]);
+        }
+        return success;
+    }
+
     public List<object> searchProduct(DTParameterModel ParameterModel)
     {
         List<object> returnvalue = new List<object>();

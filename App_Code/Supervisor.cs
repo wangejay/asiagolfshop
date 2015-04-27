@@ -159,7 +159,24 @@ public class Supervisor : System.Web.Services.WebService {
         }
         return returnValue;
     }
-    
+
+    [WebMethod]
+    public string UpdateBid(sProduction obj)
+    {
+        //return "1";
+        string returnValue = "";
+        if (!Authenticated || !InAdminRoles)
+            returnValue = Message_NoAuth.ToString();
+        else
+        {
+            StoreDB myStore = new StoreDB();
+            returnValue = myStore.UpdateBid(obj);
+            if (int.Parse(returnValue) >= 1)
+                returnValue = obj.ID.ToString();
+        }
+        return returnValue;
+    }
+
     [WebMethod]
     public string CreateBid(sBidItem obj)
     {
