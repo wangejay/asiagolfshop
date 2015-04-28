@@ -55,12 +55,15 @@ public partial class bid : System.Web.UI.Page
             innerString += "<div class='caption'>" +
                     "<h4>" + "<a href='./biddetail.aspx?id=" + thisBidItem.ID + "'>" + thisBidItem.Name + "</a></h4>" +
 
-                    "<h5 class=''>目前出價：NT$" + thisBidItem.MaxBidPrice + "</h5>" +
+                    //"<h5 class=''>目前出價：NT$" + thisBidItem.MaxBidPrice + "</h5>" +
 
                     //"<p>" + thisBidItem.Introduction + "</p>" +
                         "<ul class='list-inline'>" +
-                            "<li>" + "已有" + thisBidItem.RecordCounter + "次出價，</li>" +
-                            "<li>" + "還有" + thisBidItem.EndTime.ToString("y") + "結標。</li>" +
+                            "<li class='timeLeft'>" + "<i class='glyphicon glyphicon-time' aria-hidden='true'></i> <span>" + thisBidItem.EndTime.ToString("y") + "</span></li>" +
+
+                            "<li class='bidCount'>" + "出價次數<div>" + thisBidItem.RecordCounter + "</div></li>" +
+
+                            "<li class='maxBidPrice'>" + "目前出價<div>NT$" + thisBidItem.MaxBidPrice + "</div></li>" +
                         "</ul>" +
                     //"<button class='btn btn-block btn-primary'>我要出價</button>" +
                 "</div>" +
