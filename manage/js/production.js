@@ -41,6 +41,7 @@ function UpdateProduction() {
     obj.ProductionLevel = $("#ProductionLevel").val();
     obj.Introduction = $("#Introduction").val();
     obj.FullIntro = editor.getData();
+    obj.isDelete = $("#isDeleteSelect").val();
     for (var i = 1; i <= 5; i++) {
         if ($("#uploadFile" + i).val().length > 0) {
            

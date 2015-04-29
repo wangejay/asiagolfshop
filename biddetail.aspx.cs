@@ -82,7 +82,7 @@ public partial class biddetail : System.Web.UI.Page
             pEndTime.InnerHtml = "結束時間：" + myBidItem.EndTime;
             pRecordCounter.InnerHtml = "出價次數：" + myBidItem.RecordCounter;
 
-            pMaxBidPrice.InnerHtml = myBidItem.MaxBidPrice +"元";
+            pMaxBidPrice.InnerHtml = myBidItem.MaxBidPrice + "元";
 
         }
         catch (Exception ee)

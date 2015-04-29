@@ -33,7 +33,7 @@ public struct sProduction
     public string Introduction;
     public string FullIntro;
     public List<string> ProductionPhoto;
-    public int isDelete;
+    public string isDelete;
 }
 public struct sProductionCategory
 {
@@ -202,7 +202,7 @@ public class StoreDB
         DataBase db = new DataBase();
        
         string sqlString = "update store_Production set Name=@Name,Price=@Price,Category=@Category,ProductLevel=@ProductLevel," +
-        "Introduction=@Introduction,HTML=@HTML" +
+        "Introduction=@Introduction,HTML=@HTML,isDelete=@isDelete" +
         " where ID=@ID ";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ID", DbType.Int32, obj.ID);
@@ -212,6 +212,7 @@ public class StoreDB
         db.AddInParameter(command, "@ProductLevel", DbType.Int16, obj.ProductionLevel);
         db.AddInParameter(command, "@Introduction", DbType.String, obj.Introduction);
         db.AddInParameter(command, "@HTML", DbType.String, obj.FullIntro);
+        db.AddInParameter(command, "@isDelete", DbType.Int32, obj.isDelete);
        
         success = db.ExecuteNonQuery(command).ToString();
         //success = db.ExecuteScalar(command).ToString();
@@ -374,6 +375,8 @@ public class StoreDB
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto2"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
+
+            myProduction.isDelete = dr["isDelete"].ToString();
            
 
         }
@@ -469,9 +472,14 @@ public class StoreDB
         DataBase db = new DataBase();
         string sqlString;
         if(category.Length==0)
-            sqlString = "select * from store_Production  order by ID desc";
+            sqlString = "select * from store_Production " +
+                        "where isDelete=0 " + // 過濾掉下架的商品
+                        "order by ID desc";
         else
-            sqlString = "select * from store_Production where Category=@Category order by ID desc";
+            sqlString = "select * from store_Production where Category=@Category " +
+                        "and isDelete=0 " + // 過濾掉下架的商品
+                        "order by ID desc";
+
         DbCommand command = db.GetSqlStringCommond(sqlString);
         if (category.Length != 0)
             db.AddInParameter(command, "@Category", DbType.Int16, category);
@@ -539,7 +547,8 @@ public class StoreDB
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto1"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto2"].ToString());
             myProduction.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
-            myProduction.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());  
+            myProduction.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
+            myProduction.isDelete = dr["isDelete"].ToString();
         }
         dr.Close();
         command.Connection.Close();
@@ -551,7 +560,9 @@ public class StoreDB
         List<sProduction> temp = new List<sProduction>();
         sProduction myProduction = new sProduction();
         DataBase db = new DataBase();
-        string sqlString = "select top " + counter.ToString() + " * from store_Production order by ID desc";
+        string sqlString =  "select top " + counter.ToString() + " * from store_Production " + 
+                            "where isDelete=0 " + // 過濾掉下架的產品
+                            "order by ID desc";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         DbDataReader dr = db.ExecuteReader(command);
         while (dr.Read())
@@ -725,7 +736,10 @@ public class StoreDB
         List<sProductionCategory> returnValue = new List<sProductionCategory>();
         sProductionCategory myCategory = new sProductionCategory();
         DataBase db = new DataBase();
-        string sqlString = "select * from store_ProductCategory where isDelete=0 order by Sequence";
+        string sqlString =  "select * from store_ProductCategory " +
+                            "where isDelete=0 " + // 過濾掉下架的商品
+                            "order by Sequence";
+
         DbCommand command = db.GetSqlStringCommond(sqlString);
         DbDataReader dr = db.ExecuteReader(command);
         while (dr.Read())

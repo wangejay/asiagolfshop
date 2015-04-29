@@ -59,15 +59,16 @@
             }
             input[type=text],textarea 
             {
-            	padding:8px;
+            	padding:15px;
             	width: 95%;
             }
             select 
             {
-            	padding:8px;
+            	padding:15px;
             	min-width: 200px;
             }
         </style>
+        
 </head>
 <body class="bootstrap-admin-with-small-navbar wysihtml5-supported">
     <form id="form1" runat="server">

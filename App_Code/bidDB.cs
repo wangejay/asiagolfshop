@@ -126,9 +126,13 @@ public class bidDB
         DataBase db = new DataBase();
         string sqlString;
         if (category.Length == 0)
-            sqlString = "select * from bid_Items where isDelete=0 order by ID desc";
+            sqlString = "select * from bid_Items " + 
+                        "where isDelete=0 " + // 過濾掉下架的商品
+                        "order by ID desc";
         else
-            sqlString = "select * from bid_Items where Category=@Category and isDelete=0 order by ID desc";
+            sqlString = "select * from bid_Items where Category=@Category " +
+                        "and isDelete=0 " +  // 過濾掉下架的商品
+                        "order by ID desc";
 
         DbCommand command = db.GetSqlStringCommond(sqlString);
 
@@ -302,6 +306,11 @@ public class bidDB
 
             myBidItem.RecordCounter = getRecordCounter(atom.ID);
             myBidItem.MaxBidPrice = getMaxBidPrice(atom.ID);
+
+            if (myBidItem.MaxBidPrice <= 0)
+            {
+                myBidItem.MaxBidPrice = int.Parse(atom.Price);
+            }
 
             myBidItem.isDelete = atom.isDelete;
 

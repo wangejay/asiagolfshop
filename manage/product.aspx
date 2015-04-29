@@ -57,10 +57,14 @@
             label:last-child {
             	border: none;
             }
-            input[type=text],textarea {
+            input[type=text],textarea 
+            {
+            	padding: 15px;
             	width: 95%;
             }
-            select {
+            select 
+            {
+            	padding: 15px;
             	min-width: 200px;
             }
         </style>
@@ -259,6 +263,11 @@
                                         </table>
                                     </form>
                                 <button class="btn btn-lg btn-primary" onclick="UpdateProduction()">更新</button>
+                                
+                                <select id="isDeleteSelect" runat="server">
+                                        <option value="0">陳列中</option>
+                                        <option value="1">下架中</option>
+                                    </select>
                                
                             </div>
                         </div>
