@@ -94,14 +94,19 @@
                 </ul>
                 <h3>競標資訊</h3>
                     <ul>
-                    <li runat="server" id="pStartTime">Lorem Ipsum</li>
+                    <!-- <li runat="server" id="pStartTime">Lorem Ipsum</li> -->
                     <li runat="server" id="pEndTime">Dolor Sit Amet</li>
                     <li runat="server" id="pRecordCounter">Consectetur</li>
                 </ul>
                 
                 <h3>最高出價</h3>
                 <h4 id="pMaxBidPrice" runat="server">12345</h4>
-                <button type="button" id="btn-add-cart" onclick="goCart()" class="btn btn-block btn-primary"> 我要出價 </button>
+                <input type="hidden" id="priceInterval" runat=server />
+                <input type="text" id="newPrice" runat=server class="form-control" style="display:none" />
+                <div id="newBidPriceAlert">
+                    <p style="display:none"></p>
+                </div>
+                <button type="button" id="btn-new-price" class="btn btn-block btn-primary"> 我要出價 </button>
             </div>
 
         </div>
@@ -113,25 +118,57 @@
         </div>
         </div>
         <!--hr-->
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12" runat="server" id="footerDiv">
-                    
-                </div>
-            <!-- /.row -->
-        </footer>
             </div>
         </div>
-        
-
     </div>
+    
+    <hr>
+
+    <footer class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" runat="server" id="footerDiv">
+              
+            </div>
+        </div>
+    </footer><!-- /.container -->
+    
 </body>
 <script>
+    ($(function() {
+        // 新出價按鈕行為
+        $('#btn-new-price').click(function() {
+            var newPrice = $('#newPrice');
+            var priceInterval = parseInt($('#priceInterval').val());
+            var maxBidPrice = parseInt($('#pMaxBidPrice span').text());
+            var aleast = priceInterval + maxBidPrice;
 
-    // 滑鼠移動到縮圖上會換產品圖的程式碼
-    $('.productImgs UL LI')
+            if (newPrice.is(':hidden')) { // 顯示出價輸入框
+
+                newPrice.val(aleast);
+                newPrice.show();
+                $(this).text('確認出價');
+
+            } else {
+
+                if (parseInt(newPrice.val()) < aleast) { // 如果最低出價就警告
+
+                    $('#newBidPriceAlert p').html('新增標價須大於' + aleast + "元").show('fast');
+
+                } else { // 高於最低出價就進行處理
+
+                    alert('出價！');
+
+                }
+
+            }
+        });
+        $('#newPrice').click(function() {
+            $('#newBidPriceAlert p').hide('fast');
+        });
+
+
+        // 滑鼠移動到縮圖上會換產品圖的程式碼
+        $('.productImgs UL LI')
         .mouseover(function() {
             $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
             $('#productImgBig').css('visibility', 'hidden');
@@ -139,11 +176,11 @@
         .click(function() {
             $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
         });
-    $('.productImgs UL')
+        $('.productImgs UL')
         .mouseout(function() {
             $('#productImgBig').css('visibility', 'visible');
             $('#mainImg').css('background-image', 'none');
         });
-        
+    }));
 </script>
 </html>

@@ -175,14 +175,12 @@ a:hover {
 }
 /* 競標資訊 */
 .thumbnail .timeLeft {
-	/* border-bottom: 1px solid rgb(210, 210, 210); */
-	display: block;
+    display: block;
     float: none;
     font-size: 100%;
-    /* line-height: 150%; */
-    /* margin-bottom: 3%; */
-    text-align: right;
+    margin-left: 60%;
     padding: 0;
+    width: 40%;
 }
 .thumbnail .timeLeft span{
 	position: relative;
@@ -203,25 +201,14 @@ a:hover {
 }
 
 .thumbnail .maxBidPrice {
-	width: 78%;
-	padding-right: 0;
-	padding-top: 5px;
+	margin-left: 38%;
+    width: 40%;
 }
 .thumbnail .maxBidPrice div {
-	/*
-	display: block;
-	font-size: 16px;
-	margin: 0 auto;
-	text-align: right;
-	color: #d45200;
-	font-weight:bold;
-	*/
-	
 	color: #d45200;
     display: block;
     font-size: 16px;
     font-weight: bold;
-    margin-left: 42px;
 }
 
 

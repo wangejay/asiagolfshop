@@ -36,7 +36,7 @@ public struct sBidItem
     public List<sBidRecord> lBidRecord;
     public string addPrice;
     public string isDelete;
-
+    public string PriceInterval;
 
 }
 public struct sBidRecord
@@ -269,6 +269,8 @@ public class bidDB
             myBidItem.ProductionPhoto.Add(dr["ProductionPhoto3"].ToString());
             myBidItem.ProductionPhoto.Add(dr["ProductionPhoto4"].ToString());
 
+            myBidItem.PriceInterval = dr["PriceInterval"].ToString();
+
             myBidItem.StartTime = dr["StartTime"].ToString();
             //myBidItem.EndTime = dr["EndTime"].ToString();
             myBidItem.EndTime = Convert.ToDateTime(dr["EndTime"].ToString());
@@ -300,6 +302,8 @@ public class bidDB
             myBidItem.GolfHard = atom.GolfHard;
             myBidItem.GolfHardName = atom.GolfHardName;
             myBidItem.ProductionPhoto = atom.ProductionPhoto;
+
+            myBidItem.PriceInterval = atom.PriceInterval;
 
             myBidItem.StartTime = atom.StartTime;
             myBidItem.EndTime = atom.EndTime;

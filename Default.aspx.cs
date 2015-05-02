@@ -28,7 +28,7 @@ public partial class _Default : System.Web.UI.Page
         string innerString = "";
         foreach (sProduction production in myProduction)
         {
-            innerString += "<div class='col-xs-4' onclick='goDetail(" + production.ID + ")'>" +
+            innerString += "<div class='col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-lg-4' onclick='goDetail(" + production.ID + ")'>" +
                         "<div class='thumbnail'>";
             if (production.ProductionPhoto.Count > 0)
             {

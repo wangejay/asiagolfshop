@@ -78,11 +78,13 @@ public partial class biddetail : System.Web.UI.Page
             inner += "</select>";
             pGolfHard.InnerHtml = inner;
 
-            pStartTime.InnerHtml = "開始時間：" + myBidItem.StartTime;
+            //pStartTime.InnerHtml = "開始時間：" + myBidItem.StartTime;
             pEndTime.InnerHtml = "結束時間：" + myBidItem.EndTime;
             pRecordCounter.InnerHtml = "出價次數：" + myBidItem.RecordCounter;
 
-            pMaxBidPrice.InnerHtml = myBidItem.MaxBidPrice + "元";
+            pMaxBidPrice.InnerHtml = "<span>" + myBidItem.MaxBidPrice.ToString() + "</span>元";
+
+            priceInterval.Value = myBidItem.PriceInterval;
 
         }
         catch (Exception ee)

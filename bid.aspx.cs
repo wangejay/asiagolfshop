@@ -43,7 +43,7 @@ public partial class bid : System.Web.UI.Page
             {
                 innerString += " <div class='row'>";
             }
-            innerString += "<div class='col-xs-4' onclick='goBidDetail(" + thisBidItem.ID + ")'>" +
+            innerString += "<div class='col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-lg-4' onclick='goBidDetail(" + thisBidItem.ID + ")'>" +
                         "<div class='thumbnail'>";
             if (thisBidItem.ProductionPhoto.Count > 0)
             {

@@ -100,22 +100,18 @@
         </div>
         
         <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12" runat="server" id="footerDiv">
-                    
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
-        
-        
     </div>
     <!-- /.container -->
+   
+   <hr>
+
+    <footer class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center" runat="server" id="footerDiv">
+              
+            </div>
+        </div>
+    </footer><!-- /.container -->
     
 </body>
 </html>

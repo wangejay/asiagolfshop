@@ -42,7 +42,7 @@ public partial class product : System.Web.UI.Page
             {
                 innerString += " <div class='row'>";
             }
-            innerString += "<div class='col-xs-4' onclick='goDetail(" + production.ID + ")'>" +
+            innerString += "<div class='col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0 col-lg-4' onclick='goDetail(" + production.ID + ")'>" +
                         "<div class='thumbnail'>";
             if (production.ProductionPhoto.Count > 0)
             {
