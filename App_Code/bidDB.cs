@@ -217,16 +217,28 @@ public class bidDB
 
     private int getMaxBidPrice(int ID)
     {
+        int returnvalue = 0;
         string sqlString;
         DataBase db = new DataBase();
 
-        sqlString = "SELECT MAX(BidPrice) FROM bid_Record WHERE ProductID=@ID";
+        sqlString = "SELECT MAX(BidPrice) as MaxPrice FROM bid_Record WHERE ProductID=@ID";
         DbCommand command = db.GetSqlStringCommond(sqlString);
-        db.AddInParameter(command, "@ID", DbType.Int16, ID);
-        //int dr = (int)db.ExecuteNonQuery(command);
-        int dr = (int)db.ExecuteScalar(command);
+        using (command.Connection)
+        {
+            db.AddInParameter(command, "@ID", DbType.Int16, ID);
+            //int dr = (int)db.ExecuteNonQuery(command);
+            DbDataReader dr = db.ExecuteReader(command);
+            while (dr.Read())
+            {
+                if(!string.IsNullOrEmpty(dr["MaxPrice"].ToString()))
+                {
+                    returnvalue = int.Parse(dr["MaxPrice"].ToString());
+                }
+            }
+            dr.Close();
+        }
 
-        return dr;
+        return returnvalue;
     }
 
     public sBidItem searchBitItembyID(string id)
