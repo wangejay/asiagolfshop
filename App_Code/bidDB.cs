@@ -42,6 +42,7 @@ public struct sBidItem
 public struct sBidRecord
 {
     public string BidPrice;
+    public string BidID;
     public string BidUserID;
     public string BidTime;
 }
@@ -222,7 +223,8 @@ public class bidDB
         sqlString = "SELECT MAX(BidPrice) FROM bid_Record WHERE ProductID=@ID";
         DbCommand command = db.GetSqlStringCommond(sqlString);
         db.AddInParameter(command, "@ID", DbType.Int16, ID);
-        int dr = (int) db.ExecuteNonQuery(command);
+        //int dr = (int)db.ExecuteNonQuery(command);
+        int dr = (int)db.ExecuteScalar(command);
 
         return dr;
     }
@@ -376,5 +378,33 @@ public class bidDB
         }
 
         return returnvalue;
+    }
+
+    public int addNewBidPrice(string UserName, sBidRecord newBidRecord)
+    {
+        int returnvalue = 0;
+        MemeberShipDA myMember = new MemeberShipDA();
+        string UserID = myMember.getUserID(UserName);
+
+        DataBase db = new DataBase();
+        string sqlString = "insert bid_Record (ProductID,BidPrice,BidUserID)" +
+        " values " +
+        "(@ProductID,@BidPrice,@BidUserID)";
+
+        DbCommand command = db.GetSqlStringCommond(sqlString);
+        using (command.Connection)
+        {
+            db.AddInParameter(command, "@ProductID", DbType.Int64, newBidRecord.BidID);
+            db.AddInParameter(command, "@BidPrice", DbType.Int64, newBidRecord.BidPrice);
+            db.AddInParameter(command, "@BidUserID", DbType.String, UserID);
+            returnvalue = db.ExecuteNonQuery(command);
+        }
+        if (returnvalue > 0)
+        {
+            returnvalue = int.Parse(newBidRecord.BidPrice);
+        }
+
+        return returnvalue;
+
     }
 }

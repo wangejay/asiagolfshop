@@ -84,6 +84,7 @@ public partial class biddetail : System.Web.UI.Page
 
             pMaxBidPrice.InnerHtml = "<span>" + myBidItem.MaxBidPrice.ToString() + "</span>元";
 
+            bidID.Value = ID;
             priceInterval.Value = myBidItem.PriceInterval;
 
         }

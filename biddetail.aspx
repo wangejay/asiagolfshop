@@ -30,6 +30,8 @@
 
     <!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.min.js"></script>
+   <script src="js/base.js"></script>
+   <script src="js/bidDetail.js"></script>
 
 </head>
 <body>
@@ -101,6 +103,7 @@
                 
                 <h3>最高出價</h3>
                 <h4 id="pMaxBidPrice" runat="server">12345</h4>
+                <input type="hidden" id="bidID" runat=server />
                 <input type="hidden" id="priceInterval" runat=server />
                 <input type="text" id="newPrice" runat=server class="form-control" style="display:none" />
                 <div id="newBidPriceAlert">
@@ -133,54 +136,4 @@
     </footer><!-- /.container -->
     
 </body>
-<script>
-    ($(function() {
-        // 新出價按鈕行為
-        $('#btn-new-price').click(function() {
-            var newPrice = $('#newPrice');
-            var priceInterval = parseInt($('#priceInterval').val());
-            var maxBidPrice = parseInt($('#pMaxBidPrice span').text());
-            var aleast = priceInterval + maxBidPrice;
-
-            if (newPrice.is(':hidden')) { // 顯示出價輸入框
-
-                newPrice.val(aleast);
-                newPrice.show();
-                $(this).text('確認出價');
-
-            } else {
-
-                if (parseInt(newPrice.val()) < aleast) { // 如果最低出價就警告
-
-                    $('#newBidPriceAlert p').html('新增標價須大於' + aleast + "元").show('fast');
-
-                } else { // 高於最低出價就進行處理
-
-                    alert('出價！');
-
-                }
-
-            }
-        });
-        $('#newPrice').click(function() {
-            $('#newBidPriceAlert p').hide('fast');
-        });
-
-
-        // 滑鼠移動到縮圖上會換產品圖的程式碼
-        $('.productImgs UL LI')
-        .mouseover(function() {
-            $('#mainImg').css('background-image', 'url(' + $(this).find('IMG').attr('src') + ')');
-            $('#productImgBig').css('visibility', 'hidden');
-        })
-        .click(function() {
-            $('#productImgBig').attr('src', $(this).find('IMG').attr('src'));
-        });
-        $('.productImgs UL')
-        .mouseout(function() {
-            $('#productImgBig').css('visibility', 'visible');
-            $('#mainImg').css('background-image', 'none');
-        });
-    }));
-</script>
 </html>

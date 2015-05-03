@@ -154,6 +154,26 @@ public class AspAjax : System.Web.Services.WebService {
     }
     
     //
-    
+    [WebMethod]
+    public int addBidPrice(sBidRecord newBidRecord)
+    {
+        int returnvalue = 0;
+        if (!HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            return Message_NoAuth;
+        }
+        else
+        {
+            bidDB newBid = new bidDB();
+            returnvalue = newBid.addNewBidPrice(HttpContext.Current.User.Identity.Name, newBidRecord);
+
+            if (returnvalue > 0)
+            {
+                returnvalue = int.Parse(newBidRecord.BidID);
+            }
+            return returnvalue;
+        }
+        
+    }
 }
 
