@@ -50,22 +50,26 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div method="post" action="about.html" class="bootstrap-admin-login-form">
-                        <h1>阿舍高爾夫登入</h1>
+                        <h2>阿舍高爾夫登入</h2>
                         <div class="form-group">
                             <input class="form-control" type="text" id="userEmail" name="email" placeholder="E-mail">
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="password" id="userPassword" name="password" placeholder="Password">
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-12 col-lg-12 col-md-12">
-                                <input type="checkbox" name="remember_me">
-                                記得我
-                                <a style="float:right;" href="./forget.aspx">忘記密碼</a>
-                            </label>
+                        <div class="form-group" style="margin-bottom: 0px">
+                            <div class="row">
+                                <label class="col-xs-6">
+                                    <input type="checkbox" name="remember_me">
+                                    記得我
+                                </label>
+                                <div class="col-xs-6 text-right" style="margin-top:6px;">
+                                    <a href="./forget.aspx">忘記密碼</a>
+                                </div>
+                            </div>
                         </div>
                         
-                        <button class="btn btn-lg btn-primary" onclick="goLogin()">登入</button>
+                        <button class="btn btn-lg btn-primary" onclick="goLogin()" style="font-size:16px; padding: 2px 16px;">登入</button>
                         <div id="signupResult" class="form-group"></div>
                     </div>
                 </div>
