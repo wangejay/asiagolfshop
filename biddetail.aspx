@@ -27,11 +27,14 @@
     <![endif]-->
      <!-- jQuery -->
     <script src="js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="js/jquery.timers.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.min.js"></script>
    <script src="js/base.js"></script>
    <script src="js/bidDetail.js"></script>
+   
+   
 
 </head>
 <body>

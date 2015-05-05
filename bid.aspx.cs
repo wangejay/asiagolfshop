@@ -59,7 +59,7 @@ public partial class bid : System.Web.UI.Page
 
                     //"<p>" + thisBidItem.Introduction + "</p>" +
                         "<ul class='list-inline'>" +
-                            "<li class='timeLeft'>" + "<i class='glyphicon glyphicon-time' aria-hidden='true'></i> <span>" + thisBidItem.EndTime.ToString("y") + "</span></li>" +
+                            "<li class='timeLeft'>" + "<i class='glyphicon glyphicon-time' aria-hidden='true'></i> <span>" + thisBidItem.EndTime + "</span></li>" +
 
                             "<li class='bidCount'>" + "出價次數<div>" + thisBidItem.RecordCounter + "</div></li>" +
 

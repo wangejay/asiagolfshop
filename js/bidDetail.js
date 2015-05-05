@@ -32,6 +32,40 @@ function goAddNewPrice() {
 
 
 ($(function() {
+    // 計算倒數計時，使用 jquery.timers.js
+    var pRecordCounter = $('#pRecordCounter');
+    var startDate = new Date();
+    var endDate = new Date(pRecordCounter.text());
+    var spantime = (endDate - startDate) / 1000;
+    var countText = '';
+
+    $(this).everyTime('1s', function(i) {
+        spantime--;
+        var d = Math.floor(spantime / (24 * 3600));
+        var h = Math.floor((spantime % (24 * 3600)) / 3600);
+        var m = Math.floor((spantime % 3600) / (60));
+        var s = Math.floor(spantime % 60);
+
+
+        if (spantime > 0) {
+        
+            countText += (d > 0) ? d + '日' : '';
+            countText += (h > 0) ? d + '時' : '';
+            countText += (m > 0) ? d + '分' : '';
+            countText += s + '秒';
+
+        } else { // 避免倒數變成負的
+        
+            countText = '此競標已結束';
+        }
+
+        pRecordCounter.text(countText);
+    });
+
+
+
+
+
     // 按下出價按鈕後的行為
     $('#btn-new-price').click(function() {
         var newPriceInput = $('#newPrice');
