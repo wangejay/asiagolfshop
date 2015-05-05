@@ -33,9 +33,9 @@ function goAddNewPrice() {
 
 ($(function() {
     // 計算倒數計時，使用 jquery.timers.js
-    var pRecordCounter = $('#pRecordCounter');
+    var pEndTime = $('#pEndTime');
     var startDate = new Date();
-    var endDate = new Date(pRecordCounter.text());
+    var endDate = new Date(pEndTime.text());
     var spantime = (endDate - startDate) / 1000;
     var countText = '';
 
@@ -50,8 +50,8 @@ function goAddNewPrice() {
         if (spantime > 0) {
         
             countText += (d > 0) ? d + '日' : '';
-            countText += (h > 0) ? d + '時' : '';
-            countText += (m > 0) ? d + '分' : '';
+            countText += (h > 0) ? h + '時' : '';
+            countText += (m > 0) ? m + '分' : '';
             countText += s + '秒';
 
         } else { // 避免倒數變成負的
@@ -59,7 +59,7 @@ function goAddNewPrice() {
             countText = '此競標已結束';
         }
 
-        pRecordCounter.text(countText);
+        pEndTime.text('結束時間：' + countText);
     });
 
 

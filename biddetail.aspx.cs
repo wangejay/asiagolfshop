@@ -79,7 +79,7 @@ public partial class biddetail : System.Web.UI.Page
             pGolfHard.InnerHtml = inner;
 
             //pStartTime.InnerHtml = "開始時間：" + myBidItem.StartTime;
-            pEndTime.InnerHtml = "結束時間：" + myBidItem.EndTime;
+            pEndTime.InnerHtml = myBidItem.EndTime.ToString();
             pRecordCounter.InnerHtml = "出價次數：" + myBidItem.RecordCounter;
 
             pMaxBidPrice.InnerHtml = "<span>" + myBidItem.MaxBidPrice.ToString() + "</span>元";

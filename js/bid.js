@@ -21,8 +21,8 @@
         if (spantime > 0) {
 
             countText += (d > 0) ? d + '日' : '';
-            countText += (h > 0) ? d + '時' : '';
-            countText += (d < 1) ? d + '分' : '';
+            countText += (h > 0) ? h + '時' : '';
+            countText += (d < 1) ? m + '分' : '';
             countText += (d < 1 && h < 1 ) ? s + '秒' : '';
 
         } else { // 避免倒數變成負的
