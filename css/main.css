@@ -73,6 +73,10 @@ a:hover {
     font-size: 16px;
     color: #9d9d9d;
 }
+.currentCategory 
+{
+	background-color: #428bca;
+}
 #MainTitle {
     /*font-size: 21px;*/
     

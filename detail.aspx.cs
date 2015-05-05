@@ -23,7 +23,7 @@ public partial class detail : System.Web.UI.Page
             theme mytheme = new theme();
             headerTop.InnerHtml = mytheme.getHeadertop();
             headerBottom.InnerHtml = mytheme.getHeaderbottom();
-            left_menu.InnerHtml = mytheme.getLeftMenu();
+            left_menu.InnerHtml = mytheme.getLeftMenu("0");
             footerDiv.InnerHtml = mytheme.getFooter();
             string inner = "";
             StoreDB myStore = new StoreDB();

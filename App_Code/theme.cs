@@ -174,26 +174,38 @@ public class theme
                         "<a href='secondhand.aspx'>" + "<i class='glyphicon glyphicon-chevron-right'>" + "</i>教練管理" + "</a>" +
                     "</li>";
     }
-    public string getLeftMenu()
+    public string getLeftMenu(string ID)
     {
         string inner = "";
+        string currentFlag = "";
         StoreDB myStore = new StoreDB();
         List<sProductionCategory> lProduction = myStore.searchProductionCategory();
         foreach (sProductionCategory myPorduct in lProduction)
         {
-            inner += "<a href='./product.aspx?id=" + myPorduct.ID + "' class='list-group-item'>" + myPorduct.CategoryName + "</a>";
+            currentFlag = "";
+            if (int.Parse(ID) == myPorduct.ID)
+            {
+                currentFlag = " currentCategory";
+            }
+            inner += "<a href='./product.aspx?id=" + myPorduct.ID + "' class='list-group-item" + currentFlag + "'>" + myPorduct.CategoryName + "</a>";
         }
         return inner;
     }
 
-    public string getBidLeftMenu()
+    public string getBidLeftMenu(string ID)
     {
         string inner = "";
+        string currentFlag = "";
         StoreDB myStore = new StoreDB();
         List<sProductionCategory> lProduction = myStore.searchProductionCategory();
         foreach (sProductionCategory myPorduct in lProduction)
         {
-            inner += "<a href='./bid.aspx?id=" + myPorduct.ID + "' class='list-group-item'>" + myPorduct.CategoryName + "</a>";
+            currentFlag = "";
+            if (int.Parse(ID) == myPorduct.ID)
+            {
+                currentFlag = " currentCategory";
+            }
+            inner += "<a href='./bid.aspx?id=" + myPorduct.ID + "' class='list-group-item" + currentFlag + "'>" + myPorduct.CategoryName + "</a>";
         }
         return inner;
     }

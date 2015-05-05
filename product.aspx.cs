@@ -29,7 +29,7 @@ public partial class product : System.Web.UI.Page
         theme mytheme = new theme();
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
-        left_menu.InnerHtml = mytheme.getLeftMenu();
+        left_menu.InnerHtml = mytheme.getLeftMenu(ID);
         footerDiv.InnerHtml = mytheme.getFooter();
         StoreDB myStore = new StoreDB();
         MainTitle.InnerHtml = ID.Length == 0 ? "全部商品" : myStore.searchProductionCategoryName(ID);

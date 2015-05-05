@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
         theme mytheme = new theme();
         headerTop.InnerHtml = mytheme.getHeadertop();
         headerBottom.InnerHtml = mytheme.getHeaderbottom();
-        left_menu.InnerHtml = mytheme.getLeftMenu();
+        left_menu.InnerHtml = mytheme.getLeftMenu("0");
         footerDiv.InnerHtml = mytheme.getFooter();
         StoreDB myStore = new StoreDB();
         List<sProduction> myProduction = myStore.searchProduction(9);
