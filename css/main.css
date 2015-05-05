@@ -75,6 +75,7 @@ a:hover {
 }
 .currentCategory 
 {
+	color: #fff;
 	background-color: #428bca;
 }
 #MainTitle {
