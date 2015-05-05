@@ -183,7 +183,7 @@ public class theme
         foreach (sProductionCategory myPorduct in lProduction)
         {
             currentFlag = "";
-            if (int.Parse(ID) == myPorduct.ID)
+            if (!string.IsNullOrEmpty(ID) && int.Parse(ID) == myPorduct.ID)
             {
                 currentFlag = " currentCategory";
             }
@@ -201,7 +201,7 @@ public class theme
         foreach (sProductionCategory myPorduct in lProduction)
         {
             currentFlag = "";
-            if (int.Parse(ID) == myPorduct.ID)
+            if (!string.IsNullOrEmpty(ID) && int.Parse(ID) == myPorduct.ID)
             {
                 currentFlag = " currentCategory";
             }
