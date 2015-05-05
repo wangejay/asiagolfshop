@@ -100,7 +100,8 @@
                 <h3>競標資訊</h3>
                     <ul>
                     <!-- <li runat="server" id="pStartTime">Lorem Ipsum</li> -->
-                    <li runat="server" id="pEndTime">Dolor Sit Amet</li>
+                    <li runat="server" id="pEndTime" class="hidden">Dolor Sit Amet</li>
+                    <li runat="server" id="showEndTime"></li>
                     <li runat="server" id="pRecordCounter">Consectetur</li>
                 </ul>
                 

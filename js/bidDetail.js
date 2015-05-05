@@ -59,7 +59,7 @@ function goAddNewPrice() {
             countText = '此競標已結束';
         }
 
-        pEndTime.text('結束時間：' + countText);
+        $('#showEndTime').text('結束時間：' + countText);
     });
 
 
