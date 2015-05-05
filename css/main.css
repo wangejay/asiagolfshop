@@ -78,6 +78,10 @@ a.currentCategory
 	color: #fff;
 	background-color: #428bca;
 }
+a.currentCategory:hover
+{
+	background-color: #336FA4;
+}
 #MainTitle {
     /*font-size: 21px;*/
     

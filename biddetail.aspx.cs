@@ -23,7 +23,7 @@ public partial class biddetail : System.Web.UI.Page
             theme mytheme = new theme();
             headerTop.InnerHtml = mytheme.getHeadertop();
             headerBottom.InnerHtml = mytheme.getHeaderbottom();
-            left_menu.InnerHtml = mytheme.getBidLeftMenu();
+            left_menu.InnerHtml = mytheme.getBidLeftMenu(ID);
             footerDiv.InnerHtml = mytheme.getFooter();
             string inner = "";
             bidDB myStore = new bidDB();
