@@ -37,7 +37,6 @@ function goAddNewPrice() {
     var startDate = new Date();
     var endDate = new Date(pEndTime.text());
     var spantime = (endDate - startDate) / 1000;
-    var countText = '';
 
     $(this).everyTime('1s', function(i) {
         spantime--;
@@ -45,6 +44,7 @@ function goAddNewPrice() {
         var h = Math.floor((spantime % (24 * 3600)) / 3600);
         var m = Math.floor((spantime % 3600) / (60));
         var s = Math.floor(spantime % 60);
+        var countText = '';
 
 
         if (spantime > 0) {
