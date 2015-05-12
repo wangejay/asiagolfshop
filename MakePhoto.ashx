@@ -32,11 +32,11 @@ public class MakePhoto : IHttpHandler {
                 fromLeft = 80; fromTop = 40; toLeft = 320; toTop = 400; line = 3;
                 break;
             case "2":
-                ColorR = 0; ColorG = 0; ColorB = 0; zoneW = 10; fonsizeSet = 20; fontSpace = 20; left = 150; top = 206;
+                ColorR = 0; ColorG = 0; ColorB = 0; zoneW = 10; fonsizeSet = 18; fontSpace = 18; left = 150; top = 206;
                 fromLeft = 70; fromTop = 18; toLeft = 227; toTop = 374; line = 5;
                 break;
             case "3":
-                ColorR = 0; ColorG = 0; ColorB = 0; zoneW = 14; fonsizeSet = 20; fontSpace = 20; left = 110; top = 107;
+                ColorR = 0; ColorG = 0; ColorB = 0; zoneW = 14; fonsizeSet = 18; fontSpace = 18; left = 110; top = 107;
                 fromLeft = 55; fromTop = 18; toLeft = 266; toTop = 204; line = 4;
                 break;
             case "4":
